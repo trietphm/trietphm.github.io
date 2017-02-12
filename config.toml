@@ -2,3 +2,30 @@ languageCode = "en-us"
 title = "Tea, Coffee & Code"
 baseurl = "https://trietphm.github.io/"
 publishDir= "."
+
+BaseUrl = "https://trietphm.github.io/"
+[params]
+
+# your name to display by the copyright sign
+# default: undefined
+AuthorName = "Triet Pham"
+
+# tagline to show beneath homepage h1
+# default: undefined
+Tagline = "Hello, world!"
+
+# number of posts to show on index
+# default: 10
+#HomepagePosts = 3
+
+# if set to true, social links will be displayed in the footer
+# default: undefined
+SocialLinks = true
+
+# default: undefined
+GithubUsername = "trietphm"
+
+# default: undefined
+TwitterUsername = "trietphm"
+
+

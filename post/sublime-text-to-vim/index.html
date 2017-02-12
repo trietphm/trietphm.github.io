@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>sublime text to vim &middot; </title>
+        <meta name="description" content="Bắt đầu chuyển sang dùng Vim làm editor chính một cách nghiêm túc sau nhiều lần thử và bỏ cuộc và quay trở về với Sublime Text. Lý do chuyển sang dùng Vim lý do chính là vì sống hầu hết thời gian trong terminal nên di chuyển từ từ cho đồng bộ, lý do phụ là để làm màu và động lực để chuyển sang bàn phím 60% để mang đi mang về cho tiện .">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.18.1" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="https://trietphm.github.io/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Tea, Coffee &amp; Code" href="https://trietphm.github.io/">Tea, Coffee &amp; Code</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://trietphm.github.io/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">sublime text to vim</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2017-02-12" itemprop="datePublished">Sun, Feb 12, 2017</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="" itemprop="url" rel="author"></a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<p>Bắt đầu chuyển sang dùng Vim làm editor chính một cách nghiêm túc sau nhiều lần thử và bỏ cuộc và quay trở về với Sublime Text.
+Lý do chuyển sang dùng Vim lý do chính là vì sống hầu hết thời gian trong terminal nên di chuyển từ từ cho đồng bộ, lý do phụ là để làm màu và động lực để chuyển sang <a href="https://www.google.com.vn/search?q=60%25+keyboard&amp;tbm=isch&amp;tbo=u&amp;source=univ&amp;sa=X&amp;ved=0ahUKEwjX9Oz3xIrSAhUHtJQKHZ4tDZkQsAQIKw&amp;biw=1440&amp;bih=737">bàn phím 60%</a> để mang đi mang về cho tiện ._.</p>
+
+<p>Còn về nguyên nhân bỏ cuộc là vì không quen với VIM được, do có nhiều thứ quá khác với SublimeText, chính xác là trên SublimeText có mà VIM lại không có, nên lần này mình sẽ setup toàn bộ những thứ bên SublimeText qua VIM hết.</p>
+
+<h1 id="cài-đặt">Cài đặt</h1>
+
+<h2 id="install">Install</h2>
+
+<p>Tuỳ theo nhu cầu bạn có thể chọn <a href="http://www.vim.org/">Vim</a>, <a href="https://neovim.io/">NeoVim</a>, hoặc <a href="https://github.com/macvim-dev/macvim">MacVim</a> tuỳ thích.
+Thế mình chọn cái nào à? Mình chọn <a href="https://neovim.io/">NeoVim</a> nhé, vì một tính năng rất mạnh mà NeoVim đã support sẳn <a href="https://gist.github.com/XVilka/8346728">TrueColour</a>, à ờ, tóm lại cũng là màu mè thôi, cho nó đẹp.
+Nếu bạn là newbie thì mình khuyến khích dùng <code>Vim</code> nhé,</p>
+
+<ul>
+<li><a href="http://www.vim.org/download.php">Vim</a></li>
+<li><a href="https://github.com/neovim/neovim/wiki/Installing-Neovim">NeoVim</a></li>
+<li><a href="https://github.com/macvim-dev/macvim/blob/master/README_vim.md#installation">MacVim</a></li>
+</ul>
+
+<h1 id="sử-dụng-vim">Sử dụng Vim</h1>
+
+<p>Mở terminal và gõ <code>vim</code> để bắt đầu nào</p>
+
+<h2 id="thao-tác-cơ-bản">Thao tác cơ bản</h2>
+
+<h3 id="mode">Mode</h3>
+
+<p>Vim có tổng cộng 6 modes hoạt động <code>normal</code>, <code>insert</code>, <code>visual</code>, <code>select</code>, <code>command-line</code>, <code>Ex-mode</code>.
+Mặc định khi mở <code>Vim</code> lên sẽ là mode <code>normal</code>.</p>
+
+<p>Trong đó 3 modes mình thường được sử dụng nhất là:
+- <code>normal</code>: Dùng để di chuyển và thao tác trong đoạn text, và sẽ là mode được back lại khi ấn <code>ESC</code> ở mode khác.
+- <code>insert</code>: Như tên gọi, để thêm text mới vào.
+- <code>visual</code>: tương tự như normal nhưng cho phép <code>bôi đen</code> (select) text để thực hiện các thao tác với đoạn <code>bôi đen</code> đó.</p>
+
+<h3 id="một-vài-phím-và-lệnh-cơ-bản">Một vài phím và lệnh cơ bản</h3>
+
+<ul>
+<li>[&hellip;]</li>
+<li>Sau khi viết một đoạn và thấy quá lười nên thôi mấy bạn xem bài của @huytd ở đây nha, hình ảnh đẹp và rõ ràng dễ hiểu <a href="https://kipalog.com/posts/Lam-quen-VIM-trong-5-phut">Làm quen VIM trong 5 phút</a></li>
+</ul>
+
+<h2 id="các-công-cụ-website-hổ-trợ-học-vim-nhanh-hơn-vui-hơn-thông-minh-hơn">Các công cụ &amp; website hổ trợ học VIM nhanh hơn, vui hơn, thông minh hơn:</h2>
+
+<ul>
+<li>Đầu tiên phải kể đến <code>của nhà trồng được</code>: <code>Tutor</code>. Mặc định trong Vim có một hệ thống Tutorial khá xịn, tại mode <code>normal</code> bạn gõ <code>:Tutor</code> và làm theo Tutorial nhé, sau khoảng 30&rsquo; bạn có thể thoải mái thao tác trong Vim.</li>
+<li>Vừa học vừa chơi: <a href="https://vim-adventures.com/">VIM Advantures</a> Một game trên nền web giúp bạn vừa học vừa chơi, di chuyển thao tác bằng các phím trong VIM. Bạn có thể chơi thử Level 1 rồi quyết định có mua license hay không (không free đâu nhé T_T)</li>
+<li><a href="http://www.openvim.com/">OpenVim</a> một website giúp bạn tập thao tác VIM online qua từng bài học, thực hành thẳng trên website.</li>
+<li><a href="http://learnvimscriptthehardway.stevelosh.com/">Learn Vimscripts the Hard Way</a> một ebook hướng dẫn các bạn nâng trình độ dùng VIM lên một tầm cao mới
+
+<br /></li>
+</ul>
+
+<h2 id="tập-sống-khổ">Tập sống khổ</h2>
+
+<p>Ban đầu mình vẫn dùng Sublime Text nhưng hạn chế không dùng đến các phím <code>arrow</code> và <code>pageUp/pageDown</code> và dùng các phím tắt trong VIM</p>
+
+<ul>
+<li><p>Đầu tiên mình cài thêm Plugin vào trong Sublime Text để làm quen dần thao tác di chuyển <a href="https://www.sublimetext.com/docs/2/vintage.html">Vintage</a>(ST2) hoặc <a href="https://github.com/guillermooo/Vintageous#vintageous">Vintagous</a>(ST3)</p></li>
+
+<li><p>Cài thêm <a href="https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en">Vimium</a> vào Chrome luôn cho ngầu.</p></li>
+</ul>
+
+<h1 id="di-cư-từ-sublime-text-sang-vim">Di cư từ Sublime Text sang VIM</h1>
+
+<p>Phần sau đây xem như các bạn đã nắm được các thao tác cơ bản trên VIM rồi nhé.
+Hầu hết các tính năng ở Sublime Text đều có thực hiện giống hoặc tốt hơn trong VIM nhờ vào hệ thống plugin đồ sộ cùng hệ thống có sẳn cho phép bạn tinh chỉnh nhiều thứ theo ý mình.
+Và đều được định nghĩa trong file <code>.vimrc</code> (thường nằm ở <code>~/.vimrc</code>)</p>
+
+<h2 id="plugin-management">Plugin management</h2>
+
+<p>Để cài đặt Plugin trong VIM có thể cài trực tiếp bằng cách pull code từ github về và chép vào thư mục <code>~/.vim/bundle</code>. Tuy nhiên, cách tốt nhất vẫn là dùng hệ thống quản lý Plugin như <a href="https://github.com/VundleVim/Vundle.vim">Vundle</a>, <a href="https://github.com/tpope/vim-pathogen">Pathegon</a>, <a href="https://github.com/junegunn/vim-plug">Vim-Plug</a>, <a href="https://github.com/Shougo/neobundle.vim">Neo-Bundle</a>
+Cá nhân mình dùng <code>Vim-Plug</code> (trước đó dùng <code>Vundle</code>) vì <code>Vundle</code> hiện tại đã không còn maintain và <code>vim-plug</code> cũng đơn giản, dễ dùng và load, update cũng nhanh hơn hẳn.</p>
+
+<ul>
+<li>Install: <a href="https://github.com/junegunn/vim-plug#installation">https://github.com/junegunn/vim-plug#installation</a></li>
+<li>Usage: <a href="https://github.com/junegunn/vim-plug#usage">https://github.com/junegunn/vim-plug#usage</a>
+
+<ul>
+<li>Thêm các plugins cần dùng trong file <code>.vimrc</code></li>
+<li>Lưu lại và reload file <code>.vimrc</code> (có thể reload nhanh bằng command <code>:source %</code> mà không cần khởi động lại VIM)</li>
+<li><code>:PlugInstall</code> để cài đặt plugins</li>
+<li>Ngoài ra <code>:PlugUpdate</code> để update toàn bộ plugins, hoặc <code>:PlugClean</code> để clean các plugins nào không còn nằm trong <code>.vimrc</code>, có thể xem thêm ở <a href="https://github.com/junegunn/vim-plug/wiki/tutorial">đây</a></li>
+</ul></li>
+</ul>
+
+<h2 id="cài-đặt-các-thứ-có-sẳn-trong-vim">Cài đặt các thứ có sẳn trong VIM</h2>
+
+<p>Có rất nhiều người share config trong VIM trên github (và các dotfiles khác như tmux, zsh) mà các bạn có thể tham khảo để dùng cho bản thân, VD như <a href="https://github.com/amix/vimrc">vimrc</a>, <a href="https://github.com/thoughtbot/dotfiles/blob/master/vimrc">ThoughtBot</a>, <a href="https://github.com/skwp/dotfiles">dotfiles</a></p>
+
+<p>Tuy nhiên:</p>
+
+<blockquote>
+<p>Don&rsquo;t put any lines in your vimrc that you don&rsquo;t understand.</p>
+</blockquote>
+
+<h1 id="các-vấn-đề-thường-gặp-khi-bắt-đầu-dùng-vim">Các vấn đề thường gặp khi bắt đầu dùng VIM</h1>
+
+<p>Các phần sau bạn có thể thử nhanh qua command <code>:</code> hoặc sửa trong <code>.vimrc</code> rồi reload lại VIM.</p>
+
+<ul>
+<li>Dùng chuột, hoàn toàn có thể:</li>
+</ul>
+
+<pre><code>
+if has('mouse')
+  set mouse=a
+endif
+
+</code></pre>
+
+<ul>
+<li>Copy từ VIM ra ngoài Clipboard, mặc định VIM chỉ lưu trong Register (<a href="http://vim.wikia.com/wiki/Accessing_the_system_clipboard">xem thêm</a>):</li>
+</ul>
+
+<pre><code>set clipboard=unnamedplus
+</code></pre>
+
+<ul>
+<li>Hiện line number</li>
+</ul>
+
+<pre><code>set nu
+</code></pre>
+
+<ul>
+<li>Tự động cập nhật khi file thay đổi (bởi chương trình khác)</li>
+</ul>
+
+<pre><code>set autoread
+set autowrite
+</code></pre>
+
+<ul>
+<li>Tự động <code>indent</code></li>
+</ul>
+
+<pre><code>set autoindent
+set si &quot;smart indent
+</code></pre>
+
+<ul>
+<li><p>Bật syntax</p>
+
+<pre><code>syntax on
+</code></pre></li>
+
+<li><p>Tắt các thể loại files backup, swap, khá là annoy và không cần thiết vì mình đã dùng <code>git</code> rồi</p></li>
+</ul>
+
+<pre><code>set nobackup
+set nowb
+set noswapfile
+set backupdir=~/tmp,/tmp
+set backupcopy=yes
+set backupskip=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*
+set directory=/tmp
+</code></pre>
+
+<h2 id="map-key">Map key</h2>
+
+<p>Để có thể tận dụng hết tất cả sức mạnh của VIM cũng như thao tác một cách nhanh nhất thì không thể nào bỏ qua tính năng <code>map</code> - cho phép bạn sử dụng tổ hợp phím nhanh nhất, bạn có thể xem thêm <a href="http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)">ở đây</a>
+Ví dụ mình thường <code>map</code> một số phím như</p>
+
+<pre><code>&quot; Map leader key
+let mapleader = &quot;,&quot;	&quot; map leader key to ,
+let g:mapleader = &quot;,&quot;
+
+&quot; Fast saving
+nmap &lt;leader&gt;w :w!&lt;cr&gt;
+
+&quot; Map Esc to jj
+:imap jj &lt;Esc&gt;
+
+&quot; Hide highlight 
+map &lt;silent&gt; &lt;leader&gt;&lt;cr&gt; :noh&lt;cr&gt;
+
+&quot; Move between windows
+map &lt;C-j&gt; &lt;C-W&gt;j
+map &lt;C-k&gt; &lt;C-W&gt;k
+map &lt;C-l&gt; &lt;C-W&gt;l
+map &lt;C-h&gt; &lt;C-W&gt;h
+
+</code></pre>
+
+<p>Nói chung nếu những phím/tổ hợp phím/command nào thường xuyên sử dụng, bạn hoàn toàn có thể <code>map</code> lại thành phím khác để rút ngắn thời gian thao tác của mình.</p>
+
+<h1 id="nhưng-vẫn-chưa-giống-sublimetext">Nhưng vẫn chưa giống SublimeText?</h1>
+
+<ul>
+<li>Làm thế nào để Split Screen đây?</li>
+</ul>
+
+<blockquote>
+<p>Dùng command <code>:split</code> &amp; <code>vsplit</code> để chia màn hình ngang và dọc</p>
+</blockquote>
+
+<ul>
+<li>Làm sao để di chuyển giữa các panes (màn hình)?</li>
+</ul>
+
+<blockquote>
+<p>Dùng chuột click cũng được, hoặc tốt nhất dùng tổ hợp phím <code>&lt;C-W&gt;j</code>, <code>&lt;C-W&gt;k</code>, <code>&lt;C-W&gt;l</code>, <code>&lt;C-W&gt;h</code>. <code>&lt;C&gt;</code> ở đây là phím <code>Ctrl</code>.</p>
+</blockquote>
+
+<ul>
+<li>VIM có SideBar folders không?</li>
+</ul>
+
+<blockquote>
+<p>Có plugin support nhé <a href="https://github.com/scrooloose/nerdtree">NERDTREE</a>
+<Image here></p>
+</blockquote>
+
+<ul>
+<li>Vậy còn Mini map?</li>
+</ul>
+
+<blockquote>
+<p>Yup, <a href="https://github.com/severin-lemaignan/vim-minimap">Minimap</a>, nhưng cá nhân mình nghĩ có thứ tiện dụng hơn trong VIM là <a href="https://github.com/majutsushi/tagbar">Tagbar</a></p>
+</blockquote>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=sublime%20text%20to%20vim&url=https%3a%2f%2ftrietphm.github.io%2fpost%2fsublime-text-to-vim%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftrietphm.github.io%2fpost%2fsublime-text-to-vim%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2ftrietphm.github.io%2fpost%2fsublime-text-to-vim%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Tea, Coffee &amp; Code" href="https://trietphm.github.io/">Tea, Coffee &amp; Code</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2017 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://trietphm.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+        <script src="https://trietphm.github.io/js/jquery.fitvids.js"></script>
+        <script src="https://trietphm.github.io/js/scripts.js"></script>
+    </body>
+</html>
+
