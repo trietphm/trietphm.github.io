@@ -1,0 +1,4 @@
+languageCode = "en-us"
+title = "Tea, Coffee & Code"
+baseurl = "http://trietphm.github.io/"
+publishDir= "."
