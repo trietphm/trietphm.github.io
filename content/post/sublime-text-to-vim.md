@@ -175,7 +175,6 @@ Nói chung nếu những phím/tổ hợp phím/command nào thường xuyên s�
 - VIM có SideBar folders không?
 
 > Có plugin support nhé [NERDTREE](https://github.com/scrooloose/nerdtree)
-<Image here>
 
 - Vậy còn Mini map?
 
