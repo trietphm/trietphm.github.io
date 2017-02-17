@@ -164,6 +164,10 @@ map <C-h> <C-W>h
 Nói chung nếu những phím/tổ hợp phím/command nào thường xuyên sử dụng, bạn hoàn toàn có thể `map` lại thành phím khác để rút ngắn thời gian thao tác của mình.
 
 # Nhưng vẫn chưa giống SublimeText?
+- VIM cùi bắp, không có auto complete này.
+
+> Vim có nhiều Plugin support auto-complete như [YouCompleteMe](https://github.com/Valloric/YouCompleteMe), [neocomplete](https://github.com/Shougo/neocomplete.vim) 
+
 - Làm thế nào để Split Screen đây? 
 
 > Dùng command `:split` & `vsplit` để chia màn hình ngang và dọc
@@ -174,8 +178,57 @@ Nói chung nếu những phím/tổ hợp phím/command nào thường xuyên s�
 
 - VIM có SideBar folders không?
 
-> Có plugin support nhé [NERDTREE](https://github.com/scrooloose/nerdtree)
+> Có plugin support nhé [NERDTree](https://github.com/scrooloose/nerdtree)
+
+- Thêm/xóa file/thư mực như thế nào nhỉ, phải switch ra Terminal à?
+
+> Không cần, ở NERDTree bạn chỉ ấn phím `m` tại node cần thao tác, một menu sẽ hiện ra cho bạn chọn lựa
 
 - Vậy còn Mini map?
 
-> Yup, [Minimap](https://github.com/severin-lemaignan/vim-minimap), nhưng cá nhân mình nghĩ có thứ tiện dụng hơn trong VIM là [Tagbar](https://github.com/majutsushi/tagbar)
+> Yup, [Minimap](https://github.com/severin-lemaignan/vim-minimap), nhưng cá nhân mình nghĩ dùng [Tagbar](https://github.com/majutsushi/tagbar) sẽ tiện dụng hơn.
+
+- Mình hay dùng Mutitple Selection.
+
+> Xem nào, Multiple Selection có nhiều thứ, ta đi qua từng cái nhé:
+
+ - Thêm một hàng: Mặc định ở Windows là `Ctrl+Alt+Up` & `Ctrl+Alt+Down` (OS X: `Ctrl+Shift+Up` & `Ctrl+Shift+Down`).
+
+     > Đối với VIM, khi ở mode Normal có thể ấn `o` để thêm một hàng phía dưới và `O` để thêm phía trên và sau đó sẽ switch sang mode Insert luôn để bạn có thể bắt đầu gõ. Ngoài ra bạn có thể gõ `5o<Esc>` để thêm nhanh 5 hàng, tính năng repeat tiện lợi của VIM.
+ - Chọn, sửa nhanh nhiều vị trí: Ctrl+d hoặc Command+d
+ 	
+     > VIM thì mình dùng Plugin [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors) nhé, ngoài chức năng như Sublime Text bạn còn có thể search được bằng cả Regex
+
+ - Select all bằng `Alt+F3` (Windows+Linux) hoặc `Ctrl+Command+g` trên OS X?
+     
+     > Vẫn dùng Plugin bên trên nha, bạn xem trong wiki để tìm hiểu thêm.
+
+- Còn tab thì sao?
+
+    > Hiển nhiên rồi, ngoài ra VIM còn có thể một khái niệm nữa là Buffer, xem thêm tab [ở đây](http://vim.wikia.com/wiki/Using_tab_pages) và buffer [ở đây](http://vim.wikia.com/wiki/Buffers)
+
+- Navigation bằng Ctrl + P
+
+> VIM có nhiều Plugin phục vụ cho việc này, bạn có thể dùng hàng Việt Nam chất lượng cao [CtrlP](https://github.com/kien/ctrlp.vim) hoặc dùng [Fzf](https://github.com/junegunn/fzf.vim)
+
+- Search một từ trong nhiều file? Ví dụ seach chữ `function` trong một project có nhiều thư mục, Sublime Text thì click phải vào Folder rồi search, còn VIM thì sao, đâu có click phải vào NERDTree được?
+
+> VIM bạn có thể search bằng built-in của VIM là `:grep`, `:lgrep`, `:vimgrep`, `:lvimgrep` http://vim.wikia.com/wiki/Find_in_files_within_Vim, cá nhân mình dùng [ack.vim](https://github.com/mileszs/ack.vim) kết hợp cùng [the_silver_searcher](https://github.com/ggreer/the_silver_searcher)
+
+- Ops, không ấn `Ctrl + /` để comment code như các IDE khác à?
+
+> Để comment code bạn cần dùng Plugin [NERD Commenter](https://github.com/scrooloose/nerdcommenter) và sau đó có thể map phím `Ctrl + /` để execute lệnh comment
+
+- Các tổ hợp phím tắt thì sao nhỉ? Ví dụ như mình muốn copy nhanh toàn bộ code trong một tag hoặc function?
+
+> Ở mode Normal gõ `yip` - copy bên trong tag hoặc `yap` copy cả tag, ngooài ra có rất nhiều phím tắt khác, để thao tác nhanh nhất bận nên tham khảo vim cheatsheet.
+
+Những phần bên trên chỉ là phần nhỏ thôi, bạn có thể xem thêm trong `:help` hoặc tự map các tổ hợp phím tắt riêng cho mình giúp tăng tốc độ làm việc.
+
+## Setup môi trường cho Go (golang)
+- Đầu tiên các bạn cần Install Go và setup `$GOPATH`, xem hướng dẫn ở trang chủ của Go nhé https://golang.org/doc/install
+- Cài đặt [gocode](https://github.com/nsf/gocode#setup), [vim-go](https://github.com/fatih/vim-go#install) - 2 Plugins phục vụ code Go trên VIM.  
+- Sau khi cài đặt `vim-go` xong dùng lệnh `:GoInstallBinaries` để cài đặt các thư viện cần thiết.
+- Nào bước đầu tiên là dạo qua trước Tutorial của tác giả vim-go viết nào, https://github.com/fatih/vim-go-tutorial, có thể nói là bạn sẽ nắm được hầu hết các thao tác để làm việc với Go.
+- Phiên bản `TL;DR` cho các bạn lười (như mình):
+
