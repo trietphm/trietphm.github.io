@@ -67,7 +67,7 @@ Cá nhân mình dùng [Vim-Plug](https://github.com/junegunn/vim-plug) (trước
  - Lưu lại và reload file `.vimrc` (có thể reload nhanh bằng command `:source %` mà không cần khởi động lại VIM)
  - `:PlugInstall` để cài đặt plugins
  - Ngoài ra `:PlugUpdate` để update toàn bộ plugins, hoặc `:PlugClean` để clean các plugins nào không còn nằm trong `.vimrc`, có thể xem thêm ở [đây](https://github.com/junegunn/vim-plug/wiki/tutorial)
-![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/ef4635ytd7_ezgif-1-838ed6b39d.gif)
+![alt text](/static/img/sublime-text-to-vim/plug-in.gif)
 
 ## Dot file, .vimrc, config cho vim
 Có rất nhiều người share config trong VIM trên github (và các dotfiles khác như tmux, zsh) mà các bạn có thể tham khảo để dùng cho bản thân, VD như [vimrc](https://github.com/amix/vimrc), [ThoughtBot](https://github.com/thoughtbot/dotfiles/blob/master/vimrc), [dotfiles](https://github.com/skwp/dotfiles)
@@ -160,7 +160,7 @@ Nói chung nếu những phím/tổ hợp phím/command nào thường xuyên s�
 
 # Nhưng vẫn chưa giống SublimeText?
 **Q:** VIM cùi bắp, không có auto complete này.
-**A:** Vim có nhiều Plugin support auto-complete như [YouCompleteMe](https://github.com/Valloric/YouCompleteMe), [neocomplete](https://github.com/Shougo/neocomplete.vim)  ![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/bs0k3oci4j_youcompleteme.gif)
+**A:** Vim có nhiều Plugin support auto-complete như [YouCompleteMe](https://github.com/Valloric/YouCompleteMe), [neocomplete](https://github.com/Shougo/neocomplete.vim)  ![alt text](/static/img/sublime-text-to-vim/youcompleteme.gif)
 **Q:** Làm thế nào để Split Screen đây? 
 **A:** Dùng command `:split` & `vsplit` để chia màn hình ngang và dọc. [Xem thêm](https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally) để làm việc nuột hơn nà.
 
@@ -169,16 +169,16 @@ Nói chung nếu những phím/tổ hợp phím/command nào thường xuyên s�
 
 **Q:** VIM có SideBar folders không?
 **A:** Có plugin support nhé [NERDTree](https://github.com/scrooloose/nerdtree)
-![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/95vmq739c_Screen%20Shot%202017-02-18%20at%2011.11.51%20PM.png)
+![alt text](/static/img/sublime-text-to-vim/nerdtree.png)
 
 **Q:** Thêm/xóa file/thư mực như thế nào nhỉ, phải switch ra Terminal à?
 **A:** Không cần phải ra terminal đâu, ở NERDTree bạn chỉ việc ấn phím `m` tại node cần thao tác, một menu sẽ hiện ra cho bạn chọn lựa
-![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/3kprib6mxk_Screen%20Shot%202017-02-18%20at%2011.12.14%20PM.png)
+![alt text](/static/img/sublime-text-to-vim/nerdtree_menu.png)
 
 **Q:** Vậy còn Mini map?
 **A:** Yup, [Minimap](https://github.com/severin-lemaignan/vim-minimap), nhưng cá nhân mình nghĩ dùng [Tagbar](https://github.com/majutsushi/tagbar) sẽ tiện dụng hơn.
-Minimap:![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/ctf0xv91gx_minimap.gif)
-Tagbar:![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/7ducfnjhp4_Screen%20Shot%202017-02-18%20at%2011.16.13%20PM.png)
+Minimap:![alt text](/static/img/sublime-text-to-vim/minimap.gif)
+Tagbar:![alt text](/static/img/sublime-text-to-vim/tagbar.png)
 **Q:** Mình hay dùng Mutitple Selection.
 **A:** Xem nào, Multiple Selection có nhiều thứ, ta đi qua từng cái nhé:
 1. Thêm một hàng: Mặc định ở Windows là `Ctrl+Alt+Up` & `Ctrl+Alt+Down` (OS X: `Ctrl+Shift+Up` & `Ctrl+Shift+Down`).
@@ -186,19 +186,19 @@ Tagbar:![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/7ducfnjhp
 
 2. Chọn, sửa nhanh nhiều vị trí: `Ctrl+d` hoặc `Command+d`
 **A:** VIM thì mình dùng Plugin [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors) nhé, ngoài chức năng như Sublime Text bạn còn có thể search được bằng cả Regex
-![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/7zf40fwaek_multicursor.gif)
+![alt text](/static/img/sublime-text-to-vim/multicursor.gif)
 3. Select all bằng `Alt+F3` (Windows+Linux) hoặc `Ctrl+Command+g` trên OS X?
 **A:** Vẫn dùng Plugin bên trên nha, bạn xem trong wiki để tìm hiểu thêm.
 
 **Q:** Còn tab thì sao?
 **A:** Hiển nhiên rồi, ngoài ra VIM còn có thể một khái niệm nữa là Buffer, xem thêm tab [ở đây](http://vim.wikia.com/wiki/Using_tab_pages) và buffer [ở đây](http://vim.wikia.com/wiki/Buffers)
-![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/1x80tdr6ir_Screencast%202017-02-18%20at%2011.22.18%20PM%20%281%29.gif)
+![alt text](/static/img/sublime-text-to-vim/tab.gif)
 **Q:** Navigation bằng Ctrl + P thì sao, siêu tiện luôn
 **A:** VIM có nhiều Plugin phục vụ cho việc này, bạn có thể dùng hàng Việt Nam chất lượng cao [CtrlP](https://github.com/ctrlpvim/ctrlp.vim) hoặc dùng [Fzf](https://github.com/junegunn/fzf.vim)
-![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/i14spaisby_Screencast%202017-02-18%20at%2011.35.42%20PM.gif)
+![alt text](/static/img/sublime-text-to-vim/fzf.gif)
 **Q:** Search một từ trong nhiều file? Ví dụ seach chữ `function` trong một project có nhiều thư mục, Sublime Text thì click phải vào Folder rồi search, còn VIM thì sao, đâu có click phải vào NERDTree được?
 **A:** VIM bạn có thể search bằng built-in của VIM là `:grep`, `:lgrep`, `:vimgrep`, `:lvimgrep` http://vim.wikia.com/wiki/Find_in_files_within_Vim, cá nhân mình dùng [ack.vim](https://github.com/mileszs/ack.vim) kết hợp cùng [the_silver_searcher](https://github.com/ggreer/the_silver_searcher)
-![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/xcuxh8e7lk_Screencast%202017-02-18%20at%2011.38.18%20PM.gif)
+![alt text](/static/img/sublime-text-to-vim/ack.gif)
 
 **Q:** Ops, không ấn `Ctrl + /` để comment code như các IDE khác à?
 **A:** Để comment code bạn cần dùng Plugin [NERD Commenter](https://github.com/scrooloose/nerdcommenter) và sau đó có thể map phím `Ctrl + /` để execute lệnh comment
@@ -215,7 +215,7 @@ Ban đầu mình cũng không thể chuyển sang VIM ngay được, không th�
 
 - Cài thêm [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en) vào Chrome luôn cho ngầu. Install xong thì ấn `?` để xem danh sách phím tắt nhé. 
 
-![alt text](https://storage.jumpshare.com/preview/1CQKa4w8cgHV0FADBYRemUNuBCWuBTrQEo7mpHz9qtBpwRfgSIEHIOfT5xzIseEN8yqEAoMZwjgDeY1aITEDQFNlSmh0egFbdyHzE6LvoMAI4av1wcwKsmUDuTGzHRrg)
+![alt text](/static/img/sublime-text-to-vim/chrome.gif)
 
 Rất nhanh và tiện, hoàn toàn thao tác bằng phím, không rờ tới chuột.
 
