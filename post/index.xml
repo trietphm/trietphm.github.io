@@ -6,41 +6,47 @@
     <description>Recent content in Posts on Tea, Coffee &amp; Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Feb 2017 23:10:08 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 19 Feb 2017 00:20:08 +0700</lastBuildDate>
     <atom:link href="https://trietphm.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>sublime text to vim</title>
+      <title>Di cư từ Sublime Text sang VIM</title>
       <link>https://trietphm.github.io/post/sublime-text-to-vim/</link>
-      <pubDate>Sun, 12 Feb 2017 23:10:08 +0700</pubDate>
+      <pubDate>Sun, 19 Feb 2017 00:20:08 +0700</pubDate>
       
       <guid>https://trietphm.github.io/post/sublime-text-to-vim/</guid>
       <description>
 
-&lt;p&gt;Bắt đầu chuyển sang dùng Vim làm editor chính một cách nghiêm túc sau nhiều lần thử và bỏ cuộc và quay trở về với Sublime Text.
-Lý do chuyển sang dùng Vim lý do chính là vì sống hầu hết thời gian trong terminal nên di chuyển từ từ cho đồng bộ, lý do phụ là để làm màu và động lực để chuyển sang &lt;a href=&#34;https://www.google.com.vn/search?q=60%25+keyboard&amp;amp;tbm=isch&amp;amp;tbo=u&amp;amp;source=univ&amp;amp;sa=X&amp;amp;ved=0ahUKEwjX9Oz3xIrSAhUHtJQKHZ4tDZkQsAQIKw&amp;amp;biw=1440&amp;amp;bih=737&#34;&gt;bàn phím 60%&lt;/a&gt; để mang đi mang về cho tiện ._.&lt;/p&gt;
+&lt;p&gt;Bắt đầu chuyển sang dùng Vim làm editor chính một cách nghiêm túc sau nhiều lần thử, bỏ cuộc và quay trở về Sublime Text.
+Còn về nguyên nhân bỏ cuộc là vì không quen với VIM được, do có nhiều thứ quá khác với SublimeText, chính xác là trên SublimeText có mà VIM lại không có, nên lần này mình sẽ setup toàn bộ những thứ bên SublimeText qua VIM hết.&lt;/p&gt;
 
-&lt;p&gt;Còn về nguyên nhân bỏ cuộc là vì không quen với VIM được, do có nhiều thứ quá khác với SublimeText, chính xác là trên SublimeText có mà VIM lại không có, nên lần này mình sẽ setup toàn bộ những thứ bên SublimeText qua VIM hết.&lt;/p&gt;
+&lt;h1 id=&#34;vì-sao-phải-dùng-vim&#34;&gt;Vì sao phải dùng VIM?&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Hầu hết thời gian mình đều làm việc trong terminal nên chuyển editor sang VIM luôn cho tiện.&lt;/li&gt;
+&lt;li&gt;Việc di chuyển trong VIM nhanh và thuận tiện hơn so với các editor/IDE khác (dĩ nhiên nếu không dùng VIM mode).&lt;/li&gt;
+&lt;li&gt;Hạn chế sử dụng chuột để tăng tốc độ thao tác.&lt;/li&gt;
+&lt;li&gt;Nhiều thứ để custom phù hợp với nhu cầu, khả năng tùy biến cao.&lt;/li&gt;
+&lt;li&gt;Làm màu, trông có vẻ giống `hắc cơ.&lt;/li&gt;
+&lt;li&gt;Động lực để chuyển sang  &lt;a href=&#34;https://www.google.com.vn/search?q=60%25+keyboard&amp;amp;tbm=isch&amp;amp;tbo=u&amp;amp;source=univ&amp;amp;sa=X&amp;amp;ved=0ahUKEwjX9Oz3xIrSAhUHtJQKHZ4tDZkQsAQIKw&amp;amp;biw=1440&amp;amp;bih=737&#34;&gt;bàn phím 60%&lt;/a&gt; để mang đi mang về cho tiện ._.&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;h1 id=&#34;cài-đặt&#34;&gt;Cài đặt&lt;/h1&gt;
 
-&lt;h2 id=&#34;install&#34;&gt;Install&lt;/h2&gt;
-
 &lt;p&gt;Tuỳ theo nhu cầu bạn có thể chọn &lt;a href=&#34;http://www.vim.org/&#34;&gt;Vim&lt;/a&gt;, &lt;a href=&#34;https://neovim.io/&#34;&gt;NeoVim&lt;/a&gt;, hoặc &lt;a href=&#34;https://github.com/macvim-dev/macvim&#34;&gt;MacVim&lt;/a&gt; tuỳ thích.
-Thế mình chọn cái nào à? Mình chọn &lt;a href=&#34;https://neovim.io/&#34;&gt;NeoVim&lt;/a&gt; nhé, vì một tính năng rất mạnh mà NeoVim đã support sẳn &lt;a href=&#34;https://gist.github.com/XVilka/8346728&#34;&gt;TrueColour&lt;/a&gt;, à ờ, tóm lại cũng là màu mè thôi, cho nó đẹp.
-Nếu bạn là newbie thì mình khuyến khích dùng &lt;code&gt;Vim&lt;/code&gt; nhé,&lt;/p&gt;
+Thế mình chọn cái nào à? Mình chọn &lt;a href=&#34;https://neovim.io/&#34;&gt;NeoVim&lt;/a&gt; nhé, vì một tính năng rất mạnh mà NeoVim đã support sẳn &lt;a href=&#34;https://github.com/neovim/neovim/wiki/FAQ#how-can-i-use-true-colors-in-the-terminal&#34;&gt;TrueColour&lt;/a&gt;, à ờ, tóm lại cũng là màu mè thôi, cho nó đẹp.
+Nếu bạn là newbie thì mình khuyến khích dùng &lt;code&gt;Vim&lt;/code&gt; nhé.&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.vim.org/download.php&#34;&gt;Vim&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/neovim/neovim/wiki/Installing-Neovim&#34;&gt;NeoVim&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/macvim-dev/macvim/blob/master/README_vim.md#installation&#34;&gt;MacVim&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Link download &amp;amp; hướng dẫn cài đặt bên dưới nhé:
+- &lt;a href=&#34;http://www.vim.org/download.php&#34;&gt;Vim&lt;/a&gt;
+- &lt;a href=&#34;https://github.com/neovim/neovim/wiki/Installing-Neovim&#34;&gt;NeoVim&lt;/a&gt;
+- &lt;a href=&#34;https://github.com/macvim-dev/macvim/blob/master/README_vim.md#installation&#34;&gt;MacVim&lt;/a&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;sử-dụng-vim&#34;&gt;Sử dụng Vim&lt;/h1&gt;
 
-&lt;p&gt;Mở terminal và gõ &lt;code&gt;vim&lt;/code&gt; để bắt đầu nào&lt;/p&gt;
+&lt;p&gt;Mở terminal lên và gõ &lt;code&gt;vim&lt;/code&gt; để bắt đầu nào (Windows thì bạn click vào cái icon sau khi cài đặt của nó nhé).&lt;/p&gt;
 
-&lt;h2 id=&#34;thao-tác-cơ-bản&#34;&gt;Thao tác cơ bản&lt;/h2&gt;
+&lt;h2 id=&#34;các-vấn-đề-cơ-bản&#34;&gt;Các vấn đề cơ bản&lt;/h2&gt;
 
 &lt;h3 id=&#34;mode&#34;&gt;Mode&lt;/h3&gt;
 
@@ -59,77 +65,63 @@ Mặc định khi mở &lt;code&gt;Vim&lt;/code&gt; lên sẽ là mode &lt;code&
 &lt;li&gt;Sau khi viết một đoạn và thấy quá lười nên thôi mấy bạn xem bài của @huytd ở đây nha, hình ảnh đẹp và rõ ràng dễ hiểu &lt;a href=&#34;https://kipalog.com/posts/Lam-quen-VIM-trong-5-phut&#34;&gt;Làm quen VIM trong 5 phút&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;các-công-cụ-website-hổ-trợ-học-vim-nhanh-hơn-vui-hơn-thông-minh-hơn&#34;&gt;Các công cụ &amp;amp; website hổ trợ học VIM nhanh hơn, vui hơn, thông minh hơn:&lt;/h2&gt;
+&lt;h2 id=&#34;học-vim-nhanh-hơn-vui-hơn-thông-minh-hơn&#34;&gt;Học VIM nhanh hơn, vui hơn, thông minh hơn&lt;/h2&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Đầu tiên phải kể đến &lt;code&gt;của nhà trồng được&lt;/code&gt;: &lt;code&gt;Tutor&lt;/code&gt;. Mặc định trong Vim có một hệ thống Tutorial khá xịn, tại mode &lt;code&gt;normal&lt;/code&gt; bạn gõ &lt;code&gt;:Tutor&lt;/code&gt; và làm theo Tutorial nhé, sau khoảng 30&amp;rsquo; bạn có thể thoải mái thao tác trong Vim.&lt;/li&gt;
+&lt;ol&gt;
+&lt;li&gt;Đầu tiên phải kể đến của nhà trồng được: &lt;code&gt;Tutor&lt;/code&gt;. Mặc định trong Vim có một hệ thống Tutorial khá xịn, tại mode &lt;code&gt;normal&lt;/code&gt; bạn gõ &lt;code&gt;:Tutor&lt;/code&gt; và làm theo Tutorial nhé, sau khoảng 30&amp;rsquo; bạn có thể thoải mái thao tác trong Vim.&lt;/li&gt;
 &lt;li&gt;Vừa học vừa chơi: &lt;a href=&#34;https://vim-adventures.com/&#34;&gt;VIM Advantures&lt;/a&gt; Một game trên nền web giúp bạn vừa học vừa chơi, di chuyển thao tác bằng các phím trong VIM. Bạn có thể chơi thử Level 1 rồi quyết định có mua license hay không (không free đâu nhé T_T)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.openvim.com/&#34;&gt;OpenVim&lt;/a&gt; một website giúp bạn tập thao tác VIM online qua từng bài học, thực hành thẳng trên website.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://learnvimscriptthehardway.stevelosh.com/&#34;&gt;Learn Vimscripts the Hard Way&lt;/a&gt; một ebook hướng dẫn các bạn nâng trình độ dùng VIM lên một tầm cao mới
-
 &lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;tập-sống-khổ&#34;&gt;Tập sống khổ&lt;/h2&gt;
-
-&lt;p&gt;Ban đầu mình vẫn dùng Sublime Text nhưng hạn chế không dùng đến các phím &lt;code&gt;arrow&lt;/code&gt; và &lt;code&gt;pageUp/pageDown&lt;/code&gt; và dùng các phím tắt trong VIM&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Đầu tiên mình cài thêm Plugin vào trong Sublime Text để làm quen dần thao tác di chuyển &lt;a href=&#34;https://www.sublimetext.com/docs/2/vintage.html&#34;&gt;Vintage&lt;/a&gt;(ST2) hoặc &lt;a href=&#34;https://github.com/guillermooo/Vintageous#vintageous&#34;&gt;Vintagous&lt;/a&gt;(ST3)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Cài thêm &lt;a href=&#34;https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en&#34;&gt;Vimium&lt;/a&gt; vào Chrome luôn cho ngầu.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/ol&gt;
 
 &lt;h1 id=&#34;di-cư-từ-sublime-text-sang-vim&#34;&gt;Di cư từ Sublime Text sang VIM&lt;/h1&gt;
 
-&lt;p&gt;Phần sau đây xem như các bạn đã nắm được các thao tác cơ bản trên VIM rồi nhé.
-Hầu hết các tính năng ở Sublime Text đều có thực hiện giống hoặc tốt hơn trong VIM nhờ vào hệ thống plugin đồ sộ cùng hệ thống có sẳn cho phép bạn tinh chỉnh nhiều thứ theo ý mình.
+&lt;p&gt;Vấn đề đầu tiên khi chuyển sang VIM là cảm thấy quá nhiều thứ khác lạ và thiếu thốn, có mỗi cái màn hình đen chán phèo.
+Bình tĩnh nhé, hầu hết các tính năng ở Sublime Text đều có thực hiện giống hoặc tốt hơn trong VIM nhờ vào hệ thống plugin đồ sộ cùng hệ thống có sẳn cho phép bạn tinh chỉnh nhiều thứ theo ý mình.
 Và đều được định nghĩa trong file &lt;code&gt;.vimrc&lt;/code&gt; (thường nằm ở &lt;code&gt;~/.vimrc&lt;/code&gt;)&lt;/p&gt;
 
 &lt;h2 id=&#34;plugin-management&#34;&gt;Plugin management&lt;/h2&gt;
 
-&lt;p&gt;Để cài đặt Plugin trong VIM có thể cài trực tiếp bằng cách pull code từ github về và chép vào thư mục &lt;code&gt;~/.vim/bundle&lt;/code&gt;. Tuy nhiên, cách tốt nhất vẫn là dùng hệ thống quản lý Plugin như &lt;a href=&#34;https://github.com/VundleVim/Vundle.vim&#34;&gt;Vundle&lt;/a&gt;, &lt;a href=&#34;https://github.com/tpope/vim-pathogen&#34;&gt;Pathegon&lt;/a&gt;, &lt;a href=&#34;https://github.com/junegunn/vim-plug&#34;&gt;Vim-Plug&lt;/a&gt;, &lt;a href=&#34;https://github.com/Shougo/neobundle.vim&#34;&gt;Neo-Bundle&lt;/a&gt;
-Cá nhân mình dùng &lt;code&gt;Vim-Plug&lt;/code&gt; (trước đó dùng &lt;code&gt;Vundle&lt;/code&gt;) vì &lt;code&gt;Vundle&lt;/code&gt; hiện tại đã không còn maintain và &lt;code&gt;vim-plug&lt;/code&gt; cũng đơn giản, dễ dùng và load, update cũng nhanh hơn hẳn.&lt;/p&gt;
+&lt;p&gt;Có thể cài đặt Plugin trong VIM  trực tiếp bằng cách pull code từ github về và chép vào thư mục &lt;code&gt;~/.vim/bundle&lt;/code&gt;. Tuy nhiên, cách tốt nhất vẫn là dùng hệ thống quản lý Plugin như &lt;a href=&#34;https://github.com/VundleVim/Vundle.vim&#34;&gt;Vundle&lt;/a&gt;, &lt;a href=&#34;https://github.com/tpope/vim-pathogen&#34;&gt;Pathegon&lt;/a&gt;, &lt;a href=&#34;https://github.com/junegunn/vim-plug&#34;&gt;Vim-Plug&lt;/a&gt;, &lt;a href=&#34;https://github.com/Shougo/neobundle.vim&#34;&gt;Neo-Bundle&lt;/a&gt;
+Cá nhân mình dùng &lt;a href=&#34;https://github.com/junegunn/vim-plug&#34;&gt;Vim-Plug&lt;/a&gt; (trước đó dùng &lt;code&gt;Vundle&lt;/code&gt;) vì &lt;code&gt;Vundle&lt;/code&gt; hiện tại đã không còn maintain, bên cạnh đó &lt;a href=&#34;https://github.com/junegunn/vim-plug&#34;&gt;Vim-Plug&lt;/a&gt; cũng đơn giản, dễ dùng, load, update plugins cũng nhanh hơn hẳn.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Install: &lt;a href=&#34;https://github.com/junegunn/vim-plug#installation&#34;&gt;https://github.com/junegunn/vim-plug#installation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Usage: &lt;a href=&#34;https://github.com/junegunn/vim-plug#usage&#34;&gt;https://github.com/junegunn/vim-plug#usage&lt;/a&gt;
+&lt;li&gt;&lt;strong&gt;Cài đặt:&lt;/strong&gt; &lt;a href=&#34;https://github.com/junegunn/vim-plug#installation&#34;&gt;https://github.com/junegunn/vim-plug#installation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cách dùng:&lt;/strong&gt; &lt;a href=&#34;https://github.com/junegunn/vim-plug#usage&#34;&gt;https://github.com/junegunn/vim-plug#usage&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Thêm các plugins cần dùng trong file &lt;code&gt;.vimrc&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Lưu lại và reload file &lt;code&gt;.vimrc&lt;/code&gt; (có thể reload nhanh bằng command &lt;code&gt;:source %&lt;/code&gt; mà không cần khởi động lại VIM)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;:PlugInstall&lt;/code&gt; để cài đặt plugins&lt;/li&gt;
-&lt;li&gt;Ngoài ra &lt;code&gt;:PlugUpdate&lt;/code&gt; để update toàn bộ plugins, hoặc &lt;code&gt;:PlugClean&lt;/code&gt; để clean các plugins nào không còn nằm trong &lt;code&gt;.vimrc&lt;/code&gt;, có thể xem thêm ở &lt;a href=&#34;https://github.com/junegunn/vim-plug/wiki/tutorial&#34;&gt;đây&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Ngoài ra &lt;code&gt;:PlugUpdate&lt;/code&gt; để update toàn bộ plugins, hoặc &lt;code&gt;:PlugClean&lt;/code&gt; để clean các plugins nào không còn nằm trong &lt;code&gt;.vimrc&lt;/code&gt;, có thể xem thêm ở &lt;a href=&#34;https://github.com/junegunn/vim-plug/wiki/tutorial&#34;&gt;đây&lt;/a&gt;
+&lt;img src=&#34;https://trietphm.github.io/static/img/sublime-text-to-vim/plug-in.gif&#34; alt=&#34;alt text&#34; /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;cài-đặt-các-thứ-có-sẳn-trong-vim&#34;&gt;Cài đặt các thứ có sẳn trong VIM&lt;/h2&gt;
+&lt;h2 id=&#34;dot-file-vimrc-config-cho-vim&#34;&gt;Dot file, .vimrc, config cho vim&lt;/h2&gt;
 
-&lt;p&gt;Có rất nhiều người share config trong VIM trên github (và các dotfiles khác như tmux, zsh) mà các bạn có thể tham khảo để dùng cho bản thân, VD như &lt;a href=&#34;https://github.com/amix/vimrc&#34;&gt;vimrc&lt;/a&gt;, &lt;a href=&#34;https://github.com/thoughtbot/dotfiles/blob/master/vimrc&#34;&gt;ThoughtBot&lt;/a&gt;, &lt;a href=&#34;https://github.com/skwp/dotfiles&#34;&gt;dotfiles&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Có rất nhiều người share config trong VIM trên github (và các dotfiles khác như tmux, zsh) mà các bạn có thể tham khảo để dùng cho bản thân, VD như &lt;a href=&#34;https://github.com/amix/vimrc&#34;&gt;vimrc&lt;/a&gt;, &lt;a href=&#34;https://github.com/thoughtbot/dotfiles/blob/master/vimrc&#34;&gt;ThoughtBot&lt;/a&gt;, &lt;a href=&#34;https://github.com/skwp/dotfiles&#34;&gt;dotfiles&lt;/a&gt;
+Bạn có thể lên đây cóp nhặt các thứ cần thiết cho mình và ném nó vào file &lt;code&gt;.vimrc&lt;/code&gt;, phần sau mình sẽ giới thiệu một số thứ thông dụng.&lt;/p&gt;
 
-&lt;p&gt;Tuy nhiên:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Don&amp;rsquo;t put any lines in your vimrc that you don&amp;rsquo;t understand.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Tuy nhiên:
+&amp;gt; Don&amp;rsquo;t put any lines in your vimrc that you don&amp;rsquo;t understand.&lt;/p&gt;
 
 &lt;h1 id=&#34;các-vấn-đề-thường-gặp-khi-bắt-đầu-dùng-vim&#34;&gt;Các vấn đề thường gặp khi bắt đầu dùng VIM&lt;/h1&gt;
 
-&lt;p&gt;Các phần sau bạn có thể thử nhanh qua command &lt;code&gt;:&lt;/code&gt; hoặc sửa trong &lt;code&gt;.vimrc&lt;/code&gt; rồi reload lại VIM.&lt;/p&gt;
+&lt;p&gt;Các phần sau bạn có thể thử nhanh qua command &lt;code&gt;:&lt;/code&gt; hoặc sửa trong &lt;code&gt;.vimrc&lt;/code&gt; rồi reload lại VIM. Có thể check nhanh giá trị của biến bằng command &lt;code&gt;:set &amp;lt;variable&amp;gt;?&lt;/code&gt;, vd &lt;code&gt;:set nu?&lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Dùng chuột, hoàn toàn có thể:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;
-if has(&#39;mouse&#39;)
+&lt;pre&gt;&lt;code&gt;if has(&#39;mouse&#39;)
   set mouse=a
 endif
-
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Copy từ VIM ra ngoài Clipboard, mặc định VIM chỉ lưu trong Register (&lt;a href=&#34;http://vim.wikia.com/wiki/Accessing_the_system_clipboard&#34;&gt;xem thêm&lt;/a&gt;):&lt;/li&gt;
+&lt;li&gt;Copy từ VIM ra ngoài Clipboard, mặc định VIM chỉ lưu trong Register (&lt;a href=&#34;http://vim.wikia.com/wiki/Accessing_the_system_clipboard&#34;&gt;xem thêm&lt;/a&gt;) lúc bạn &lt;code&gt;yank&lt;/code&gt;:&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code&gt;set clipboard=unnamedplus
@@ -159,12 +151,14 @@ set si &amp;quot;smart indent
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Bật syntax&lt;/p&gt;
+&lt;li&gt;Bật syntax&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;pre&gt;&lt;code&gt;syntax on
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;li&gt;&lt;p&gt;Tắt các thể loại files backup, swap, khá là annoy và không cần thiết vì mình đã dùng &lt;code&gt;git&lt;/code&gt; rồi&lt;/p&gt;&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;Tắt các thể loại files backup, swap, khá là annoy và không cần thiết vì mình đã dùng &lt;code&gt;git&lt;/code&gt; rồi&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code&gt;set nobackup
@@ -199,44 +193,87 @@ map &amp;lt;C-j&amp;gt; &amp;lt;C-W&amp;gt;j
 map &amp;lt;C-k&amp;gt; &amp;lt;C-W&amp;gt;k
 map &amp;lt;C-l&amp;gt; &amp;lt;C-W&amp;gt;l
 map &amp;lt;C-h&amp;gt; &amp;lt;C-W&amp;gt;h
-
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Nói chung nếu những phím/tổ hợp phím/command nào thường xuyên sử dụng, bạn hoàn toàn có thể &lt;code&gt;map&lt;/code&gt; lại thành phím khác để rút ngắn thời gian thao tác của mình.&lt;/p&gt;
 
 &lt;h1 id=&#34;nhưng-vẫn-chưa-giống-sublimetext&#34;&gt;Nhưng vẫn chưa giống SublimeText?&lt;/h1&gt;
 
+&lt;p&gt;&lt;strong&gt;Q:&lt;/strong&gt; VIM cùi bắp, không có auto complete này.
+&lt;strong&gt;A:&lt;/strong&gt; Vim có nhiều Plugin support auto-complete như &lt;a href=&#34;https://github.com/Valloric/YouCompleteMe&#34;&gt;YouCompleteMe&lt;/a&gt;, &lt;a href=&#34;https://github.com/Shougo/neocomplete.vim&#34;&gt;neocomplete&lt;/a&gt;  &lt;img src=&#34;https://trietphm.github.io/static/img/sublime-text-to-vim/youcompleteme.gif&#34; alt=&#34;alt text&#34; /&gt;
+&lt;strong&gt;Q:&lt;/strong&gt; Làm thế nào để Split Screen đây?
+&lt;strong&gt;A:&lt;/strong&gt; Dùng command &lt;code&gt;:split&lt;/code&gt; &amp;amp; &lt;code&gt;vsplit&lt;/code&gt; để chia màn hình ngang và dọc. &lt;a href=&#34;https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally&#34;&gt;Xem thêm&lt;/a&gt; để làm việc nuột hơn nà.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q:&lt;/strong&gt; Làm sao để di chuyển giữa các panes (màn hình)?
+&lt;strong&gt;A:&lt;/strong&gt; Dùng chuột click cũng được, hoặc tốt nhất dùng tổ hợp phím &lt;code&gt;&amp;lt;C-W&amp;gt;j&lt;/code&gt;, &lt;code&gt;&amp;lt;C-W&amp;gt;k&lt;/code&gt;, &lt;code&gt;&amp;lt;C-W&amp;gt;l&lt;/code&gt;, &lt;code&gt;&amp;lt;C-W&amp;gt;h&lt;/code&gt;. &lt;code&gt;&amp;lt;C&amp;gt;&lt;/code&gt; ở đây là phím &lt;code&gt;Ctrl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q:&lt;/strong&gt; VIM có SideBar folders không?
+&lt;strong&gt;A:&lt;/strong&gt; Có plugin support nhé &lt;a href=&#34;https://github.com/scrooloose/nerdtree&#34;&gt;NERDTree&lt;/a&gt;
+&lt;img src=&#34;https://trietphm.github.io/static/img/sublime-text-to-vim/nerdtree.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q:&lt;/strong&gt; Thêm/xóa file/thư mực như thế nào nhỉ, phải switch ra Terminal à?
+&lt;strong&gt;A:&lt;/strong&gt; Không cần phải ra terminal đâu, ở NERDTree bạn chỉ việc ấn phím &lt;code&gt;m&lt;/code&gt; tại node cần thao tác, một menu sẽ hiện ra cho bạn chọn lựa
+&lt;img src=&#34;https://trietphm.github.io/static/img/sublime-text-to-vim/nerdtree_menu.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q:&lt;/strong&gt; Vậy còn Mini map?
+&lt;strong&gt;A:&lt;/strong&gt; Yup, &lt;a href=&#34;https://github.com/severin-lemaignan/vim-minimap&#34;&gt;Minimap&lt;/a&gt;, nhưng cá nhân mình nghĩ dùng &lt;a href=&#34;https://github.com/majutsushi/tagbar&#34;&gt;Tagbar&lt;/a&gt; sẽ tiện dụng hơn.
+Minimap:&lt;img src=&#34;https://trietphm.github.io/static/img/sublime-text-to-vim/minimap.gif&#34; alt=&#34;alt text&#34; /&gt;
+Tagbar:&lt;img src=&#34;https://trietphm.github.io/static/img/sublime-text-to-vim/tagbar.png&#34; alt=&#34;alt text&#34; /&gt;
+&lt;strong&gt;Q:&lt;/strong&gt; Mình hay dùng Mutitple Selection.
+&lt;strong&gt;A:&lt;/strong&gt; Xem nào, Multiple Selection có nhiều thứ, ta đi qua từng cái nhé:
+1. Thêm một hàng: Mặc định ở Windows là &lt;code&gt;Ctrl+Alt+Up&lt;/code&gt; &amp;amp; &lt;code&gt;Ctrl+Alt+Down&lt;/code&gt; (OS X: &lt;code&gt;Ctrl+Shift+Up&lt;/code&gt; &amp;amp; &lt;code&gt;Ctrl+Shift+Down&lt;/code&gt;).
+&lt;strong&gt;A:&lt;/strong&gt; Đối với VIM, khi ở mode Normal có thể ấn &lt;code&gt;o&lt;/code&gt; để thêm một hàng phía dưới và &lt;code&gt;O&lt;/code&gt; để thêm phía trên và sau đó sẽ switch sang mode Insert luôn để bạn có thể bắt đầu gõ. Ngoài ra bạn có thể gõ &lt;code&gt;5o&amp;lt;Esc&amp;gt;&lt;/code&gt; để thêm nhanh 5 hàng, tính năng repeat tiện lợi của VIM.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Chọn, sửa nhanh nhiều vị trí: &lt;code&gt;Ctrl+d&lt;/code&gt; hoặc &lt;code&gt;Command+d&lt;/code&gt;
+&lt;strong&gt;A:&lt;/strong&gt; VIM thì mình dùng Plugin &lt;a href=&#34;https://github.com/terryma/vim-multiple-cursors&#34;&gt;vim-multiple-cursors&lt;/a&gt; nhé, ngoài chức năng như Sublime Text bạn còn có thể search được bằng cả Regex
+&lt;img src=&#34;https://trietphm.github.io/static/img/sublime-text-to-vim/multicursor.gif&#34; alt=&#34;alt text&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;Select all bằng &lt;code&gt;Alt+F3&lt;/code&gt; (Windows+Linux) hoặc &lt;code&gt;Ctrl+Command+g&lt;/code&gt; trên OS X?
+&lt;strong&gt;A:&lt;/strong&gt; Vẫn dùng Plugin bên trên nha, bạn xem trong wiki để tìm hiểu thêm.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Q:&lt;/strong&gt; Còn tab thì sao?
+&lt;strong&gt;A:&lt;/strong&gt; Hiển nhiên rồi, ngoài ra VIM còn có thể một khái niệm nữa là Buffer, xem thêm tab &lt;a href=&#34;http://vim.wikia.com/wiki/Using_tab_pages&#34;&gt;ở đây&lt;/a&gt; và buffer &lt;a href=&#34;http://vim.wikia.com/wiki/Buffers&#34;&gt;ở đây&lt;/a&gt;
+&lt;img src=&#34;https://trietphm.github.io/static/img/sublime-text-to-vim/tab.gif&#34; alt=&#34;alt text&#34; /&gt;
+&lt;strong&gt;Q:&lt;/strong&gt; Navigation bằng Ctrl + P thì sao, siêu tiện luôn
+&lt;strong&gt;A:&lt;/strong&gt; VIM có nhiều Plugin phục vụ cho việc này, bạn có thể dùng hàng Việt Nam chất lượng cao &lt;a href=&#34;https://github.com/ctrlpvim/ctrlp.vim&#34;&gt;CtrlP&lt;/a&gt; hoặc dùng &lt;a href=&#34;https://github.com/junegunn/fzf.vim&#34;&gt;Fzf&lt;/a&gt;
+&lt;img src=&#34;https://trietphm.github.io/static/img/sublime-text-to-vim/fzf.gif&#34; alt=&#34;alt text&#34; /&gt;
+&lt;strong&gt;Q:&lt;/strong&gt; Search một từ trong nhiều file? Ví dụ seach chữ &lt;code&gt;function&lt;/code&gt; trong một project có nhiều thư mục, Sublime Text thì click phải vào Folder rồi search, còn VIM thì sao, đâu có click phải vào NERDTree được?
+&lt;strong&gt;A:&lt;/strong&gt; VIM bạn có thể search bằng built-in của VIM là &lt;code&gt;:grep&lt;/code&gt;, &lt;code&gt;:lgrep&lt;/code&gt;, &lt;code&gt;:vimgrep&lt;/code&gt;, &lt;code&gt;:lvimgrep&lt;/code&gt; &lt;a href=&#34;http://vim.wikia.com/wiki/Find_in_files_within_Vim&#34;&gt;http://vim.wikia.com/wiki/Find_in_files_within_Vim&lt;/a&gt;, cá nhân mình dùng &lt;a href=&#34;https://github.com/mileszs/ack.vim&#34;&gt;ack.vim&lt;/a&gt; kết hợp cùng &lt;a href=&#34;https://github.com/ggreer/the_silver_searcher&#34;&gt;the_silver_searcher&lt;/a&gt;
+&lt;img src=&#34;https://trietphm.github.io/static/img/sublime-text-to-vim/ack.gif&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q:&lt;/strong&gt; Ops, không ấn &lt;code&gt;Ctrl + /&lt;/code&gt; để comment code như các IDE khác à?
+&lt;strong&gt;A:&lt;/strong&gt; Để comment code bạn cần dùng Plugin &lt;a href=&#34;https://github.com/scrooloose/nerdcommenter&#34;&gt;NERD Commenter&lt;/a&gt; và sau đó có thể map phím &lt;code&gt;Ctrl + /&lt;/code&gt; để execute lệnh comment&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q:&lt;/strong&gt; Các tổ hợp phím tắt thì sao nhỉ? Ví dụ như mình muốn copy nhanh toàn bộ code trong một tag hoặc function?
+&lt;strong&gt;A:&lt;/strong&gt; Ở mode Normal gõ &lt;code&gt;yip&lt;/code&gt; - copy bên trong tag hoặc &lt;code&gt;yap&lt;/code&gt; copy cả tag, ngooài ra có rất nhiều phím tắt khác, để thao tác nhanh nhất bận nên tham khảo vim cheatsheet.&lt;/p&gt;
+
+&lt;p&gt;Những phần bên trên chỉ là phần nhỏ thôi, bạn có thể xem thêm trong &lt;code&gt;:help&lt;/code&gt; hoặc tự map các tổ hợp phím tắt riêng cho mình giúp tăng tốc độ làm việc.&lt;/p&gt;
+
+&lt;h2 id=&#34;shock-văn-hóa-quá-nhiều-thứ-để-nhớ-thôi-nghỉ-không-vim-nữa&#34;&gt;Shock văn hóa, quá nhiều thứ để nhớ, thôi nghỉ, không VIM nữa&lt;/h2&gt;
+
+&lt;p&gt;Ban đầu mình cũng không thể chuyển sang VIM ngay được, không thể nào thao tác quen được. Nếu quyết định chuyển từ từ sang, vẫn dùng Sublime Text nhưng hạn chế không dùng đến các phím &lt;code&gt;arrow&lt;/code&gt; và &lt;code&gt;pageUp/pageDown&lt;/code&gt; thay vào đó là dùng các phím tắt trong VIM&lt;/p&gt;
+
 &lt;ul&gt;
-&lt;li&gt;Làm thế nào để Split Screen đây?&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Đầu tiên mình cài thêm Plugin vào trong Sublime Text để làm quen dần thao tác di chuyển &lt;a href=&#34;https://www.sublimetext.com/docs/2/vintage.html&#34;&gt;Vintage&lt;/a&gt;(ST2) hoặc &lt;a href=&#34;https://github.com/guillermooo/Vintageous#vintageous&#34;&gt;Vintagous&lt;/a&gt;(ST3)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Cài thêm &lt;a href=&#34;https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en&#34;&gt;Vimium&lt;/a&gt; vào Chrome luôn cho ngầu. Install xong thì ấn &lt;code&gt;?&lt;/code&gt; để xem danh sách phím tắt nhé.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;Dùng command &lt;code&gt;:split&lt;/code&gt; &amp;amp; &lt;code&gt;vsplit&lt;/code&gt; để chia màn hình ngang và dọc&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://trietphm.github.io/static/img/sublime-text-to-vim/chrome.gif&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Rất nhanh và tiện, hoàn toàn thao tác bằng phím, không rờ tới chuột.&lt;/p&gt;
+
+&lt;h1 id=&#34;tiếp-theo-thì-làm-gì&#34;&gt;Tiếp theo thì làm gì?&lt;/h1&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Làm sao để di chuyển giữa các panes (màn hình)?&lt;/li&gt;
+&lt;li&gt;Tùy theo ngôn ngữ mà bạn đang dùng mà bạn có thể cài thêm cái plugin hổ trợ để viết code nhanh hơn, tốt hơn, ít bug hơn.&lt;/li&gt;
+&lt;li&gt;Nếu chức năng nào đó mà bạn quen dùng nhưng không có hãy mạnh dạn tùy biến &lt;code&gt;vimrc&lt;/code&gt; hoặc &lt;code&gt;Google&lt;/code&gt; thử, hầu hết sẽ có thứ bạn cần.&lt;/li&gt;
+&lt;li&gt;Sao khi đi thao tác nhanh rồi thì việc tiếp theo là đi khè mấy đứa khác thôi.
+Chúc các bạn may mắn&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;Dùng chuột click cũng được, hoặc tốt nhất dùng tổ hợp phím &lt;code&gt;&amp;lt;C-W&amp;gt;j&lt;/code&gt;, &lt;code&gt;&amp;lt;C-W&amp;gt;k&lt;/code&gt;, &lt;code&gt;&amp;lt;C-W&amp;gt;l&lt;/code&gt;, &lt;code&gt;&amp;lt;C-W&amp;gt;h&lt;/code&gt;. &lt;code&gt;&amp;lt;C&amp;gt;&lt;/code&gt; ở đây là phím &lt;code&gt;Ctrl&lt;/code&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-&lt;li&gt;VIM có SideBar folders không?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Có plugin support nhé &lt;a href=&#34;https://github.com/scrooloose/nerdtree&#34;&gt;NERDTREE&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Vậy còn Mini map?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Yup, &lt;a href=&#34;https://github.com/severin-lemaignan/vim-minimap&#34;&gt;Minimap&lt;/a&gt;, nhưng cá nhân mình nghĩ có thứ tiện dụng hơn trong VIM là &lt;a href=&#34;https://github.com/majutsushi/tagbar&#34;&gt;Tagbar&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Triet 18-02-2017&lt;/p&gt;
 </description>
     </item>
     
