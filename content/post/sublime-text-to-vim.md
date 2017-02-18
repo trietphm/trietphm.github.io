@@ -1,18 +1,18 @@
 +++
 draft = false
 date = "2017-02-19T00:20:08+07:00"
-title = "Di cư từ Sublime Text sang VIM"
-
+title = "Sublime Text to VIM"
+description = "Di cư từ Sublime Text sang VIM"
 +++
 
 Bắt đầu chuyển sang dùng Vim làm editor chính một cách nghiêm túc sau nhiều lần thử, bỏ cuộc và quay trở về Sublime Text.
-Còn về nguyên nhân bỏ cuộc là vì không quen với VIM được, do có nhiều thứ quá khác với SublimeText, chính xác là trên SublimeText có mà VIM lại không có, nên lần này mình sẽ setup toàn bộ những thứ bên SublimeText qua VIM hết.
+Còn về nguyên nhân bỏ cuộc là vì không quen với VIM được, do có nhiều thứ quá khác với Sublime Text, chính xác là trên Sublime Text có mà VIM lại không có, nên lần này mình sẽ setup toàn bộ những thứ bên Sublime Text qua VIM hết.
 # Vì sao phải dùng VIM?
 1. Hầu hết thời gian mình đều làm việc trong terminal nên chuyển editor sang VIM luôn cho tiện.
 2. Việc di chuyển trong VIM nhanh và thuận tiện hơn so với các editor/IDE khác (dĩ nhiên nếu không dùng VIM mode).
 3. Hạn chế sử dụng chuột để tăng tốc độ thao tác.
 4. Nhiều thứ để custom phù hợp với nhu cầu, khả năng tùy biến cao. 
-5. Làm màu, trông có vẻ giống `hắc cơ.
+5. Làm màu, trông có vẻ giống `hắc cơ`.
 6. Động lực để chuyển sang  [bàn phím 60%](https://www.google.com.vn/search?q=60%25+keyboard&tbm=isch&tbo=u&source=univ&sa=X&ved=0ahUKEwjX9Oz3xIrSAhUHtJQKHZ4tDZkQsAQIKw&biw=1440&bih=737) để mang đi mang về cho tiện ._.
 
 # Cài đặt
@@ -25,18 +25,16 @@ Link download & hướng dẫn cài đặt bên dưới nhé:
 - [NeoVim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 - [MacVim](https://github.com/macvim-dev/macvim/blob/master/README_vim.md#installation)
 
-
 # Sử dụng Vim
 Mở terminal lên và gõ `vim` để bắt đầu nào (Windows thì bạn click vào cái icon sau khi cài đặt của nó nhé).
 
 ## Các vấn đề cơ bản 
 
 ### Mode
-
 Vim có tổng cộng 6 modes hoạt động `normal`, `insert`, `visual`, `select`, `command-line`, `Ex-mode`. 
 Mặc định khi mở `Vim` lên sẽ là mode `normal`.
-
 Trong đó 3 modes mình thường được sử dụng nhất là:
+
 - `normal`: Dùng để di chuyển và thao tác trong đoạn text, và sẽ là mode được back lại khi ấn `ESC` ở mode khác.
 - `insert`: Như tên gọi, để thêm text mới vào.
 - `visual`: tương tự như normal nhưng cho phép `bôi đen` (select) text để thực hiện các thao tác với đoạn `bôi đen` đó.
@@ -74,13 +72,13 @@ Có rất nhiều người share config trong VIM trên github (và các dotfile
 Bạn có thể lên đây cóp nhặt các thứ cần thiết cho mình và ném nó vào file `.vimrc`, phần sau mình sẽ giới thiệu một số thứ thông dụng.
 
 Tuy nhiên: 
+
 > Don't put any lines in your vimrc that you don't understand.
 
 # Các vấn đề thường gặp khi bắt đầu dùng VIM
 Các phần sau bạn có thể thử nhanh qua command `:` hoặc sửa trong `.vimrc` rồi reload lại VIM. Có thể check nhanh giá trị của biến bằng command `:set <variable>?`, vd `:set nu?`
 
 - Dùng chuột, hoàn toàn có thể:
-
 ```
 if has('mouse')
   set mouse=a
@@ -88,38 +86,33 @@ endif
 ```
 
 - Copy từ VIM ra ngoài Clipboard, mặc định VIM chỉ lưu trong Register ([xem thêm](http://vim.wikia.com/wiki/Accessing_the_system_clipboard)) lúc bạn `yank`:
-
 ```
 set clipboard=unnamedplus
 ```
-- Hiện line number 
 
+- Hiện line number 
 ```
 set nu
 ```
 
 - Tự động cập nhật khi file thay đổi (bởi chương trình khác)
-
 ```
 set autoread
 set autowrite
 ```
 
 - Tự động `indent`
-
 ```
 set autoindent
 set si "smart indent
 ```
 
 - Bật syntax
-
 ```
 syntax on
 ```
 
 - Tắt các thể loại files backup, swap, khá là annoy và không cần thiết vì mình đã dùng `git` rồi
-
 ```
 set nobackup
 set nowb
@@ -161,6 +154,7 @@ Nói chung nếu những phím/tổ hợp phím/command nào thường xuyên s�
 # Nhưng vẫn chưa giống SublimeText?
 **Q:** VIM cùi bắp, không có auto complete này.
 **A:** Vim có nhiều Plugin support auto-complete như [YouCompleteMe](https://github.com/Valloric/YouCompleteMe), [neocomplete](https://github.com/Shougo/neocomplete.vim)  ![alt text](/static/img/sublime-text-to-vim/youcompleteme.gif)
+
 **Q:** Làm thế nào để Split Screen đây? 
 **A:** Dùng command `:split` & `vsplit` để chia màn hình ngang và dọc. [Xem thêm](https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally) để làm việc nuột hơn nà.
 

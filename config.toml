@@ -28,4 +28,9 @@ GithubUsername = "trietphm"
 # default: undefined
 TwitterUsername = "trietphm"
 
-
+github = "https://github.com/trietphm"
+shareTwitter = true
+shareFacebook = true
+shareGooglePlus = true
+[blackfriday]
+extensions = ["hardLineBreak"]
