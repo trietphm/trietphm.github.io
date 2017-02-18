@@ -216,7 +216,8 @@ Rất nhanh và tiện, hoàn toàn thao tác bằng phím, không rờ tới ch
 # Tiếp theo thì làm gì?
 - Tùy theo ngôn ngữ mà bạn đang dùng mà bạn có thể cài thêm cái plugin hổ trợ để viết code nhanh hơn, tốt hơn, ít bug hơn.
 - Nếu chức năng nào đó mà bạn quen dùng nhưng không có hãy mạnh dạn tùy biến `vimrc` hoặc `Google` thử, hầu hết sẽ có thứ bạn cần.
-- Sao khi đi thao tác nhanh rồi thì việc tiếp theo là đi khè mấy đứa khác thôi.
+- Sao khi đã thao tác nhanh rồi thì việc tiếp theo là... đi lòe mấy đứa khác thôi :troll:.
+
 Chúc các bạn may mắn
 
 
