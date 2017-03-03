@@ -3,6 +3,10 @@ title = "Tea, Coffee & Code"
 baseurl = "https://trietphm.github.io/"
 publishDir= "."
 
+enableEmoji= true
+googleAnalytics= "UA-93009521-1"
+theme= "ghostwriter"
+
 BaseUrl = "https://trietphm.github.io/"
 [params]
 
@@ -32,5 +36,9 @@ github = "https://github.com/trietphm"
 shareTwitter = true
 shareFacebook = true
 shareGooglePlus = true
+
+disqusShortname = "trietphm"
 [blackfriday]
 extensions = ["hardLineBreak"]
+
+
