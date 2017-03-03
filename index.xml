@@ -6,8 +6,39 @@
     <description>Recent content on Tea, Coffee &amp; Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Feb 2017 00:20:08 +0700</lastBuildDate>
+    <lastBuildDate>Fri, 03 Mar 2017 21:42:35 +0700</lastBuildDate>
     <atom:link href="https://trietphm.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Readling list</title>
+      <link>https://trietphm.github.io/page/reading-list/</link>
+      <pubDate>Fri, 03 Mar 2017 21:42:35 +0700</pubDate>
+      
+      <guid>https://trietphm.github.io/page/reading-list/</guid>
+      <description>
+
+&lt;h2 id=&#34;currently-reading&#34;&gt;Currently Reading&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Suối nguồn&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/PostgreSQL-High-Performance-Gregory-Smith/dp/184951030X&#34;&gt;Postgresql high performance&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882&#34;&gt;Clean Code&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;2017&#34;&gt;2017&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://tiki.vn/tony-bu-i-sang-tren-du-ng-bang-p444695.html&#34;&gt;Tony buổi sáng - trên đường băng&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tiki.vn/r-ng-d-p413096.html&#34;&gt;Rồng đỏ&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tiki.vn/nghi-ngu-c-l-i-va-lam-khac-di-p431166.html&#34;&gt;Nghĩ ngược lại và làm khác đi&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tiki.vn/ong-gia-va-bi-n-c-dinh-t-p402082.html&#34;&gt;Ông già và biển cả&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tiki.vn/bi-m-t-thu-t-thoi-mien-p447583.html&#34;&gt;Bí thuật thôi miên&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Sublime Text to VIM</title>
@@ -275,6 +306,25 @@ Tagbar:&lt;img src=&#34;https://trietphm.github.io/static/img/sublime-text-to-vi
 &lt;p&gt;Chúc các bạn may mắn&lt;/p&gt;
 
 &lt;p&gt;Triet 18-02-2017&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Something</title>
+      <link>https://trietphm.github.io/page/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://trietphm.github.io/page/about/</guid>
+      <description>
+
+&lt;h2 id=&#34;about&#34;&gt;About&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Triet Pham&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Yup, that&amp;rsquo;s it&lt;/p&gt;
 </description>
     </item>
     
