@@ -2,12 +2,16 @@ languageCode = "en-us"
 title = "Tea, Coffee & Code"
 baseurl = "https://trietphm.github.io/"
 publishDir= "."
-
 enableEmoji= true
 googleAnalytics= "UA-93009521-1"
 theme= "ghostwriter"
 
 BaseUrl = "https://trietphm.github.io/"
+
+[Author]
+	name = "Triet Pham"
+	profile = "http://github.com/trietphm"
+
 [params]
 
 # your name to display by the copyright sign
@@ -41,4 +45,17 @@ disqusShortname = "trietphm"
 [blackfriday]
 extensions = ["hardLineBreak"]
 
+[[menu.main]]
+	name = "Blog"
+	url = "/"
+	weight = 1
 
+[[menu.main]]
+	name = "Reading list"
+	url = "/page/reading-list/"
+	weight = 2
+
+[[menu.main]]
+	name = "About"
+	url = "/page/about/"
+	weight = 3
