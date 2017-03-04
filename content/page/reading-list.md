@@ -9,7 +9,7 @@ tags = []
 
 ## Currently Reading
 
-- Suối nguồn
+- [Suối nguồn](https://tiki.vn/su-i-ngu-n-the-fountainhead-2014-p394427.html)
 - [Postgresql high performance](https://www.amazon.com/PostgreSQL-High-Performance-Gregory-Smith/dp/184951030X)
 - [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
 
