@@ -56,6 +56,11 @@ extensions = ["hardLineBreak"]
 	weight = 2
 
 [[menu.main]]
+	name = "Friends"
+	url = "/page/friends/"
+	weight = 3
+
+[[menu.main]]
 	name = "About"
 	url = "/page/about/"
-	weight = 3
+	weight = 4
