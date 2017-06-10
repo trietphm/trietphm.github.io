@@ -41,7 +41,6 @@ shareTwitter = true
 shareFacebook = true
 shareGooglePlus = true
 
-disqusShortname = "trietphm"
 [blackfriday]
 extensions = ["hardLineBreak"]
 
