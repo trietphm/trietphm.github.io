@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Phân tích slow query PostgreSQL với pgBadger &middot; Triet Pham</title>
+        <meta name="description" content="Phân tích slow query PostgreSQL với pgBadger">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.21" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="https://trietphm.github.io/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-93009521-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Tea, Coffee &amp; Code" href="https://trietphm.github.io/">Tea, Coffee &amp; Code</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://trietphm.github.io/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/trietphm">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                        
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Reading list" href="/page/reading-list/">Reading list</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Friends" href="/page/friends/">Friends</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Phân tích slow query PostgreSQL với pgBadger</h1>
+    
+        <p class="post-description" itemprop="description">Phân tích slow query PostgreSQL với pgBadger</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2017-06-10" itemprop="datePublished">Sat, Jun 10, 2017</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="http://github.com/trietphm" itemprop="url" rel="author">Triet Pham</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<p><img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/5dvag1s1vh_logo_pgbadger.png" alt="alt text" /></p>
+
+<h1 id="slow-query-là-gì">Slow query là gì?</h1>
+
+<p>Khi các câu query chậm hơn một thời gian nhất định tùy theo bạn định nghĩa, ví dụ chậm hơn 50ms, thì các câu query đó được xem là slow query.<br />
+Và tùy theo ứng dụng mà sẽ có định nghĩa khác nhau, một vài ví dụ:</p>
+
+<ul>
+<li>Bạn viết một API authentication cho cái app nho nhỏ và bạn hy vọng nó chạy càng nhanh càng tốt, tối đa là 30ms/request =&gt; Query phải &lt; 30ms.<br /></li>
+<li>Bạn viết một ứng dụng liên quan đến tiền bạc, thanh toán online. Đòi hỏi bắt buộc là phải chính xác và an toàn, chậm một chút cũng không sao =&gt; Query có thể nới ra thành &lt; 100 ms.<br />
+<br /></li>
+</ul>
+
+<p>Tùy theo mục đích mà có tiêu chuẩn thời gian khác nhau</p>
+
+<h1 id="slow-query-xảy-ra-khi-nào">Slow query xảy ra khi nào?</h1>
+
+<p>Có rất nhiều trường hợp sẽ xảy ra slow query như:<br />
+- Query condition trên column thiếu index<br />
+- Query bị lock bởi các câu query, transaction,&hellip;<br />
+- Câu query không được optimize nên dẫn đến query thừa hoặc không tối ưu, sequence scan thay vì index scan,&hellip;<br />
+- Cấu hình máy không đáp ứng được nhu cầu query hiện tại.<br />
+- &hellip;</p>
+
+<p>Có khá nhiều nguyên nhân có thể xảy ra và để có thể giải quyết thì việc đầu tiên là phải biết nó có xảy ra 😄</p>
+
+<h1 id="log-slow-query">Log slow query</h1>
+
+<p>Postgresql cho phép bạn log các câu query, statement,&hellip; và nhiều thứ khác ra.<br />
+Để log ra thì bạn có thể edit file <code>postgresql.config</code> và thay đổi theo nhu cầu, mình liệt kê một vài thông số cơ bản phục vụ cho bài viết, bạn có thể xem thêm ở đây<br />
+<a href="https://www.postgresql.org/docs/current/static/runtime-config-logging.html">https://www.postgresql.org/docs/current/static/runtime-config-logging.html</a></p>
+
+<ul>
+<li><code>log_directory</code>: Nơi lưu log, mặc định thường là <code>pg_log</code><br /></li>
+<li><code>log_filename</code>: format name của file log<br /></li>
+<li><code>log_min_duration_statement</code>: Nếu lớn hơn thời gian này query sẽ được cho là slow query (đơn vị milisecond)<br />
+<br /></li>
+</ul>
+
+<p>Save lại và reload (hoặc restart) PostgreSQL. Khi có slow query PostgreSQL sẽ giúp bạn ném vào log.</p>
+
+<p><em><strong>Note nhỏ:</strong></em> Khi bạn restart PostgreSQL, các connection của client đều sẽ bị disconnect</p>
+
+<pre><code>          (╯°□°）╯︵ ┻━┻
+</code></pre>
+
+<p>nhưng nếu bạn reload thì không sao cả, mọi thứ vẫn bình thường</p>
+
+<pre><code>          (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
+</code></pre>
+
+<p><code>sudo service postgresql reload</code></p>
+
+<p>Khi log ra bạn sẽ thấy nhiều thông tin dạng thế này và fix dễ dàng hơn</p>
+
+<pre><code>593821c2.21a2 2017-06-08 00:00:41 ICT LOG:  duration: 439.218 ms  execute &lt;unnamed&gt;: SELECT * FROM &quot;users&quot;  WHERE (username = $1) LIMIT 1
+593821c2.21a2 2017-06-08 00:00:41 ICT DETAIL:  parameters: $1 = 'trietphm'
+</code></pre>
+
+<h1 id="pgbadger">pgBadger</h1>
+
+<h2 id="vì-sao-lại-cần-log-analyzer">Vì sao lại cần log analyzer?</h2>
+
+<p>Sau một ngày đẹp trời bạn mở file log lên và chợt nhận ra nó nặng cả GB với hằng hà sa số log query slow, với cơ man nào là các câu query dài loằng ngoằng hay những câu query ngắn ngủn như <code>SELECT * FROM users WHERE id = $1</code> mà bạn chắc chắn không thể nào chậm mà vẫn xuất hiện trong đây? Rồi có những câu query bạn cũng không biết nó đến từ server nào hay hành tinh nào? Không biết câu query nào chậm nhất để mà optimize? Không biết và không biết.</p>
+
+<p>Một đống hỗn độn và gần như vô dụng!</p>
+
+<h2 id="pgbadger-là-gì">pgBadger là gì?</h2>
+
+<p>pgBadger là một PostgreSQL log analyzer nhỏ gọn được viết bằng Perl script giúp bạn phân tích và report từ PostgreSQL log file.<br />
+Sẽ giúp bạn khai thác được file hỗn độn kia, đập đá ra vàng. Sau khi xử lý pgBadge sẽ xuất ra cho bạn một file HTML (hoặc JSON) report về file log đó.</p>
+
+<h1 id="cài-đặt">Cài đặt</h1>
+
+<ul>
+<li>Tải <a href="https://github.com/dalibo/pgbadger/releases">pgBadger</a><br /></li>
+<li>Và make<br />
+<br /></li>
+</ul>
+
+<pre><code class="language-bash">        tar xzf pgbadger-9.x.tar.gz
+        cd pgbadger-9.x/
+        perl Makefile.PL
+        make &amp;&amp; sudo make install
+</code></pre>
+
+<ul>
+<li>Trong quá trình cài đặt có thể bị lỗi và bạn cần cài thêm <code>perl-devel</code>. Cài đặt trong Centos qua rpm <code>sudo yum install perl-devel</code><br />
+<br /></li>
+</ul>
+
+<h2 id="update-format-log-file">Update format log file</h2>
+
+<p>Để pgBadger có thể đọc được tốt file log, bạn cần update lại một chút trong config:</p>
+
+<ul>
+<li><code>log_line_prefix = '%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '</code> log ra các thông tin user, database name, application và client ip address<br /></li>
+<li>Enable các option log khác để lấy được nhiều thông tin hơn:<br />
+<br /></li>
+</ul>
+
+<pre><code>        log_checkpoints = on
+        log_connections = on
+        log_disconnections = on
+        log_lock_waits = on
+        log_temp_files = 0
+        log_autovacuum_min_duration = 0
+        log_error_verbosity = default
+</code></pre>
+
+<ul>
+<li>Bạn có thể xem thêm trong <a href="http://dalibo.github.io/pgbadger/">Document </a><br />
+<br /></li>
+</ul>
+
+<h2 id="parse-log-export-report">Parse log &amp; export report</h2>
+
+<p>Cách đơn giản nhất:</p>
+
+<pre><code>pgbadger &lt;file_log&gt; &lt;output.html&gt;
+</code></pre>
+
+<p>Mặc định pgBadger sẽ để output là <code>out.html</code> nếu không được định nghĩa</p>
+
+<h2 id="report">Report</h2>
+
+<p>Khi mở file <code>output</code> html lên sẽ có rất nhiều thông tin phân tích từ log file đó, một số hình ảnh:<br />
+<img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/kakppqn6wz_liLvC8eKeGH5Yub9IezLL--KQkAFD4qPvC0I3kbq9w3O4xDNbaESBkyMegfqg04ND0j2v7uSm1l144qLz_3Yvt0Iq-_ZMIwlJNqsu6s4bO0F1kR3dMUjedqC16uBUu85.png" alt="alt text" /><br />
+<img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/bumajvreio_Screen%20Shot%202017-06-10%20at%204.25.17%20PM.png" alt="alt text" /><br />
+<img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/j224q7vafu_Screen%20Shot%202017-06-10%20at%204.25.36%20PM.png" alt="alt text" /><br />
+<img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/1runvcti4u_Screen%20Shot%202017-06-10%20at%204.30.32%20PM.png" alt="alt text" /></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Ph%c3%a2n%20t%c3%adch%20slow%20query%20PostgreSQL%20v%e1%bb%9bi%20pgBadger&url=https%3a%2f%2ftrietphm.github.io%2fpost%2fphan-tich-slow-query-postgresql-voi-pgbadger%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftrietphm.github.io%2fpost%2fphan-tich-slow-query-postgresql-voi-pgbadger%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2ftrietphm.github.io%2fpost%2fphan-tich-slow-query-postgresql-voi-pgbadger%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Tea, Coffee &amp; Code" href="https://trietphm.github.io/">Tea, Coffee &amp; Code</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2017 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://trietphm.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+        <script src="https://trietphm.github.io/js/jquery.fitvids.js"></script>
+        <script src="https://trietphm.github.io/js/scripts.js"></script>
+    </body>
+</html>
+
