@@ -1,6 +1,6 @@
 +++
 author = "Triet Pham"
-date = "2017-08-20T20:45:17+07:00"
+date = "2017-08-27T15:45:17+07:00"
 description = "Chuyện giao tiếp"
 tags = ["talk"]
 title = "Chuyện giao tiếp"
