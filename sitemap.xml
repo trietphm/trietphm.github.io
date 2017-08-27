@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://trietphm.github.io/post/chuyen-giao-tiep/</loc>
+    <lastmod>2017-08-20T20:45:17+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://trietphm.github.io/post/phan-tich-slow-query-postgresql-voi-pgbadger/</loc>
     <lastmod>2017-06-10T16:20:08+07:00</lastmod>
   </url>
@@ -35,7 +40,7 @@
   
   <url>
     <loc>https://trietphm.github.io/post/</loc>
-    <lastmod>2017-06-10T16:20:08+07:00</lastmod>
+    <lastmod>2017-08-20T20:45:17+07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -49,8 +54,14 @@
   </url>
   
   <url>
+    <loc>https://trietphm.github.io/tags/talk/</loc>
+    <lastmod>2017-08-20T20:45:17+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://trietphm.github.io/</loc>
-    <lastmod>2017-06-10T16:20:08+07:00</lastmod>
+    <lastmod>2017-08-20T20:45:17+07:00</lastmod>
     <priority>0</priority>
   </url>
   
