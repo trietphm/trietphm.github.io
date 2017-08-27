@@ -94,7 +94,7 @@ Và Tèo mất toi 8h lãng nhách chỉ vì ngồi đợi reply của team.
 	- Yêu cầu app có thay đổi và Bờm thông báo lên group chat, mọi người trao đổi một đoạn dài dài. Tí đi chơi với bạn gái về thấy dài quá, lười đọc, bỏ luôn. Tèo vì thấy group chat phiền quá, mấy đoạn hội thoại không liên quan đến mình nên tắt notification luôn => Vài hôm sau phát hiện ra code không đúng yêu cầu, OT ngồi sửa lại.
 	- Bờm khiển trách và yêu cầu 2 người đọc lại chat log. Tí & Tèo bỏ 30' ngồi đọc đoạn chat, trao đổi phản biện và đã hiểu được yêu cầu, mặc dù mỗi người hiểu mỗi ý khác nhau?!
 
-![alt text](/static/img/chuyen-giao-tiep/img1.jpg)
+![alt text](/static/img/chuyen-giao-tiep/img1.png)
 
 #### Giải pháp:
 
