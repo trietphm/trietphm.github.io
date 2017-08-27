@@ -7,13 +7,14 @@ title = "Chuyện giao tiếp"
 
 +++
 
-![alt text](/static/img/chuyen-giao-tiep/img6.jpg)
 # Giao tiếp 
 
 > Lời nói không mất tiền mua, lựa lời mà nói cho vừa lòng nhau
 
 Giao tiếp là chuyện rất bình thường nhưng lại có thể vô tình trở thành ngọn nguồn của rất nhiều vấn đề. 
 Trong khuôn khổ bài viết sẽ nói đến giao tiếp sẽ ảnh hưởng thế nào đến việc phát triển phần mềm, và có thể có ít nhiều liên quan đến các việc khác (hoặc không).
+
+![alt text](/static/img/chuyen-giao-tiep/img6.jpg)
 
 > TL;DR
 > Hãy giao tiếp như một team
