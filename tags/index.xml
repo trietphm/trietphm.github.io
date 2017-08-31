@@ -6,9 +6,19 @@
     <description>Recent content in Tags on Tea, Coffee &amp; Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Tue, 29 Aug 2017 05:30:56 +0700</lastBuildDate>
     
 	<atom:link href="https://trietphm.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Database</title>
+      <link>https://trietphm.github.io/tags/database/</link>
+      <pubDate>Tue, 29 Aug 2017 05:30:56 +0700</pubDate>
+      
+      <guid>https://trietphm.github.io/tags/database/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Talk</title>

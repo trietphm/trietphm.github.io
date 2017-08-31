@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Foundation of data system &middot; Triet Pham</title>
+        <meta name="description" content="Data system  Ngày nay do sự phát triển rất nhanh về phần cứng nên hầu hết các ứng dụng không còn phát triển theo hướng tối ưu hóa về tốc độ xử lý của CPU (compute-intensive), công nghệ hiện tại đã đủ và dư để đáp ứng hầu hết nhu cầu, thay vào đó sự bùng nổ thông tin đã mở ra kỷ nguyên về khai thác dữ liệu.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.21" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="https://trietphm.github.io/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-93009521-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Tea, Coffee &amp; Code" href="https://trietphm.github.io/">Tea, Coffee &amp; Code</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://trietphm.github.io/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/trietphm">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                        
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Reading list" href="/page/reading-list/">Reading list</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Friends" href="/page/friends/">Friends</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Foundation of data system</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2017-08-29" itemprop="datePublished">Tue, Aug 29, 2017</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="http://github.com/trietphm" itemprop="url" rel="author">Triet Pham</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h1 id="data-system">Data system</h1>
+
+<ul>
+<li>Ngày nay do sự phát triển rất nhanh về phần cứng nên hầu hết các ứng dụng không còn phát triển theo hướng tối ưu hóa về tốc độ xử lý của CPU (compute-intensive), công nghệ hiện tại đã đủ và dư để đáp ứng hầu hết nhu cầu, thay vào đó sự bùng nổ thông tin đã mở ra kỷ nguyên về khai thác dữ liệu.<br /></li>
+<li>Các ứng dụng hầu hết đều xoay quanh vấn đề khai thác một cách triệt để data (data-intensive), với các nhu cầu phổ biến như:<br />
+
+<ul>
+<li>Lưu trữ và tìm kiếm dữ liệu (database)<br /></li>
+<li>Ghi nhớ tạm các dữ liệu tốn nhiều chi phí tính toán để tăng tốc độ đọc (caches)<br /></li>
+<li>Hổ trợ tìm kiếm tối đa theo nhiều cách (search indexs)<br /></li>
+<li>Gửi message đến các processes khác nhau, và có thể xử lý bất đồng bộ (stream processing)<br /></li>
+<li>Chạy và xử lý một lượng lớn dữ liệu theo định kỳ (batch processing)<br />
+<br /></li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>ddia_0101.png</p>
+</blockquote>
+
+<p>Và nhìn chung hệ thống cần đáp ứng được các yêu cầu sau</p>
+
+<h2 id="reliability">Reliability</h2>
+
+<ul>
+<li><p>Đảm bảo hệ thống luôn vận hành chính xác và đáng tin cậy kể cả có lỗi phát sinh, ví dụ:</p>
+
+<ul>
+<li>Thực thi được đúng chức năng như mong đợi của người dùng.<br /></li>
+<li>Có khả năng tolerate các lỗi từ người dùng hoặc lỗi phát sinh từ chính bên trong hệ thống.<br /></li>
+<li>Performance luôn ở mức đủ tốt cho các use case trong điều kiện khối lượng và độ tải của dữ liệu nằm trong khoảng đã ước lượng trước (vd ước lượng hệ thống sẽ hoạt động trơn tru khi data có dung lượng &lt; 100GB và độ load khoảng read 1 triệu records/s, write/update/delete ~ 50k records/s).<br /></li>
+<li>Đảm bảo ngăn chặn được mọi hành vi truy cập trái phép hoặc gây nhiễu.<br />
+<br /></li>
+</ul></li>
+
+<li><p>Lỗi phát sinh có thể bắt nguồn từ:</p>
+
+<ul>
+<li>Hardware: khả năng hư RAM, ổ cứng tuy không cao nhưng hoàn toàn có thể xảy ra<br /></li>
+<li>Software: bug luôn luôn tồn tại trong code<br /></li>
+<li>Human: theo thống kê 10-25% nguyên nhân làm hệ thống bị outages là do config sai (do người vận hành)<br />
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="scalability">Scalability</h2>
+
+<ul>
+<li>Thử tưởng tượng hệ thống đang hoạt động tốt với 100 users đồng thời, chuyện gì sẽ xảy ra nếu tăng lên thành 1000 users, 100000 users hay 1000000 users? Hệ thống hiện tại chưa chắc đã đáp ứng được nhưng nó cần có khả năng mở rộng để chuẩn bị cho việc đó.<br />
+
+<ul>
+<li>describe load<br /></li>
+<li>describe Performance<br /></li>
+</ul></li>
+<li>solution<br />
+<br /></li>
+</ul>
+
+<h2 id="maintainability">Maintainability</h2>
+
+<p>Hiểu đơn giản là làm cho hệ thống có thể control được tốt nhất, tạo ra các abstraction để giảm thiểu độ phức tạp trong việc quản lý hệ thống, dễ dàng vận hành, sửa chửa, thêm bớt tính năng. Đồng thời có thể monitor được tổng quát tình trạng hệ thống (system&rsquo;s health) để đưa ra các quyết định nhanh và chính xác nhất.</p>
+
+<ul>
+<li>Operability: được thiết kế sao cho team operation có thể dễ dàng vận hành hệ thống một cách trơn tru (monitor, track down cause of problems, keep things up to date, secure patches, perform complex maintaince tasks, Defining processes that make operations predictable and help keep the production environment stable, good practices &amp; tool for deployment, configuration management,&hellip;)<br /></li>
+<li>Simplicity: Đơn giản. Người mới khi join vào có thể hiểu được hệ thống một cách dễ dàng<br /></li>
+<li>Evolvability: hay nói cách khác là extensibility, hệ thống cho phép thay đổi dễ dàng trong tương lai để đáp ứng requirement<br />
+<br /></li>
+</ul>
+
+<h1 id="data-models-and-query-languages">Data Models and Query Languages</h1>
+
+<h2 id="data-models">Data Models</h2>
+
+<p>Hiện nay phổ biến nhất có thể kể đến 3 loại data models bao gồm:</p>
+
+<h3 id="relational">Relational:</h3>
+
+<ul>
+<li>Phát triển từ những năm 1970s, bên cạnh 2 loại khác là <em>network model</em> và <em>hierarchical model</em>, nhưng đã phát triển hơn, chiếm lĩnh vị trí đứng đầu và tiếp tục phát triển.<br /></li>
+<li>Lưu trữ data trong các tables và các table có các mối quan hệ với nhau (relationship), cho phép <code>join</code> để lấy dữ liệu.<br /></li>
+<li>Do xu hướng phát triển theo OOP nên dễ dẫn đến mismatch giữa application models và data models, thường giải quyết thông qua các ORM frameworks như ActiveRecord, Hibernate,&hellip; nhưng chỉ ở một mức nào đó chứ không hoàn toàn.<br /></li>
+<li>Được sử dụng phổ biến nhất hiện nay với nhiều loại database: MySQL, PostgreSQL, Oracle, MariaDB, SQLite,&hellip;<br /></li>
+<li>Ứng dụng cho rất nhiều mục đích khác nhau: forum, social network, ecommerce, games,&hellip;<br />
+<br /></li>
+</ul>
+
+<h3 id="document">Document:</h3>
+
+<ul>
+<li>Được sinh ra với mục đích scale dễ dàng hơn so với relational databases, hổ trợ tốt hơn với trữ lượng data lớn cũng như có tốc độ write tốt hơn.<br /></li>
+<li>Cho phép thực thi nhiều query mà relational databases chưa hổ trợ tốt.<br /></li>
+<li>Do không có relationship nên để thể hiện các mối hệ như one-to-many, many-to-many các child objects sẽ được lưu chính bên trong (nested) parent object. Điều đó vừa mang đến việc lợi và hại, một vài mặt đối lập với relational database<br />
+
+<ul>
+<li>Lợi:<br /></li>
+<li>Do các child objects đã được lưu trong parent object nên sẽ không tốn chi phí để <code>join</code> lấy data (normalization)<br /></li>
+<li>Flexible schema: mỗi record có thể có cấu trúc không giống nhau, lưu trữ dễ dàng hơn. Đồng thời việc đọc dữ liệu cũng không bị ràng buộc, cấu trúc object trả về phụ thuộc vào lúc read, schema-on-read, đây có thể coi như con dao hai lưỡi, vừa tốt vừa xấu. Trái ngược với Relational database là schema-on-write.<br /></li>
+<li>Hại:<br /></li>
+<li>Dữ liệu bị phân mảnh, khi cần cập nhật dữ liệu phải cập nhật ở toàn bộ records khác thay vì chỉ cần cập nhật referrence tables như ở relational database<br /></li>
+<li>Bị duplicate dữ liệu vì phải lưu ở nhiều nơi<br /></li>
+<li>Do cách lưu trữ nên mỗi record (document) thường sẽ rất lớn (chuỗi JSON, XML dài) và sẽ lãng phí tài nguyên nếu chỉ cần lấy một đoạn nhỏ trong record đó nhưng vẫn phải load toàn bộ record.<br /></li>
+</ul></li>
+<li>Các database được sử dụng rộng rãi: MongoDB, CouchDB, RethinkDB, Elasticsearch, Sorl&hellip;<br />
+<br /></li>
+</ul>
+
+<h3 id="graph">Graph:</h3>
+
+<ul>
+<li>Khi dữ liệu chứa hầu hết các objects có mối quan hệ many-to-many, có thể biểu diện mối liên hệ giữa các objects lên một graph (đồ thị)<br /></li>
+
+<li><p>Một graph bao gồm 2 đối tượng:</p>
+
+<ul>
+<li>Vertices - đỉnh (nodes or entities):<br /></li>
+<li>Các đỉnh không giống nhau (unique)<br /></li>
+<li>Có nhiều cạnh từ 1 đỉnh ra đỉnh khác<br /></li>
+<li>Có nhiều cạnh từ đỉnh khác đi vào 1 đỉnh<br /></li>
+
+<li><p>1 đỉnh có tập hợp nhiều properties (key-value pairs)</p></li>
+
+<li><p>Edges - cạnh (relationships or arcs) có đặc tính:</p></li>
+
+<li><p>Khác nhau (unique)</p></li>
+
+<li><p>Đỉnh mà cạnh bắt đầu (tail vertex)</p></li>
+
+<li><p>Đỉnh mà cạnh kết thúc (head vertex)</p></li>
+
+<li><p>Label để mô tả mối quan hệ giữa 2 đỉnh</p></li>
+
+<li><p>Tập hợp nhiều properties (key-value pairs)</p></li>
+</ul></li>
+
+<li><p>Một số database như: Neo4j, Titan, Datomic,&hellip;</p></li>
+</ul>
+
+<h3 id="hybrid-database">Hybrid database</h3>
+
+<p>Một số database hổ trợ đồng thời việc lưu trữ ở nhiều loại data models khác nhau như:<br />
+ - PostgreSQL (từ 9.3), MySQL (từ 5.7), IBM DB2 (từ 10.5) đã hổ trợ lưu trữ JSON (có thể thao tác như document model chứ không đơn thuần là raw text).<br />
+ - RethinkDB là document database nhưng vẫn support relational-like joins trong query, một số driver của MongoDB cũng support việc join, Arango support document &amp; graph models.</p>
+
+<h2 id="lựa-chọn-data-models-nào">Lựa chọn data models nào?</h2>
+
+<ul>
+<li>Không thể nói data model nào là tốt nhất, mỗi data models đều có một ưu điểm khác nhau và sẽ phù hợp cho những nhu cầu khác nhau, do đó tùy thuộc vào mục đích của app mà đưa ra lựa chọn thích hợp<br /></li>
+<li>Nếu dựa vào mối quan hệ giữa các đối tượng trong data có thể đưa ra lựa chọn như sau:<br />
+
+<ul>
+<li>Data ít có mối quan hệ lẫn nhau, ít có nhu cầu <code>join</code> để lấy dữ liệu, các đơn vị data riêng lẽ: Document model có thể là lựa chọn tốt, relational model vẫn có thể đáp ứng được.<br /></li>
+<li>Data có nhiều mối quan hệ, mỗi item trong data đều có liên quan lẫn nhau: Document model là lựa chọn không tốt, trong khi đó relational model vẫn chấp nhận được và graph models sẽ thể hiện một cách tự nhiên nhất.<br /></li>
+<li>Data mix nhiều loại, không quá nhiều cũng không quá ít mối quan hệ: Không ảnh hưởng nhiều lắm vì việc xử lý dữ liệu vẫn có thể thực hiện được. VD nếu cần join ở document model có thể xử lý trên application code, relational model vẫn có thể thao tác graph-query.<br />
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="query-language">Query language</h2>
+
+<h1 id="storage-and-retrieval">Storage and Retrieval</h1>
+
+<h2 id="data-structures-index">Data structures: index</h2>
+
+<p>Giả sử ta có một database key-value đơn giản được thiết kế bằng đoạn code sau:</p>
+
+<pre><code>#!/bin/bash
+    db_set () {
+        echo &quot;$1,$2&quot; &gt;&gt; database
+}
+    db_get () {
+        grep &quot;^$1,&quot; database | sed -e &quot;s/^$1,//&quot; | tail -n 1
+}
+</code></pre>
+
+<p>Lưu dữ liệu bằng command <code>db_set key value</code></p>
+
+<pre><code>$ db_set 123 '{&quot;name&quot;:&quot;dog&quot;,&quot;talk&quot;:&quot;bark&quot;}'
+$ db_set 46 '{&quot;name&quot;:&quot;cat&quot;,&quot;talk&quot;:&quot;mew&quot;}'
+$ db_set 46 '{&quot;name&quot;:&quot;cat&quot;,&quot;talk&quot;:&quot;mew mew&quot;}'
+</code></pre>
+
+<p>Lấy dữ liệu <code>db_get key value</code></p>
+
+<pre><code>$ db_get 46
+{&quot;name&quot;:&quot;cat&quot;,&quot;talk&quot;:&quot;mew mew&quot;}
+</code></pre>
+
+<p>Kiểm tra database</p>
+
+<pre><code>$ cat database
+123,{&quot;name&quot;:&quot;dog&quot;,&quot;talk&quot;:&quot;bark&quot;}
+46,{&quot;name&quot;:&quot;cat&quot;,&quot;talk&quot;:&quot;mew&quot;}
+46,{&quot;name&quot;:&quot;cat&quot;,&quot;talk&quot;:&quot;mew mew&quot;}
+</code></pre>
+
+<ul>
+<li>Hoàn toàn có thể sử dụng được và nếu chỉ để lưu trữ thì có thể nói performance khá tốt vì chỉ append vào cuối file, cách hoạt động tương tự như việc log của database nhưng đơn giản hơn vì không có các vấn đề như concurrency control, lấy lại dữ liệu khi log tăng dần, xử lý lỗi, write partial,&hellip;<br /></li>
+<li>Data mới sẽ được append-only và file database sẽ ngày một lớn hơn (vd update 1 key 100 lần đồng nghĩa append 100 lần)<br /></li>
+<li>Phải tốn nhiều thời gian để tìm được dữ liệu mong muốn, độ phức tạp là O(n). VD nếu <code>database</code> có 2000 dòng thì để lấy được record ở vị trí 2000 (append vào cuối cùng) phải đọc toàn bộ file <code>database</code> để kiểm tra (grep) và lấy được dữ liệu. Và cách giải quyết trong trường hợp này là sử dụng index.<br /></li>
+<li>Index là một meta data, sẽ trỏ chính xác vào vị trí data cần tìm<br />
+<br /></li>
+</ul>
+
+<h3 id="hash-index">Hash index</h3>
+
+<p>Giả sử ta có một hash table như bên dưới, và hash table này sẽ được lưu trữ trong memory (RAM) để tăng tốc độ truy xuất<br />
+<ddia_0301></p>
+
+<ul>
+<li>Mỗi <code>key</code> sẽ tương ứng với vị trí <code>byte offset</code> trong <code>database</code><br /></li>
+<li>Để lấy dữ liệu của <code>key</code> ta chỉ cần lấy <code>byte offet</code> trong memory và đọc file <code>database</code> từ vị trí <code>byte offset</code> =&gt; Tiết kiệm được rất nhiều thời gian, chỉ cần 1 disk seek thay vì phải đọc toàn bộ file<br /></li>
+<li>Mỗi khi có thao tác thêm/sửa/xóa dữ liệu trong <code>database</code> cũng đồng thời cập nhật lại <code>index</code><br /></li>
+<li>Trên thực tế đây cũng là cách mà Bitcask (default storage engine của Riak) hoạt động<br />
+<br /></li>
+</ul>
+
+<h4 id="compaction">Compaction</h4>
+
+<ul>
+<li>Do file <code>database</code> (log) hiện tại là <code>append-only</code> nên càng có nhiều thay đổi thì file size sẽ càng lớn hơn<br /></li>
+<li>Cách giải quyết sẽ là chia nhỏ file log ra thành nhiều <code>segments</code> với một kích thước nhất định, khi một <code>segment</code> append đến kích thước giới hạn thì data mới sẽ được append vào file mới.<br /></li>
+<li>Các file segment sẽ được <code>compact</code> lại bằng cách lọc bớt dữ liệu, chỉ giữ lại giá trị mới nhất ở mỗi key<br />
+<br /></li>
+</ul>
+
+<p><ddia_0302></p>
+
+<ul>
+<li>Quá trình <code>compact</code> sẽ lưu dữ liệu vào một file mới, và những <code>segments</code> mới này sẽ gọn nhẹ hơn nên có thể merge lại với nhau, quá trình merge và compact có thể thực hiện đồng thời<br />
+<br /></li>
+</ul>
+
+<p><ddia_0303></p>
+
+<ul>
+<li>Khi mọi thứ hoàn tất các file <code>segments</code> cũ có thể xóa đi, các request read sẽ chuyển sang các file mới.<br /></li>
+<li>Mỗi <code>segment</code> mới được tạo ra cũng đồng thời tạo index riêng cho mỗi segment.<br /></li>
+<li>Việc read sẽ đọc trên từng file index bắt đầu từ file mới nhất cho đến khi tìm thấy<br />
+<br /></li>
+</ul>
+
+<h4 id="issues">Issues</h4>
+
+<p>Ý tưởng đơn giản, có vẻ hiệu quả nhưng cũng đi kèm với nhiều vấn đề:<br />
+- File format: CSV có thể sẽ được nhiều người nghĩ đến, nhưng việc lưu trữ bằng binary sẽ cho nhanh và đơn giản hơn.<br />
+- Delete: do append-only nên để đánh dấu một <code>key</code>đã bị xóa, thường <code>value</code> của <code>key</code> đó sẽ là một giá trị đặc biệt gọi là <code>tombstone</code>. Nếu request đến <code>key</code> có giá trị <code>tombstone</code> sẽ return về <code>not found</code>. Và quá trình merge sẽ loại bỏ các <code>tombstone</code> này và các giá trị được lưu trữ trước đó (từ thời điểm mark <code>tombstone</code> trở về trước).<br />
+- Crash recovery: Nếu restart database đồng nghĩa với việc hash maps trong memory sẽ mất và dĩ nhiên việc đọc lại toàn bộ <code>segments</code> từ đầu để tạo index sẽ tốn rất nhiều thời gian, Bitcask giải quyết bằng cách định kỳ snapshot index xuống file và read lên lại khi restart database.<br />
+- Partially written records: giả sử database bị crash trong lúc mới chỉ append data được một nữa, sẽ tạo ra corrupt data. Bitcask tạo checksums trước khi append và sẽ check+ignore corrupt data.<br />
+- Cách append-only có vẻ lãng phí so với việc overwrite lại các giá trị cũ nhưng xem xét kỹ thì có nhiều ưu điểm:<br />
+ - Do append-only nên việc cập nhật dữ liệu hoặc quá trình compact, merge đều là sequential write operations, nhanh hơn so với việc tìm và update - random write.<br />
+ - Concurrency &amp; crash recovery cũng sẽ đơn giản hơn, thử tưởng tượng trường hợp đang overwrite data thì database bị crash, đồng nghĩa với việc data cũ &amp; mới đều bị corrupt.<br />
+ - Merge segments data file làm cho dữ liệu hạn chế việc bị fragment theo thời gian<br />
+- Hash table phải chứa đủ trong memory, mặc dù có thể lưu ở disk nhưng chi phí random access I/O sẽ cao hơn, đồng thời việc cập nhật hashmap trong các trường hợp như hash collision sẽ phức tạp hơn.<br />
+- Không thể range query được (vd lấy từ id = 10 đến id = 100), chỉ có thể gọi và lấy từng key một</p>
+
+<h3 id="sstables-lsm-tree">SSTables &amp; LSM-Tree</h3>
+
+<h3 id="b-trees">B-Trees</h3>
+
+<h2 id="transaction-processing-or-analytic">Transaction Processing or Analytic</h2>
+
+<h2 id="column-oriented-storage">Column-Oriented storage</h2>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/database/">database</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Foundation%20of%20data%20system&url=https%3a%2f%2ftrietphm.github.io%2fpost%2fdata%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftrietphm.github.io%2fpost%2fdata%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2ftrietphm.github.io%2fpost%2fdata%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Tea, Coffee &amp; Code" href="https://trietphm.github.io/">Tea, Coffee &amp; Code</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2017 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://trietphm.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+        <script src="https://trietphm.github.io/js/jquery.fitvids.js"></script>
+        <script src="https://trietphm.github.io/js/scripts.js"></script>
+    </body>
+</html>
+
