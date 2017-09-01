@@ -55,8 +55,8 @@ Hiểu đơn giản là làm cho hệ thống có thể control được tốt n
 Hiện nay phổ biến nhất có thể kể đến 3 loại data models bao gồm: 
 ### Relational:
 
- - Phát triển từ những năm 1970s, bên cạnh 2 loại khác là *network model* và *hierarchical model*, nhưng đã phát triển hơn, chiếm lĩnh vị trí đứng đầu và tiếp tục phát triển.
- - Lưu trữ data trong các tables và các table có các mối quan hệ với nhau (relationship), cho phép `join` để lấy dữ liệu.
+ - Được phát triển từ những năm 1970s, bên cạnh 2 loại khác là *network model* và *hierarchical model*, nhưng đã đè bẹp 2 loại kia, chiếm lĩnh vị trí đứng đầu và tiếp tục đến ngày nay.
+ - Lưu trữ data trong các tables và giữa các tables có các mối quan hệ với nhau (relationship), cho phép `join` để lấy dữ liệu.
  - Do xu hướng phát triển theo OOP nên dễ dẫn đến mismatch giữa application models và data models, thường giải quyết thông qua các ORM frameworks như ActiveRecord, Hibernate,... nhưng chỉ ở một mức nào đó chứ không hoàn toàn.
  - Được sử dụng phổ biến nhất hiện nay với nhiều loại database: MySQL, PostgreSQL, Oracle, MariaDB, SQLite,...
  - Ứng dụng cho rất nhiều mục đích khác nhau: forum, social network, ecommerce, games,...
@@ -69,7 +69,7 @@ Hiện nay phổ biến nhất có thể kể đến 3 loại data models bao g�
    - Do các child objects đã được lưu trong parent object nên sẽ không tốn chi phí để `join` lấy data (normalization)
    - Flexible schema: mỗi record có thể có cấu trúc không giống nhau, lưu trữ dễ dàng hơn. Đồng thời việc đọc dữ liệu cũng không bị ràng buộc, cấu trúc object trả về phụ thuộc vào lúc read, schema-on-read, đây có thể coi như con dao hai lưỡi, vừa tốt vừa xấu. Trái ngược với Relational database là schema-on-write.
   - Hại:
-   - Dữ liệu bị phân mảnh, khi cần cập nhật dữ liệu phải cập nhật ở toàn bộ records khác thay vì chỉ cần cập nhật referrence tables như ở relational database
+   - Dữ liệu bị phân mảnh, khi cần cập nhật dữ liệu phải cập nhật ở toàn bộ records khác thay vì chỉ cần cập nhật reference tables như ở relational database
    - Bị duplicate dữ liệu vì phải lưu ở nhiều nơi
    - Do cách lưu trữ nên mỗi record (document) thường sẽ rất lớn (chuỗi JSON, XML dài) và sẽ lãng phí tài nguyên nếu chỉ cần lấy một đoạn nhỏ trong record đó nhưng vẫn phải load toàn bộ record.
  - Các database được sử dụng rộng rãi: MongoDB, CouchDB, RethinkDB, Elasticsearch, Sorl...
@@ -233,12 +233,13 @@ Các key được sort theo Alphabelt
 ### B-Trees
 
 - Được giới thiệu từ năm 1970 và trở thành Indexing structure được sử dụng phổ biến nhất.
+- Dùng trong rất nhiều loại database như MySQL, PostgreSQL, Oracle, SQLite,...
 - Tương tự như LSM-Tree, B-trees cũng lưu sorted key-value nhưng thay vì lưu thành những file segments liên tiếp có dung lượng khoảng vài MBs, B-Trees chia nhỏ dữ liệu thành các fixed-size blocks hoặc pages, thông thường là 4KB, read/write sẽ thực hiện trên toàn page 1 lúc. Thiết kế này giống với ổ cứng cũng sắp xếp dữ liệu theo các fixed-size blocks.
-- Mỗi page được xác định bằng địa chỉ, một page có thể trỏ đến những child pages. Mỗi child page lưu trữ một dãy keys, và mỗi referrence giữa các 2 keys trỏ đến child page chứa các key nằm giữ 2 keys đó.
+- Mỗi page được xác định bằng địa chỉ, một page có thể trỏ đến những child pages. Mỗi child page lưu trữ một dãy keys, và mỗi reference giữa các 2 keys trỏ đến child page chứa các key nằm giữ 2 keys đó.
 - Một page được gọi là root của B-tree, mọi hành động tìm kiếm đều bắt nguồn từ page này.
 - Leaf page sẽ chứa value của key cần tìm
 - Update dữ liệu => tìm leaf page chứa key, change value của page và write page ngược lại disk.
-- Thêm dữ liệu => tìm pages chứa range keys tương ứng với key đó và add vào page, nếu page không đủ vùng nhớ sẽ tách ra thành 2 pages mới và parent page sẽ thêm một key với 2 referrences trỏ vào 2 pages con mới => Luôn đảm bảo cây được cân bằng.
+- Thêm dữ liệu => tìm pages chứa range keys tương ứng với key đó và add vào page, nếu page không đủ vùng nhớ sẽ tách ra thành 2 pages mới và parent page sẽ thêm một key với 2 references trỏ vào 2 pages con mới => Luôn đảm bảo cây được cân bằng.
 
 #### Reliable
 - Page luôn được overwrite mỗi khi có dữ liệu mới, có thể một hoặc nhiều pages được overwrite sau mỗi operation.
@@ -250,20 +251,46 @@ Các key được sort theo Alphabelt
 - B-tree phải write data 2 lần: 1 cho WAL và 1 cho tree pages (và có thể thêm 1 lần nữa nếu phải chia nhỏ page)
 
 B-Tree ra đời rất lâu nên có rất nhiều biện pháp cải tiến được áp dụng, một trong số đó như:
-- Thay vì overwrite pages và dùng WAL cho crash recovery, một số database như LMDB sử dụng copy-on-write, một page mới sẽ được tạo ra và referrence cũ sẽ được trỏ đến page mới.
+- Thay vì overwrite pages và dùng WAL cho crash recovery, một số database như LMDB sử dụng copy-on-write, một page mới sẽ được tạo ra và reference cũ sẽ được trỏ đến page mới.
 - Để tăng tốc độ đọc (giảm random read, tăng sequential read), có thể giữ cho các key liên tiếp nhau nằm ở gần nhau trong ổ cứng.
-- Bổ sung thêm pointer để giảm chi phí scanning, vd bổ sung thêm referrence đến các pages liền kề.
-
-
+- Bổ sung thêm pointer để giảm chi phí scanning, vd bổ sung thêm reference đến các pages liền kề.
 
 ### B-Tree or LSM-tree?
 - Trên lý thuyết mà nói LSM-Tree nhanh hơn khi write và B-Tree nhanh hơn khi reads, vì LSM-Tree phải check rất nhiều data structure để lấy được thông tin.
 
 ### Other Indexing Structures
 #### Stroring values within the index
+
+- Mỗi cặp key-value thay vì lưu value có thể lưu một reference đến một nơi khác chứa data, vùng chứa data này được gọi là **heapfile**
+- **Heapfile** sẽ giúp hạn chế được việc duplicate dữ liệu khi có từ 2 indexes trở lên tồn tại, mỗi index sẽ chỉ trỏ đến một **heapfile** thay vì phải nhân đôi dữ liệu ở cả 2 index.
+- Và dĩ nhiên quá trình update cũng thuận lợi hơn, chỉ cần update ở 1 nơi duy nhất.
+- Trong một vài trường hợp, từ file index phải jump qua rất nhiều node để đi đến được **heapfile**. Do đó, để tiết kiệm thời gian, một key có thể lưu index trực tiếp đến một index khác, và index này sẽ trỏ thẳng xuống heapfile được gọi là `Clustered index`. VD trong MySQL's InnoDB storage engine, primary key là clustered index, and các index khác sẽ trỏ đến primary key thay vì trỏ đến heapfile.
+
 #### Multi-column indexes
+- Các thông tin bên trên chỉ xét đến việc index trong một column, còn với nhu cầu index multi-column sẽ khác.
+- Cách phổ biến nhất gọi là **concatenated index**, tập hợp nhiều fields vào trong một key, và các fields sẽ được nối lại với nhau theo thứ tự. VD index cho một table `users` với 2 columns `firstname`, `lastname` => multi-column index `users_firstname_lastname_idx(firstname,lastname)`, việc tìm kiếm đầu tiên sẽ tìm theo index `firstname` rồi đến `lastname`, tuy nhiên sẽ không thể tìm bắt đầu từ `lastname`.
+- Ngoài ra còn nhiều cách khác như sử dụng R-Tree cho việc index geolocation (PostGIS) 
+
 #### Full-text search & fuzzy indexes
+- Khác với các loại index khác sẽ tìm một giá trị chính xác, full-text search chỉ để tìm một hoặc một vài từ trong document, fuzzy search để tìm các từ giống hoặc _tương tự_ (vd do viết sai chính tả)
+- Lucene sử dụng một cấu trúc tương tự như SSTable để làm index full-text
+- Fuzzy search đòi hỏi phải sử dụng nhiều kỹ thuật hơn và thuộc về nhóm document classification và machine learning.
 
 ## Transaction Processing or Analytic
+
+- Transaction: access pattern phổ biến nhất, bắt nguồn từ commercial transaction phục vụ cho việc đặt hàng, thanh toán,... và mở rộng ra hơn thành khái niệm logic về read và write, hoạt động của database được diễn ra thông qua sự tương tác của application hay đúng hơn là input từ phía người dùng => Access pattern này được gọi là **Online transaction processing (OLTP)**.
+- Analytic: data ngày càng lớn và phát sinh nhu cầu trong việc phân tích nguồn data này để tìm ra insight cần thiết cho bussiness. Thường phải scan qua toàn bộ records để có được những tính toán thống kê như đếm, tình tổng, trung bình,... trên một hoặc nhiều columns, từ đây đưa ra những report phục vụ cho _business intelligent_. => Access pattern này được gọi là **Online analytic processing (OLAP)** .
+
+| Property        | OLTP           | OLAP |
+| --------------- |:--------------:| -----:|
+| Main read pattern 	| Small number of records per query, fetched by key | Aggregate over large number of records 	|
+| Main write pattern 	| Random-access, low-latency writes from user input | Bulk import (ETL) or event stream			|
+| Primarily used by 	| End user/customer, via web application | Internal analyst, for decision support	|
+| What data represents 	| Latest state of data (current point in time)		| History of events that happened over time |
+| Dataset size		| Gigabytes to terabytes | Terabytes to petabytes					|
+
+### Datawarehousing
+### Schemas for Analytic
+
 
 ## Column-Oriented storage
