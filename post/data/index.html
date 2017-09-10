@@ -516,8 +516,8 @@ Các key được sort theo Alphabelt</p>
 <h2 id="transaction-processing-or-analytic">Transaction Processing or Analytic</h2>
 
 <ul>
-<li>Transaction: access pattern phổ biến nhất, bắt nguồn từ commercial transaction phục vụ cho việc đặt hàng, thanh toán,&hellip; và mở rộng ra hơn thành khái niệm logic về read và write, hoạt động của database được diễn ra thông qua sự tương tác của application hay đúng hơn là input từ phía người dùng =&gt; Access pattern này được gọi là <strong>Online transaction processing (OLTP)</strong>.<br /></li>
-<li>Analytic: data ngày càng lớn và phát sinh nhu cầu trong việc phân tích nguồn data này để tìm ra insight cần thiết cho bussiness. Thường phải scan qua toàn bộ records để có được những tính toán thống kê như đếm, tình tổng, trung bình,&hellip; trên một hoặc nhiều columns, từ đây đưa ra những report phục vụ cho <em>business intelligent</em>. =&gt; Access pattern này được gọi là <strong>Online analytic processing (OLAP)</strong> .<br />
+<li>Transaction: Access pattern phổ biến nhất được gọi là <strong>Online transaction processing (OLTP)</strong>, bắt nguồn từ commercial transaction phục vụ cho việc đặt hàng, thanh toán,&hellip; và mở rộng ra hơn thành khái niệm logic về read và write, hoạt động của database được diễn ra thông qua sự tương tác của application hay đúng hơn là input từ phía người dùng.<br /></li>
+<li>Analytic: Access pattern này được gọi là <strong>Online analytic processing (OLAP)</strong>. Data ngày càng lớn và phát sinh nhu cầu trong việc phân tích nguồn data này để tìm ra insight cần thiết cho bussiness. Thường phải scan qua toàn bộ records để có được những tính toán thống kê như đếm, tình tổng, trung bình,&hellip; trên một hoặc nhiều columns, từ đây đưa ra những report phục vụ cho <em>business intelligent</em>.<br />
 <br /></li>
 </ul>
 
@@ -563,11 +563,97 @@ Các key được sort theo Alphabelt</p>
 </tbody>
 </table>
 
-<h3 id="datawarehousing">Datawarehousing</h3>
+<h3 id="datawarehouse-schemas-for-analytic">Datawarehouse &amp;&amp; Schemas for Analytic</h3>
 
-<h3 id="schemas-for-analytic">Schemas for Analytic</h3>
+<h4 id="datawarehouse">Datawarehouse</h4>
+
+<ul>
+<li>Quá trình xử lý dữ liệu của OLAP thường tốn khá nhiều tài nguyên (vd những thống kê cần query toàn bộ data, tính tổng, trung bình,&hellip;), nếu cùng truy xuất vào chung dữ liệu với OLTP sẽ ảnh hưởng đến việc đảm bảo cho OLTP low latency và high avaibility.<br /></li>
+
+<li><p>Bên cạnh đó với hệ thống phức tạp data thường phân bổ ở nhiều hệ thống nhỏ cũng gây nhiều khó khăn cho việc tính toán.<br />
+=&gt; Datawarehouse ra đời với mục đích phân tách và tổng hợp dữ liệu phục vụ riêng cho OLAP và hầu hết data model của datawarehouse là Relational vì SQL thích hợp và thuận tiện hơn cho các analytic query.</p>
+
+<h4 id="schemas-for-analytic">Schemas for analytic</h4></li>
+
+<li><p>Thường datawarehouse sử dụng schema gọi là <strong>star schema</strong> (dimensional modeling). Sẽ có một table gọi là <em>fact table</em>, là table trung tâm, chứa toàn bộ mọi event trong hệ thống, mọi thứ đều được lưu ở dây. Mỗi row sẽ chứa các identity cần thiết trỏ đến các table con, như VD bên dưới<br />
+&gt; Image</p></li>
+
+<li><p>Mỗi fact table có thể có dung lượng rất lớn, đồng thời có thể có hơn 100 columns đủ để có thể trả lời được câu hỏi <em>who, what, when, where, how &amp; why</em> của event đó.</p></li>
+
+<li><p>Một số column trong fact table có thể là attribute column (price, amount,&hellip;), phần còn lại thường là foreign keys trỏ đến các table vệ tinh (dimension table).</p></li>
+
+<li><p>Ngoài ra còn có biến thể khác của star schema gọi là <strong>snowflake schema</strong>. Thay vì mỗi dimension table sẽ được chia nhỏ thành các sub dimension tables thay vì chỉ lưu string data ở một table. Thường thì star schema sẽ được dùng nhiều hơn vì thuận tiện hơn cho việc analytic.</p></li>
+</ul>
 
 <h2 id="column-oriented-storage">Column-Oriented storage</h2>
+
+<h3 id="idea">Idea</h3>
+
+<ul>
+<li>Khi cần query từ fact table, hầu hết trường hợp không sử dụng hết data trong toàn bộ columns, vd fact table có 100 columns, và cần tính tổng doanh thu trong 1 ngày, query chỉ quan tâm đến 2 column là price và date, theo thông thường sẽ có 2 index ở 2 column này. Nhưng với cách lưu trữ data như trên, mỗi row sẽ được lưu cạnh nhau, thì cần phải load, parse, filter toàn bộ 100 column còn lại =&gt; Tốn thời gian và tài nguyên không cần thiết.<br /></li>
+<li>Column-Oriented storage là giải pháp cho vấn đề này: data trong mỗi column sẽ được lưu chung trong một file, mỗi column tương ứng với một file nhất định. =&gt; Query chỉ load, parse, filter trong 1 file.<br />
+&gt; Image<br />
+<br /></li>
+</ul>
+
+<h3 id="column-compression">Column compression</h3>
+
+<ul>
+<li>Do data đã được lưu theo cột nên có thể compress dữ liệu lại bằng bitmap encoding.<br /></li>
+<li>Bên cạnh việc tiết kiệm được bộ nhớ lưu trữ, còn giúp tiết kiệm được memory bandwidth và tối ưu được CPU (vectorized processing)<br />
+<br /></li>
+</ul>
+
+<h3 id="sort-order">Sort order</h3>
+
+<ul>
+<li>Có thể make index bằng cách tương tự như SSTable, tuy nhiên không thể sort theo mỗi column độc lập khác nhau vì data lưu theo cột đồng nghĩa với việc chỉ biết một item ở vị trí <code>n</code> ở column này cùng hàng với item ở vị trí <code>n</code> của column kia, nếu muốn sort phải reconstruct lại toàn bộ data theo thứ tự sort mới.<br /></li>
+<li>Do đó phải chọn trước column muốn sort khi tạo table và có chiến lược phù hợp để đáp ứng được nhu cầu trong tương lai<br />
+<br /></li>
+</ul>
+
+<h3 id="writing-data">Writing data</h3>
+
+<ul>
+<li>Column-Oriented storage, compression, sorting giúp cho việc query read nhanh và hiệu quả hơn, tuy nhiên lại mang đến bất lợi cho việc insert. VD insert một giá trị trung bình vào giữa column price sẽ phải reconstruct lại toàn bộ các giá trị khác.<br /></li>
+<li>Giải pháp được đưa ra bằng cách dùng LSM-Trees, write to memory, bulk write vaf merges với các column files trên disk.<br />
+<br /></li>
+</ul>
+
+<h3 id="aggregation-data-cubes-and-materialized-views">Aggregation: Data Cubes and Materialized Views</h3>
+
+<ul>
+<li>Nhiều query như COUNT, SUM, AVG, MIN, MAX&hellip; thường đòi hỏi phải scan qua toàn bộ dữ liệu để có thể tính được kết quả mong muốn và hiển nhiên phải tốn nhiều thời gian và tài nguyên.<br /></li>
+<li>Data cubes: tạo sẳn một <code>cube</code> dữ liệu mới dựa trên hai hoặc nhiều dimensions. Vd như table bên dưới, là số lượng sản phẩm bán ra của mỗi <code>product_id</code> tương ứng với một <code>date_id</code> và <code>total</code> ở mỗi column/row tương ứng với tổng cộng số sản phẩm bán ra ở mỗi column/row.<br />
+<br /></li>
+</ul>
+
+<pre><code>	product_id
++-------+------+------+------+-----+-------+
+|       |  31  |  32  |  33  | ... | total |
++-------+------+------+------+-----+-------+
+| 1411  |   44 |   56 |   88 | ... | 233   |
++-------+------+------+------+-----+-------+
+| 1412  |  123 |  344 |  121 | ... | 785   |
++-------+------+------+------+-----+-------+
+| 1413  |  273 |   22 |   11 | ... | 992   |
++-------+------+------+------+-----+-------+
+| ...   |  ... |  ... |  ... | ... | ...   |
++-------+------+------+------+-----+-------+
+| total | 2344 | 3432 | 3452 | ... | TOTAL |
++-------+------+------+------+-----+-------+
+date_id
+
+
+</code></pre>
+
+<ul>
+<li>Tuy nhiên cách trên chỉ đáp ứng được cho một vài câu query nhất định<br /></li>
+<li>Materialized views: Kết quả của một câu query sẽ được lưu lại thành một temporary table, giống như <code>view</code> nhưng thay vì phải query aggregate lại data thì data sẽ được lưu lại riêng.<br />
+<br /></li>
+</ul>
+
+<h1 id="encoding-evolution">Encoding &amp; Evolution</h1>
 
 </div>
 
@@ -611,6 +697,24 @@ Các key được sort theo Alphabelt</p>
 </footer>
 
         
+    <div class="comments">
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'trietpham';
+    var disqus_identifier = 'https:\/\/trietphm.github.io\/post\/data\/';
+    var disqus_title = 'Foundation of data system';
+    var disqus_url = 'https:\/\/trietphm.github.io\/post\/data\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
     </article>
 </div>
 

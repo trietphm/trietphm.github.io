@@ -278,8 +278,8 @@ B-Tree ra đời rất lâu nên có rất nhiều biện pháp cải tiến đ�
 
 ## Transaction Processing or Analytic
 
-- Transaction: access pattern phổ biến nhất, bắt nguồn từ commercial transaction phục vụ cho việc đặt hàng, thanh toán,... và mở rộng ra hơn thành khái niệm logic về read và write, hoạt động của database được diễn ra thông qua sự tương tác của application hay đúng hơn là input từ phía người dùng => Access pattern này được gọi là **Online transaction processing (OLTP)**.
-- Analytic: data ngày càng lớn và phát sinh nhu cầu trong việc phân tích nguồn data này để tìm ra insight cần thiết cho bussiness. Thường phải scan qua toàn bộ records để có được những tính toán thống kê như đếm, tình tổng, trung bình,... trên một hoặc nhiều columns, từ đây đưa ra những report phục vụ cho _business intelligent_. => Access pattern này được gọi là **Online analytic processing (OLAP)** .
+- Transaction: Access pattern phổ biến nhất được gọi là **Online transaction processing (OLTP)**, bắt nguồn từ commercial transaction phục vụ cho việc đặt hàng, thanh toán,... và mở rộng ra hơn thành khái niệm logic về read và write, hoạt động của database được diễn ra thông qua sự tương tác của application hay đúng hơn là input từ phía người dùng.
+- Analytic: Access pattern này được gọi là **Online analytic processing (OLAP)**. Data ngày càng lớn và phát sinh nhu cầu trong việc phân tích nguồn data này để tìm ra insight cần thiết cho bussiness. Thường phải scan qua toàn bộ records để có được những tính toán thống kê như đếm, tình tổng, trung bình,... trên một hoặc nhiều columns, từ đây đưa ra những report phục vụ cho _business intelligent_.
 
 | Property        | OLTP           | OLAP |
 | --------------- |:--------------:| -----:|
@@ -289,8 +289,66 @@ B-Tree ra đời rất lâu nên có rất nhiều biện pháp cải tiến đ�
 | What data represents 	| Latest state of data (current point in time)		| History of events that happened over time |
 | Dataset size		| Gigabytes to terabytes | Terabytes to petabytes					|
 
-### Datawarehousing
-### Schemas for Analytic
+### Datawarehouse && Schemas for Analytic 
+#### Datawarehouse
+- Quá trình xử lý dữ liệu của OLAP thường tốn khá nhiều tài nguyên (vd những thống kê cần query toàn bộ data, tính tổng, trung bình,...), nếu cùng truy xuất vào chung dữ liệu với OLTP sẽ ảnh hưởng đến việc đảm bảo cho OLTP low latency và high avaibility.
+- Bên cạnh đó với hệ thống phức tạp data thường phân bổ ở nhiều hệ thống nhỏ cũng gây nhiều khó khăn cho việc tính toán.
+=> Datawarehouse ra đời với mục đích phân tách và tổng hợp dữ liệu phục vụ riêng cho OLAP và hầu hết data model của datawarehouse là Relational vì SQL thích hợp và thuận tiện hơn cho các analytic query.
+#### Schemas for analytic
 
+- Thường datawarehouse sử dụng schema gọi là **star schema** (dimensional modeling). Sẽ có một table gọi là _fact table_, là table trung tâm, chứa toàn bộ mọi event trong hệ thống, mọi thứ đều được lưu ở dây. Mỗi row sẽ chứa các identity cần thiết trỏ đến các table con, như VD bên dưới
+> Image
+- Mỗi fact table có thể có dung lượng rất lớn, đồng thời có thể có hơn 100 columns đủ để có thể trả lời được câu hỏi _who, what, when, where, how & why_ của event đó.
+- Một số column trong fact table có thể là attribute column (price, amount,...), phần còn lại thường là foreign keys trỏ đến các table vệ tinh (dimension table).
+- Ngoài ra còn có biến thể khác của star schema gọi là **snowflake schema**. Thay vì mỗi dimension table sẽ được chia nhỏ thành các sub dimension tables thay vì chỉ lưu string data ở một table. Thường thì star schema sẽ được dùng nhiều hơn vì thuận tiện hơn cho việc analytic.
 
 ## Column-Oriented storage
+### Idea
+- Khi cần query từ fact table, hầu hết trường hợp không sử dụng hết data trong toàn bộ columns, vd fact table có 100 columns, và cần tính tổng doanh thu trong 1 ngày, query chỉ quan tâm đến 2 column là price và date, theo thông thường sẽ có 2 index ở 2 column này. Nhưng với cách lưu trữ data như trên, mỗi row sẽ được lưu cạnh nhau, thì cần phải load, parse, filter toàn bộ 100 column còn lại => Tốn thời gian và tài nguyên không cần thiết.
+- Column-Oriented storage là giải pháp cho vấn đề này: data trong mỗi column sẽ được lưu chung trong một file, mỗi column tương ứng với một file nhất định. => Query chỉ load, parse, filter trong 1 file.
+ > Image
+
+### Column compression
+- Do data đã được lưu theo cột nên có thể compress dữ liệu lại bằng bitmap encoding.
+- Bên cạnh việc tiết kiệm được bộ nhớ lưu trữ, còn giúp tiết kiệm được memory bandwidth và tối ưu được CPU (vectorized processing)
+
+### Sort order
+- Có thể make index bằng cách tương tự như SSTable, tuy nhiên không thể sort theo mỗi column độc lập khác nhau vì data lưu theo cột đồng nghĩa với việc chỉ biết một item ở vị trí `n` ở column này cùng hàng với item ở vị trí `n` của column kia, nếu muốn sort phải reconstruct lại toàn bộ data theo thứ tự sort mới.
+- Do đó phải chọn trước column muốn sort khi tạo table và có chiến lược phù hợp để đáp ứng được nhu cầu trong tương lai
+
+### Writing data
+
+- Column-Oriented storage, compression, sorting giúp cho việc query read nhanh và hiệu quả hơn, tuy nhiên lại mang đến bất lợi cho việc insert. VD insert một giá trị trung bình vào giữa column price sẽ phải reconstruct lại toàn bộ các giá trị khác.
+- Giải pháp được đưa ra bằng cách dùng LSM-Trees, write to memory, bulk write vaf merges với các column files trên disk.
+
+### Aggregation: Data Cubes and Materialized Views
+
+- Nhiều query như COUNT, SUM, AVG, MIN, MAX... thường đòi hỏi phải scan qua toàn bộ dữ liệu để có thể tính được kết quả mong muốn và hiển nhiên phải tốn nhiều thời gian và tài nguyên.
+- Data cubes: tạo sẳn một `cube` dữ liệu mới dựa trên hai hoặc nhiều dimensions. Vd như table bên dưới, là số lượng sản phẩm bán ra của mỗi `product_id` tương ứng với một `date_id` và `total` ở mỗi column/row tương ứng với tổng cộng số sản phẩm bán ra ở mỗi column/row.
+
+```
+	product_id
++-------+------+------+------+-----+-------+
+|       |  31  |  32  |  33  | ... | total |
++-------+------+------+------+-----+-------+
+| 1411  |   44 |   56 |   88 | ... | 233   |
++-------+------+------+------+-----+-------+
+| 1412  |  123 |  344 |  121 | ... | 785   |
++-------+------+------+------+-----+-------+
+| 1413  |  273 |   22 |   11 | ... | 992   |
++-------+------+------+------+-----+-------+
+| ...   |  ... |  ... |  ... | ... | ...   |
++-------+------+------+------+-----+-------+
+| total | 2344 | 3432 | 3452 | ... | TOTAL |
++-------+------+------+------+-----+-------+
+date_id
+
+
+```
+
+- Tuy nhiên cách trên chỉ đáp ứng được cho một vài câu query nhất định
+- Materialized views: Kết quả của một câu query sẽ được lưu lại thành một temporary table, giống như `view` nhưng thay vì phải query aggregate lại data thì data sẽ được lưu lại riêng.
+
+# Encoding & Evolution
+
+

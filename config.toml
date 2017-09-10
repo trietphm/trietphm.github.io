@@ -30,6 +30,8 @@ Tagline = "Hello, world!"
 # default: undefined
 SocialLinks = true
 
+disqusShortname = "trietpham"
+
 # default: undefined
 GithubUsername = "trietphm"
 
