@@ -17,7 +17,7 @@ title = "Foundation of data system"
  - Gửi message đến các processes khác nhau, và có thể xử lý bất đồng bộ (stream processing)
  - Chạy và xử lý một lượng lớn dữ liệu theo định kỳ (batch processing)
 
-> ddia_0101.png 
+![alt text](/static/img/data/ddia_0101.png)
 
 Và nhìn chung hệ thống cần đáp ứng được các yêu cầu sau
 
@@ -156,7 +156,7 @@ $ cat database
 
 Giả sử ta có một hash table như bên dưới, và hash table này sẽ được lưu trữ trong memory (RAM) để tăng tốc độ truy xuất
 
-> ddia_0301
+![alt text](/static/img/data/ddia_0301.png)
 
 - Mỗi `key` sẽ tương ứng với vị trí `byte offset` trong `database`
 - Để lấy dữ liệu của `key` ta chỉ cần lấy `byte offet` trong memory và đọc file `database` từ vị trí `byte offset` => Tiết kiệm được rất nhiều thời gian, chỉ cần 1 disk seek thay vì phải đọc toàn bộ file
@@ -168,11 +168,11 @@ Giả sử ta có một hash table như bên dưới, và hash table này sẽ �
 - Cách giải quyết sẽ là chia nhỏ file log ra thành nhiều `segments` với một kích thước nhất định, khi một `segment` append đến kích thước giới hạn thì data mới sẽ được append vào file mới.
 - Các file segment sẽ được `compact` lại bằng cách lọc bớt dữ liệu, chỉ giữ lại giá trị mới nhất ở mỗi key
 
-> ddia_0302
+![alt text](/static/img/data/ddia_0302.png)
 
 - Quá trình `compact` sẽ lưu dữ liệu vào một file mới, và những `segments` mới này sẽ gọn nhẹ hơn nên có thể merge lại với nhau, quá trình merge và compact có thể thực hiện đồng thời
 
-> ddia_0303
+![alt text](/static/img/data/ddia_0303.png)
 
 - Khi mọi thứ hoàn tất các file `segments` cũ có thể xóa đi, các request read sẽ chuyển sang các file mới.
 - Mỗi `segment` mới được tạo ra cũng đồng thời tạo index riêng cho mỗi segment.
@@ -200,7 +200,8 @@ Giả sử ta có một hash table như bên dưới, và hash table này sẽ �
  - Index cho SStable sẽ không cần phải lưu toàn bộ key trong memory, thay vào đó chỉ cần lưu một vài key đánh dấu. VD 
  - Có thể group các nhóm key-value lại thành một block và compress trước khi write xuống disk, mỗi entry index ở trên sẽ trỏ vào vị trí đầu tiên của mỗi compressed block này.
 
-> Pic
+![alt text](/static/img/data/ddia_0304.png)
+
 Các key được sort theo Alphabelt
 
 #### Constructing and maintaining SSTables
@@ -297,7 +298,9 @@ B-Tree ra đời rất lâu nên có rất nhiều biện pháp cải tiến đ�
 #### Schemas for analytic
 
 - Thường datawarehouse sử dụng schema gọi là **star schema** (dimensional modeling). Sẽ có một table gọi là _fact table_, là table trung tâm, chứa toàn bộ mọi event trong hệ thống, mọi thứ đều được lưu ở dây. Mỗi row sẽ chứa các identity cần thiết trỏ đến các table con, như VD bên dưới
-> Image
+
+![alt text](/static/img/data/ddia_0309.png)
+
 - Mỗi fact table có thể có dung lượng rất lớn, đồng thời có thể có hơn 100 columns đủ để có thể trả lời được câu hỏi _who, what, when, where, how & why_ của event đó.
 - Một số column trong fact table có thể là attribute column (price, amount,...), phần còn lại thường là foreign keys trỏ đến các table vệ tinh (dimension table).
 - Ngoài ra còn có biến thể khác của star schema gọi là **snowflake schema**. Thay vì mỗi dimension table sẽ được chia nhỏ thành các sub dimension tables thay vì chỉ lưu string data ở một table. Thường thì star schema sẽ được dùng nhiều hơn vì thuận tiện hơn cho việc analytic.
@@ -306,7 +309,8 @@ B-Tree ra đời rất lâu nên có rất nhiều biện pháp cải tiến đ�
 ### Idea
 - Khi cần query từ fact table, hầu hết trường hợp không sử dụng hết data trong toàn bộ columns, vd fact table có 100 columns, và cần tính tổng doanh thu trong 1 ngày, query chỉ quan tâm đến 2 column là price và date, theo thông thường sẽ có 2 index ở 2 column này. Nhưng với cách lưu trữ data như trên, mỗi row sẽ được lưu cạnh nhau, thì cần phải load, parse, filter toàn bộ 100 column còn lại => Tốn thời gian và tài nguyên không cần thiết.
 - Column-Oriented storage là giải pháp cho vấn đề này: data trong mỗi column sẽ được lưu chung trong một file, mỗi column tương ứng với một file nhất định. => Query chỉ load, parse, filter trong 1 file.
- > Image
+
+![alt text](/static/img/data/ddia_0310.png)
 
 ### Column compression
 - Do data đã được lưu theo cột nên có thể compress dữ liệu lại bằng bitmap encoding.
@@ -342,7 +346,6 @@ B-Tree ra đời rất lâu nên có rất nhiều biện pháp cải tiến đ�
 | total | 2344 | 3432 | 3452 | ... | TOTAL |
 +-------+------+------+------+-----+-------+
 date_id
-
 
 ```
 
