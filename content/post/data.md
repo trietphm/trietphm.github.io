@@ -62,35 +62,39 @@ Hiện nay phổ biến nhất có thể kể đến 3 loại data models bao g�
  - Ứng dụng cho rất nhiều mục đích khác nhau: forum, social network, ecommerce, games,...
 
 ### Document:
- - Được sinh ra với mục đích scale dễ dàng hơn so với relational databases, hổ trợ tốt hơn với trữ lượng data lớn cũng như có tốc độ write tốt hơn.
- - Cho phép thực thi nhiều query mà relational databases chưa hổ trợ tốt.
- - Do không có relationship nên để thể hiện các mối hệ như one-to-many, many-to-many các child objects sẽ được lưu chính bên trong (nested) parent object. Điều đó vừa mang đến việc lợi và hại, một vài mặt đối lập với relational database
-  - Lợi: 
-   - Do các child objects đã được lưu trong parent object nên sẽ không tốn chi phí để `join` lấy data (normalization)
-   - Flexible schema: mỗi record có thể có cấu trúc không giống nhau, lưu trữ dễ dàng hơn. Đồng thời việc đọc dữ liệu cũng không bị ràng buộc, cấu trúc object trả về phụ thuộc vào lúc read, schema-on-read, đây có thể coi như con dao hai lưỡi, vừa tốt vừa xấu. Trái ngược với Relational database là schema-on-write.
-  - Hại:
-   - Dữ liệu bị phân mảnh, khi cần cập nhật dữ liệu phải cập nhật ở toàn bộ records khác thay vì chỉ cần cập nhật reference tables như ở relational database
-   - Bị duplicate dữ liệu vì phải lưu ở nhiều nơi
-   - Do cách lưu trữ nên mỗi record (document) thường sẽ rất lớn (chuỗi JSON, XML dài) và sẽ lãng phí tài nguyên nếu chỉ cần lấy một đoạn nhỏ trong record đó nhưng vẫn phải load toàn bộ record.
- - Các database được sử dụng rộng rãi: MongoDB, CouchDB, RethinkDB, Elasticsearch, Sorl...
+
+- Được sinh ra với mục đích scale dễ dàng hơn so với relational databases, hổ trợ tốt hơn với trữ lượng data lớn cũng như có tốc độ write tốt hơn.
+- Cho phép thực thi nhiều query mà relational databases chưa hổ trợ tốt.
+- Do không có relationship nên để thể hiện các mối hệ như one-to-many, many-to-many các child objects sẽ được lưu chính bên trong (nested) parent object. Điều đó vừa mang đến việc lợi và hại, một vài mặt đối lập với relational database
+- Lợi: 
+  - Do các child objects đã được lưu trong parent object nên sẽ không tốn chi phí để `join` lấy data (normalization)
+  - Flexible schema: mỗi record có thể có cấu trúc không giống nhau, lưu trữ dễ dàng hơn. Đồng thời việc đọc dữ liệu cũng không bị ràng buộc, cấu trúc object trả về phụ thuộc vào lúc read, schema-on-read, đây có thể coi như con dao hai lưỡi, vừa tốt vừa xấu. Trái ngược với Relational database là schema-on-write.
+- Hại:
+  - Dữ liệu bị phân mảnh, khi cần cập nhật dữ liệu phải cập nhật ở toàn bộ records khác thay vì chỉ cần cập nhật reference tables như ở relational database
+  - Bị duplicate dữ liệu vì phải lưu ở nhiều nơi
+  - Do cách lưu trữ nên mỗi record (document) thường sẽ rất lớn (chuỗi JSON, XML dài) và sẽ lãng phí tài nguyên nếu chỉ cần lấy một đoạn nhỏ trong record đó nhưng vẫn phải load toàn bộ record.
+- Các database được sử dụng rộng rãi: MongoDB, CouchDB, RethinkDB, Elasticsearch, Sorl...
 
 ### Graph:
+
  - Khi dữ liệu chứa hầu hết các objects có mối quan hệ many-to-many, có thể biểu diện mối liên hệ giữa các objects lên một graph (đồ thị)
+ - Một số database như: Neo4j, Titan, Datomic,...
  - Một graph bao gồm 2 đối tượng: 
-  - Vertices - đỉnh (nodes or entities): 
+
+#### Vertices - đỉnh (nodes or entities): 
+
    - Các đỉnh không giống nhau (unique)
    - Có nhiều cạnh từ 1 đỉnh ra đỉnh khác
    - Có nhiều cạnh từ đỉnh khác đi vào 1 đỉnh
    - 1 đỉnh có tập hợp nhiều properties (key-value pairs)
 
-  - Edges - cạnh (relationships or arcs) có đặc tính:
+#### Edges - cạnh (relationships or arcs) có đặc tính:
+
    - Khác nhau (unique)
    - Đỉnh mà cạnh bắt đầu (tail vertex)
    - Đỉnh mà cạnh kết thúc (head vertex)
    - Label để mô tả mối quan hệ giữa 2 đỉnh
    - Tập hợp nhiều properties (key-value pairs)
-
- - Một số database như: Neo4j, Titan, Datomic,...
 
 ### Hybrid database
 
@@ -249,9 +253,7 @@ Các key được sort theo Alphabelt
 - Khác với LSM-tree, ở B-Tree mỗi key được lưu 1 lần duy nhất nên sẽ tiết kiệm được bộ nhớ.
 
 #### Optimizations
-- B-tree phải write data 2 lần: 1 cho WAL và 1 cho tree pages (và có thể thêm 1 lần nữa nếu phải chia nhỏ page)
-
-B-Tree ra đời rất lâu nên có rất nhiều biện pháp cải tiến được áp dụng, một trong số đó như:
+- B-tree phải write data 2 lần: 1 cho WAL và 1 cho tree pages (và có thể thêm 1 lần nữa nếu phải chia nhỏ page) Tuy nhiên do ra đời rất lâu nên đã có rất nhiều biện pháp cải tiến được nghiên cứu và áp dụng, một trong số đó như:
 - Thay vì overwrite pages và dùng WAL cho crash recovery, một số database như LMDB sử dụng copy-on-write, một page mới sẽ được tạo ra và reference cũ sẽ được trỏ đến page mới.
 - Để tăng tốc độ đọc (giảm random read, tăng sequential read), có thể giữ cho các key liên tiếp nhau nằm ở gần nhau trong ổ cứng.
 - Bổ sung thêm pointer để giảm chi phí scanning, vd bổ sung thêm reference đến các pages liền kề.
@@ -295,6 +297,7 @@ B-Tree ra đời rất lâu nên có rất nhiều biện pháp cải tiến đ�
 - Quá trình xử lý dữ liệu của OLAP thường tốn khá nhiều tài nguyên (vd những thống kê cần query toàn bộ data, tính tổng, trung bình,...), nếu cùng truy xuất vào chung dữ liệu với OLTP sẽ ảnh hưởng đến việc đảm bảo cho OLTP low latency và high avaibility.
 - Bên cạnh đó với hệ thống phức tạp data thường phân bổ ở nhiều hệ thống nhỏ cũng gây nhiều khó khăn cho việc tính toán.
 => Datawarehouse ra đời với mục đích phân tách và tổng hợp dữ liệu phục vụ riêng cho OLAP và hầu hết data model của datawarehouse là Relational vì SQL thích hợp và thuận tiện hơn cho các analytic query.
+
 #### Schemas for analytic
 
 - Thường datawarehouse sử dụng schema gọi là **star schema** (dimensional modeling). Sẽ có một table gọi là _fact table_, là table trung tâm, chứa toàn bộ mọi event trong hệ thống, mọi thứ đều được lưu ở dây. Mỗi row sẽ chứa các identity cần thiết trỏ đến các table con, như VD bên dưới
@@ -374,7 +377,8 @@ date_id
 ## Thrift & Protocol Buffer
 - Open source 08/2007
 - Cần schema cho việc encode.
- - Thrift:
+- Thrift:
+
  ```
 struct Person {
 	1: required string userName,
@@ -382,7 +386,9 @@ struct Person {
 	3: optional list<string> interests
 }
  ```
- - Protocol Buffer:
+
+- Protocol Buffer:
+
  ```
 message Person {
         required string user_name       = 1;
@@ -390,6 +396,7 @@ message Person {
         repeated string interests       = 3;
 }
  ```
+
 - Cung cấp code generation tool để encode/decode.
 - Thrift có 2 binary encoding format: BinaryProtocol & CompactProtocol.
  - BinaryProtocol: tương tự như việc encode binary thông thường, nhưng thay vì encode cả field `key` _(userName, favoriteNumber, interests)_ thì chỉ đánh dấu bằng tag number.
@@ -411,7 +418,8 @@ message Person {
 ## Arvo
 - Apache Arvo sinh sau đẻ muộn (2009) và mục đích phát triển ban đầu là một subproject của Hadoop.
 - Sử dụng schema để encode và có 2 loại schema language:
- - Arvo IDL (easy for human editing):
+- Arvo IDL (easy for human editing):
+
 	 ```
 	 record Person {
 		string userName;
@@ -419,7 +427,9 @@ message Person {
 		array<string> interests;
 	}
 	 ```
- - JSON (easily machine readable)
+
+- JSON (easily machine readable)
+
 	```
 	{
 		"type": "record",
@@ -430,6 +440,7 @@ message Person {
 			{"name": "interests", "type": {"type": "array", "items": "string"}}
 		] }
 	```
+
 - Có kích thước nhỏ nhất so với các kiểu encoding bên trên khi encode sang binary (32 bytes)
 
 ![alt text](/static/img/data/ddia_0405.png)
