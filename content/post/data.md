@@ -7,6 +7,8 @@ title = "Foundation of data system"
 
 +++
 
+![alt text](/static/img/data/ddia_0101.png)
+
 # Data system
 
 - Ngày nay do sự phát triển rất nhanh về phần cứng nên hầu hết các ứng dụng không còn phát triển theo hướng tối ưu hóa về tốc độ xử lý của CPU (compute-intensive), công nghệ hiện tại đã đủ và dư để đáp ứng hầu hết nhu cầu, thay vào đó sự bùng nổ thông tin đã mở ra kỷ nguyên về khai thác dữ liệu.
@@ -16,8 +18,6 @@ title = "Foundation of data system"
  - Hổ trợ tìm kiếm tối đa theo nhiều cách (search indexs)
  - Gửi message đến các processes khác nhau, và có thể xử lý bất đồng bộ (stream processing)
  - Chạy và xử lý một lượng lớn dữ liệu theo định kỳ (batch processing)
-
-![alt text](/static/img/data/ddia_0101.png)
 
 Và nhìn chung hệ thống cần đáp ứng được các yêu cầu sau
 
@@ -49,8 +49,7 @@ Hiểu đơn giản là làm cho hệ thống có thể control được tốt n
 - **Simplicity**: Đơn giản. Người mới khi join vào có thể hiểu được hệ thống một cách dễ dàng 
 - **Evolvability**: hay nói cách khác là extensibility, hệ thống cho phép thay đổi dễ dàng trong tương lai để đáp ứng requirement
 
-# Data Models and Query Languages
-## Data Models
+# Data Models 
 
 Hiện nay phổ biến nhất có thể kể đến 3 loại data models bao gồm: 
 ### Relational:
@@ -110,8 +109,6 @@ Một số database hổ trợ đồng thời việc lưu trữ ở nhiều lo�
  + Data ít có mối quan hệ lẫn nhau, ít có nhu cầu `join` để lấy dữ liệu, các đơn vị data riêng lẽ: Document model có thể là lựa chọn tốt, relational model vẫn có thể đáp ứng được.
  + Data có nhiều mối quan hệ, mỗi item trong data đều có liên quan lẫn nhau: Document model là lựa chọn không tốt, trong khi đó relational model vẫn chấp nhận được và graph models sẽ thể hiện một cách tự nhiên nhất.
  + Data mix nhiều loại, không quá nhiều cũng không quá ít mối quan hệ: Không ảnh hưởng nhiều lắm vì việc xử lý dữ liệu vẫn có thể thực hiện được. VD nếu cần join ở document model có thể xử lý trên application code, relational model vẫn có thể thao tác graph-query.
-
-## Query language
 
 # Storage and Retrieval
 ## Data structures: index
