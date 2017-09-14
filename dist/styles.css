@@ -70,7 +70,7 @@ template { display: none; }
 .diff .hljs-change { background: #0086b3; }
 .hljs-chunk { color: #aaa; }
 html, body { height: 100%; }
-body { background: #fefefe; color: #424242; font-family: "Open Sans", arial, sans-serif; font-size: 18px; }
+body { background: #fefefe; color: #424242; font-family: "Open Sans", arial, sans-serif; font-size: 17px; }
 h1, h2, h3, h4, h5, h6 { margin-bottom: 20px; text-transform: none; }
 h1 { font-size: 26px; }
 h2 { font-size: 24px; }
@@ -78,11 +78,11 @@ h3 { font-size: 20px; margin-bottom: 20px; }
 h4 { font-size: 18px; margin-bottom: 18px; }
 h5 { font-size: 16px; margin-bottom: 15px; }
 h6 { font-size: 14px; margin-bottom: 12px; }
-p { line-height: 1.8; margin: 0 0 30px; }
+p { line-height: 1.8; margin: 0 0 15px; }
 a { color: #f03838; text-decoration: none; }
 ul, ol { line-height: 1.4; margin: 0 0 20px; }
-ul ul, ul ol, ol ul, ol ol { margin: 10px 0 0 20px; }
-ul li, ol li { margin: 0 0 2px; }
+ul ul, ul ol, ol ul, ol ol { margin: 5px 0 0 -10px; }
+ul li, ol li { margin: 0 0 3px; }
 ul li:last-of-type, ol li:last-of-type { margin-bottom: 0; }
 blockquote { border-left: 1px dotted #f03838; margin: 40px 0; padding: 5px 30px; }
 blockquote p { color: #aeadad; display: block; font-style: italic; margin: 0; width: 100%; }
@@ -96,6 +96,7 @@ table tbody > tr:nth-child(odd) > td, table tbody > tr:nth-child(odd) > th { bac
 table th { padding: 0 10px 10px; text-align: left; }
 table td { padding: 10px; }
 table tr { border-bottom: 1px dotted #aeadad; }
+.toc { position: fixed; font-size: 12px; top: 0; right: 0; margin-bottom: 2rem; }
 ::selection { background: #fff5b8; color: #000; display: block; }
 ::-moz-selection { background: #fff5b8; color: #000; display: block; }
 .fluid-width-video-wrapper { margin-bottom: 40px; }

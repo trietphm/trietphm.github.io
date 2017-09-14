@@ -187,13 +187,16 @@ ga('send', 'pageview');
 <ul>
 <li>Được sinh ra với mục đích scale dễ dàng hơn so với relational databases, hổ trợ tốt hơn với trữ lượng data lớn cũng như có tốc độ write tốt hơn.<br /></li>
 <li>Cho phép thực thi nhiều query mà relational databases chưa hổ trợ tốt.<br /></li>
-<li>Do không có relationship nên để thể hiện các mối hệ như one-to-many, many-to-many các child objects sẽ được lưu chính bên trong (nested) parent object. Điều đó vừa mang đến việc lợi và hại, một vài mặt đối lập với relational database<br />
+<li>Do không có relationship nên để thể hiện các mối hệ như one-to-many, many-to-many các child objects sẽ được lưu chính bên trong (nested) parent object. Điều đó vừa mang đến việc lợi và hại, một vài mặt đối lập với relational database<br /></li>
+<li>Lợi:<br />
 
 <ul>
-<li>Lợi:<br /></li>
 <li>Do các child objects đã được lưu trong parent object nên sẽ không tốn chi phí để <code>join</code> lấy data (normalization)<br /></li>
 <li>Flexible schema: mỗi record có thể có cấu trúc không giống nhau, lưu trữ dễ dàng hơn. Đồng thời việc đọc dữ liệu cũng không bị ràng buộc, cấu trúc object trả về phụ thuộc vào lúc read, schema-on-read, đây có thể coi như con dao hai lưỡi, vừa tốt vừa xấu. Trái ngược với Relational database là schema-on-write.<br /></li>
-<li>Hại:<br /></li>
+</ul></li>
+<li>Hại:<br />
+
+<ul>
 <li>Dữ liệu bị phân mảnh, khi cần cập nhật dữ liệu phải cập nhật ở toàn bộ records khác thay vì chỉ cần cập nhật reference tables như ở relational database<br /></li>
 <li>Bị duplicate dữ liệu vì phải lưu ở nhiều nơi<br /></li>
 <li>Do cách lưu trữ nên mỗi record (document) thường sẽ rất lớn (chuỗi JSON, XML dài) và sẽ lãng phí tài nguyên nếu chỉ cần lấy một đoạn nhỏ trong record đó nhưng vẫn phải load toàn bộ record.<br /></li>
@@ -206,31 +209,30 @@ ga('send', 'pageview');
 
 <ul>
 <li>Khi dữ liệu chứa hầu hết các objects có mối quan hệ many-to-many, có thể biểu diện mối liên hệ giữa các objects lên một graph (đồ thị)<br /></li>
+<li>Một số database như: Neo4j, Titan, Datomic,&hellip;<br /></li>
+<li>Một graph bao gồm 2 đối tượng:<br />
+<br /></li>
+</ul>
 
-<li><p>Một graph bao gồm 2 đối tượng:</p>
+<h4 id="vertices-đỉnh-nodes-or-entities">Vertices - đỉnh (nodes or entities):</h4>
 
 <ul>
-<li>Vertices - đỉnh (nodes or entities):<br /></li>
 <li>Các đỉnh không giống nhau (unique)<br /></li>
 <li>Có nhiều cạnh từ 1 đỉnh ra đỉnh khác<br /></li>
 <li>Có nhiều cạnh từ đỉnh khác đi vào 1 đỉnh<br /></li>
+<li>1 đỉnh có tập hợp nhiều properties (key-value pairs)<br />
+<br /></li>
+</ul>
 
-<li><p>1 đỉnh có tập hợp nhiều properties (key-value pairs)</p></li>
+<h4 id="edges-cạnh-relationships-or-arcs-có-đặc-tính">Edges - cạnh (relationships or arcs) có đặc tính:</h4>
 
-<li><p>Edges - cạnh (relationships or arcs) có đặc tính:</p></li>
-
-<li><p>Khác nhau (unique)</p></li>
-
-<li><p>Đỉnh mà cạnh bắt đầu (tail vertex)</p></li>
-
-<li><p>Đỉnh mà cạnh kết thúc (head vertex)</p></li>
-
-<li><p>Label để mô tả mối quan hệ giữa 2 đỉnh</p></li>
-
-<li><p>Tập hợp nhiều properties (key-value pairs)</p></li>
-</ul></li>
-
-<li><p>Một số database như: Neo4j, Titan, Datomic,&hellip;</p></li>
+<ul>
+<li>Khác nhau (unique)<br /></li>
+<li>Đỉnh mà cạnh bắt đầu (tail vertex)<br /></li>
+<li>Đỉnh mà cạnh kết thúc (head vertex)<br /></li>
+<li>Label để mô tả mối quan hệ giữa 2 đỉnh<br /></li>
+<li>Tập hợp nhiều properties (key-value pairs)<br />
+<br /></li>
 </ul>
 
 <h3 id="hybrid-database">Hybrid database</h3>
@@ -458,14 +460,12 @@ $ db_set 46 '{&quot;name&quot;:&quot;cat&quot;,&quot;talk&quot;:&quot;mew mew&qu
 <h4 id="optimizations">Optimizations</h4>
 
 <ul>
-<li>B-tree phải write data 2 lần: 1 cho WAL và 1 cho tree pages (và có thể thêm 1 lần nữa nếu phải chia nhỏ page)<br />
+<li>B-tree phải write data 2 lần: 1 cho WAL và 1 cho tree pages (và có thể thêm 1 lần nữa nếu phải chia nhỏ page) Tuy nhiên do ra đời rất lâu nên đã có rất nhiều biện pháp cải tiến được nghiên cứu và áp dụng, một trong số đó như:<br /></li>
+<li>Thay vì overwrite pages và dùng WAL cho crash recovery, một số database như LMDB sử dụng copy-on-write, một page mới sẽ được tạo ra và reference cũ sẽ được trỏ đến page mới.<br /></li>
+<li>Để tăng tốc độ đọc (giảm random read, tăng sequential read), có thể giữ cho các key liên tiếp nhau nằm ở gần nhau trong ổ cứng.<br /></li>
+<li>Bổ sung thêm pointer để giảm chi phí scanning, vd bổ sung thêm reference đến các pages liền kề.<br />
 <br /></li>
 </ul>
-
-<p>B-Tree ra đời rất lâu nên có rất nhiều biện pháp cải tiến được áp dụng, một trong số đó như:<br />
-- Thay vì overwrite pages và dùng WAL cho crash recovery, một số database như LMDB sử dụng copy-on-write, một page mới sẽ được tạo ra và reference cũ sẽ được trỏ đến page mới.<br />
-- Để tăng tốc độ đọc (giảm random read, tăng sequential read), có thể giữ cho các key liên tiếp nhau nằm ở gần nhau trong ổ cứng.<br />
-- Bổ sung thêm pointer để giảm chi phí scanning, vd bổ sung thêm reference đến các pages liền kề.</p>
 
 <h3 id="b-tree-or-lsm-tree">B-Tree or LSM-tree?</h3>
 
@@ -560,13 +560,16 @@ $ db_set 46 '{&quot;name&quot;:&quot;cat&quot;,&quot;talk&quot;:&quot;mew mew&qu
 
 <ul>
 <li>Quá trình xử lý dữ liệu của OLAP thường tốn khá nhiều tài nguyên (vd những thống kê cần query toàn bộ data, tính tổng, trung bình,&hellip;), nếu cùng truy xuất vào chung dữ liệu với OLTP sẽ ảnh hưởng đến việc đảm bảo cho OLTP low latency và high avaibility.<br /></li>
+<li>Bên cạnh đó với hệ thống phức tạp data thường phân bổ ở nhiều hệ thống nhỏ cũng gây nhiều khó khăn cho việc tính toán.<br />
+=&gt; Datawarehouse ra đời với mục đích phân tách và tổng hợp dữ liệu phục vụ riêng cho OLAP và hầu hết data model của datawarehouse là Relational vì SQL thích hợp và thuận tiện hơn cho các analytic query.<br />
+<br /></li>
+</ul>
 
-<li><p>Bên cạnh đó với hệ thống phức tạp data thường phân bổ ở nhiều hệ thống nhỏ cũng gây nhiều khó khăn cho việc tính toán.<br />
-=&gt; Datawarehouse ra đời với mục đích phân tách và tổng hợp dữ liệu phục vụ riêng cho OLAP và hầu hết data model của datawarehouse là Relational vì SQL thích hợp và thuận tiện hơn cho các analytic query.</p>
+<h4 id="schemas-for-analytic">Schemas for analytic</h4>
 
-<h4 id="schemas-for-analytic">Schemas for analytic</h4></li>
-
-<li><p>Thường datawarehouse sử dụng schema gọi là <strong>star schema</strong> (dimensional modeling). Sẽ có một table gọi là <em>fact table</em>, là table trung tâm, chứa toàn bộ mọi event trong hệ thống, mọi thứ đều được lưu ở dây. Mỗi row sẽ chứa các identity cần thiết trỏ đến các table con, như VD bên dưới</p></li>
+<ul>
+<li>Thường datawarehouse sử dụng schema gọi là <strong>star schema</strong> (dimensional modeling). Sẽ có một table gọi là <em>fact table</em>, là table trung tâm, chứa toàn bộ mọi event trong hệ thống, mọi thứ đều được lưu ở dây. Mỗi row sẽ chứa các identity cần thiết trỏ đến các table con, như VD bên dưới<br />
+<br /></li>
 </ul>
 
 <p><img src="/static/img/data/ddia_0309.png" alt="alt text" /></p>
@@ -622,23 +625,78 @@ $ db_set 46 '{&quot;name&quot;:&quot;cat&quot;,&quot;talk&quot;:&quot;mew mew&qu
 <br /></li>
 </ul>
 
-<pre><code>	product_id
-+-------+------+------+------+-----+-------+
-|       |  31  |  32  |  33  | ... | total |
-+-------+------+------+------+-----+-------+
-| 1411  |   44 |   56 |   88 | ... | 233   |
-+-------+------+------+------+-----+-------+
-| 1412  |  123 |  344 |  121 | ... | 785   |
-+-------+------+------+------+-----+-------+
-| 1413  |  273 |   22 |   11 | ... | 992   |
-+-------+------+------+------+-----+-------+
-| ...   |  ... |  ... |  ... | ... | ...   |
-+-------+------+------+------+-----+-------+
-| total | 2344 | 3432 | 3452 | ... | TOTAL |
-+-------+------+------+------+-----+-------+
-date_id
-
+<pre><code> product_id: 31, 32, 33,...
+ date_id: 1411, 1412, 1413,...
 </code></pre>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td>31</td>
+<td>32</td>
+<td>33</td>
+<td>&hellip;</td>
+<td><strong>total</strong></td>
+</tr>
+
+<tr>
+<td>1411</td>
+<td>44</td>
+<td>56</td>
+<td>88</td>
+<td>&hellip;</td>
+<td>233</td>
+</tr>
+
+<tr>
+<td>1412</td>
+<td>123</td>
+<td>344</td>
+<td>121</td>
+<td>&hellip;</td>
+<td>785</td>
+</tr>
+
+<tr>
+<td>1413</td>
+<td>273</td>
+<td>22</td>
+<td>11</td>
+<td>&hellip;</td>
+<td>992</td>
+</tr>
+
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+
+<tr>
+<td><strong>total</strong></td>
+<td>2344</td>
+<td>3432</td>
+<td>3452</td>
+<td>&hellip;</td>
+<td><strong>TOTAL</strong></td>
+</tr>
+</tbody>
+</table>
 
 <ul>
 <li>Tuy nhiên cách trên chỉ đáp ứng được cho một vài câu query nhất định<br /></li>
@@ -675,26 +733,31 @@ date_id
 
 <ul>
 <li>Open source 08/2007<br /></li>
-<li>Cần schema cho việc encode.<br />
-
-<ul>
+<li>Cần schema cho việc encode.<br /></li>
 <li>Thrift:<br />
-<code>
-struct Person {
+<br /></li>
+</ul>
+
+<pre><code>struct Person {
 	1: required string userName,
 	2: optional i64 favoriteNumber, 
 	3: optional list&lt;string&gt; interests
 }
-</code><br /></li>
+</code></pre>
+
+<ul>
 <li>Protocol Buffer:<br />
-<code>
-message Person {
-required string user_name       = 1;
-optional int64  favorite_number = 2;
-repeated string interests       = 3;
+<br /></li>
+</ul>
+
+<pre><code>message Person {
+        required string user_name       = 1;
+        optional int64  favorite_number = 2;
+        repeated string interests       = 3;
 }
-</code><br /></li>
-</ul></li>
+</code></pre>
+
+<ul>
 <li>Cung cấp code generation tool để encode/decode.<br /></li>
 <li>Thrift có 2 binary encoding format: BinaryProtocol &amp; CompactProtocol.<br />
 
@@ -731,31 +794,30 @@ repeated string interests       = 3;
 
 <ul>
 <li>Apache Arvo sinh sau đẻ muộn (2009) và mục đích phát triển ban đầu là một subproject của Hadoop.<br /></li>
-<li>Sử dụng schema để encode và có 2 loại schema language:<br />
+<li>Sử dụng schema để encode và có 2 loại schema language:<br /></li>
 
-<ul>
-<li>Arvo IDL (easy for human editing):<br />
-<code>
-record Person {
-string userName;
-union { null, long } favoriteNumber = null;
-array&lt;string&gt; interests;
+<li><p>Arvo IDL (easy for human editing):</p>
+
+<pre><code> record Person {
+    string userName;
+    union { null, long } favoriteNumber = null;
+    array&lt;string&gt; interests;
 }
-</code><br /></li>
-<li>JSON (easily machine readable)<br />
-<code>
-{
-&quot;type&quot;: &quot;record&quot;,
-    &quot;name&quot;: &quot;Person&quot;,
-    &quot;fields&quot;: [
-    {&quot;name&quot;: &quot;userName&quot;, &quot;type&quot;: &quot;string&quot;},
-    {&quot;name&quot;: &quot;favoriteNumber&quot;, &quot;type&quot;: [&quot;null&quot;, &quot;long&quot;], &quot;default&quot;: null},
-    {&quot;name&quot;: &quot;interests&quot;, &quot;type&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: &quot;string&quot;}}
-] }
-</code><br /></li>
-</ul></li>
-<li>Có kích thước nhỏ nhất so với các kiểu encoding bên trên khi encode sang binary (32 bytes)<br />
-<br /></li>
+</code></pre></li>
+
+<li><p>JSON (easily machine readable)</p>
+
+<pre><code>{
+    &quot;type&quot;: &quot;record&quot;,
+        &quot;name&quot;: &quot;Person&quot;,
+        &quot;fields&quot;: [
+        {&quot;name&quot;: &quot;userName&quot;, &quot;type&quot;: &quot;string&quot;},
+        {&quot;name&quot;: &quot;favoriteNumber&quot;, &quot;type&quot;: [&quot;null&quot;, &quot;long&quot;], &quot;default&quot;: null},
+        {&quot;name&quot;: &quot;interests&quot;, &quot;type&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: &quot;string&quot;}}
+    ] }
+</code></pre></li>
+
+<li><p>Có kích thước nhỏ nhất so với các kiểu encoding bên trên khi encode sang binary (32 bytes)</p></li>
 </ul>
 
 <p><img src="/static/img/data/ddia_0405.png" alt="alt text" /></p>
@@ -769,6 +831,7 @@ array&lt;string&gt; interests;
 <p><img src="/static/img/data/ddia_0406.png" alt="alt text" /></p>
 
 </div>
+
 
         <footer class="post-footer clearfix">
     

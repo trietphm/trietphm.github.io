@@ -334,23 +334,18 @@ Các key được sort theo Alphabelt
 - Data cubes: tạo sẳn một `cube` dữ liệu mới dựa trên hai hoặc nhiều dimensions. Vd như table bên dưới, là số lượng sản phẩm bán ra của mỗi `product_id` tương ứng với một `date_id` và `total` ở mỗi column/row tương ứng với tổng cộng số sản phẩm bán ra ở mỗi column/row.
 
 ```
-	product_id
-+-------+------+------+------+-----+-------+
-|       |  31  |  32  |  33  | ... | total |
-+-------+------+------+------+-----+-------+
-| 1411  |   44 |   56 |   88 | ... | 233   |
-+-------+------+------+------+-----+-------+
-| 1412  |  123 |  344 |  121 | ... | 785   |
-+-------+------+------+------+-----+-------+
-| 1413  |  273 |   22 |   11 | ... | 992   |
-+-------+------+------+------+-----+-------+
-| ...   |  ... |  ... |  ... | ... | ...   |
-+-------+------+------+------+-----+-------+
-| total | 2344 | 3432 | 3452 | ... | TOTAL |
-+-------+------+------+------+-----+-------+
-date_id
-
+ product_id: 31, 32, 33,...
+ date_id: 1411, 1412, 1413,...
 ```
+
+|       |      |      |      | 	   |       |
+|-------|------|------|------|-----|-------|
+|       |  31  |  32  |  33  | ... | **total** |
+| 1411  |   44 |   56 |   88 | ... | 233   |
+| 1412  |  123 |  344 |  121 | ... | 785   |
+| 1413  |  273 |   22 |   11 | ... | 992   |
+| ...   |  ... |  ... |  ... | ... | ...   |
+| **total** | 2344 | 3432 | 3452 | ... | **TOTAL** |
 
 - Tuy nhiên cách trên chỉ đáp ứng được cho một vài câu query nhất định
 - Materialized views: Kết quả của một câu query sẽ được lưu lại thành một temporary table, giống như `view` nhưng thay vì phải query aggregate lại data thì data sẽ được lưu lại riêng.
