@@ -26,7 +26,7 @@ title = "Log trong Go và các vấn đề về log"
  - Và bạn cũng chẳng thể nào biết được mớ thông tin trên đến từ đâu, từ ngữ cảnh nào, user nào,...
  - Và bạn muốn search cũng không search được, toàn raw text và chẳng theo cấu trúc nào.
  - Đứa ngớ ngẩn nào đó log ra những đoạn trong có vẻ nguy hiểm: _It works! Let's have some beer_ nhưng hoàn toàn vô dụng.
- - Đứa ít ngớ ngẩn hơn đã log ra cái lỗi nhưng chả thể nào biết được lỗi đó đến từ không gian thứ nguyên nào hay làm sao để preroduce, it said _Null pointer exception, you die wahaha_.
+ - Đứa ít ngớ ngẩn hơn đã log ra cái lỗi nhưng chả thể nào biết được lỗi đó đến từ không gian thứ nguyên nào hay làm sao để reproduce, it said _Null pointer exception, you die wahaha_.
  - Nếu các file đến từ nhiều server, services, application thì, well, _let's have some beer_.
  - Bạn có một file log nặng 50GB được lưu trong 1 tháng và ai đó nhờ bạn check giùm log của một ngày giữa tháng, well, _wanna go grab some beer?_
  - ...
