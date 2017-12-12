@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://trietphm.github.io/post/log-trong-go-va-cac-van-de-ve-log/</loc>
+    <lastmod>2017-12-12T07:23:58+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://trietphm.github.io/post/data/</loc>
     <lastmod>2017-08-29T05:30:56+07:00</lastmod>
   </url>
@@ -44,6 +49,36 @@
   </url>
   
   <url>
+    <loc>https://trietphm.github.io/tags/go/</loc>
+    <lastmod>2017-12-12T07:23:58+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trietphm.github.io/tags/golang/</loc>
+    <lastmod>2017-12-12T07:23:58+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trietphm.github.io/tags/log/</loc>
+    <lastmod>2017-12-12T07:23:58+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trietphm.github.io/tags/logrus/</loc>
+    <lastmod>2017-12-12T07:23:58+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trietphm.github.io/tags/lumberjack/</loc>
+    <lastmod>2017-12-12T07:23:58+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://trietphm.github.io/page/</loc>
     <lastmod>2017-05-16T22:01:57+07:00</lastmod>
     <priority>0</priority>
@@ -51,7 +86,7 @@
   
   <url>
     <loc>https://trietphm.github.io/post/</loc>
-    <lastmod>2017-08-29T05:30:56+07:00</lastmod>
+    <lastmod>2017-12-12T07:23:58+07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -73,7 +108,13 @@
   
   <url>
     <loc>https://trietphm.github.io/</loc>
-    <lastmod>2017-08-29T05:30:56+07:00</lastmod>
+    <lastmod>2017-12-12T07:23:58+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trietphm.github.io/tags/tech/</loc>
+    <lastmod>2017-12-12T07:23:58+07:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Log trong Go và các vấn đề về log &middot; Triet Pham</title>
+        <meta name="description" content="Vì sao cần phải log và cần phải log một cách chỉnh chu? Log là gì?  Hiểu một cách đơn giản thì log là những thứ dùng để lưu vết, những thông tin được thông báo, lưu lại trong quá trình hoạt động của một ứng dụng.
+ Thế ghi log như thế nào? Có thể output ra màn hình, lưu vào file, stdout đâu đó để có thể xem lại được.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.21" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="https://trietphm.github.io/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-93009521-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Tea, Coffee &amp; Code" href="https://trietphm.github.io/">Tea, Coffee &amp; Code</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://trietphm.github.io/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/trietphm">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                        
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Reading list" href="/page/reading-list/">Reading list</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Friends" href="/page/friends/">Friends</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Log trong Go và các vấn đề về log</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2017-12-12" itemprop="datePublished">Tue, Dec 12, 2017</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="http://github.com/trietphm" itemprop="url" rel="author">Triet Pham</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<p><img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/9nzvr3r9bm_log-yard.jpg" alt="alt text" /></p>
+
+<h1 id="vì-sao-cần-phải-log-và-cần-phải-log-một-cách-chỉnh-chu">Vì sao cần phải log và cần phải log một cách chỉnh chu?</h1>
+
+<h2 id="log-là-gì">Log là gì?</h2>
+
+<ul>
+<li>Hiểu một cách đơn giản thì log là những thứ dùng để lưu vết, những thông tin được thông báo, lưu lại trong quá trình hoạt động của một ứng dụng.<br /></li>
+<li>Thế ghi log như thế nào? Có thể output ra màn hình, lưu vào file, stdout đâu đó để có thể xem lại được.<br /></li>
+<li>Ghi log để làm gì? Dĩ nhiên là để có thể xem lại các thông tin hoạt động của ứng dụng trong quá khứ nhằm nhiều mục đích như debug, check health, xem info, xem lỗi, warning,&hellip;<br /></li>
+<li>Nhưng ghi log là ghi gì? Cách đơn giản nhất là ghi lại toàn bộ thông tin nào bạn nghĩ là cần thiết để phục vụ cho các mục đích bên trên.<br />
+<br /></li>
+</ul>
+
+<h2 id="vì-sao-cần-viết-log-có-tâm">Vì sao cần viết log có tâm?</h2>
+
+<ul>
+<li>Nếu bạn đã từng làm việc với những files log thể nào bạn cũng sẽ phải ăn ít nhất một trong những đống hành này:<br />
+
+<ul>
+<li>File log đó to quááááááááá (file to quá nên có tiếng vọng echo), làm sao để xem giờ T_T.<br /></li>
+<li>Một mớ thông tin hỗn độn như spaghetti, đủ mọi thông tin từ Trái Đất tới sao Hỏa.<br /></li>
+<li>Và bạn cũng chẳng thể nào biết được mớ thông tin trên đến từ đâu, từ ngữ cảnh nào, user nào,&hellip;<br /></li>
+<li>Và bạn muốn search cũng không search được, toàn raw text và chẳng theo cấu trúc nào.<br /></li>
+<li>Đứa ngớ ngẩn nào đó log ra những đoạn trong có vẻ nguy hiểm: <em>It works! Let&rsquo;s have some beer</em> nhưng hoàn toàn vô dụng.<br /></li>
+<li>Đứa ít ngớ ngẩn hơn đã log ra cái lỗi nhưng chả thể nào biết được lỗi đó đến từ không gian thứ nguyên nào hay làm sao để preroduce, it said <em>Null pointer exception, you die wahaha</em>.<br /></li>
+<li>Nếu các file đến từ nhiều server, services, application thì, well, <em>let&rsquo;s have some beer</em>.<br /></li>
+<li>Bạn có một file log nặng 50GB được lưu trong 1 tháng và ai đó nhờ bạn check giùm log của một ngày giữa tháng, well, <em>wanna go grab some beer?</em><br /></li>
+<li>&hellip;<br />
+<img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/fc4jol71hl_Strips-Fucking-title-550-finalenglish.jpg" alt="alt text" /><br />
+<br /></li>
+</ul></li>
+</ul>
+
+<h1 id="log-như-thế-nào">Log như thế nào?</h1>
+
+<h2 id="log-gì">Log gì</h2>
+
+<ul>
+<li>Việc đầu tiên trước khi output dòng log ra hãy tưởng tượng sau đó có thể sử dụng được không, hay chỉ là thông tin vô nghĩa. Đừng tự đánh lừa mình rằng <em>&ldquo;Trust me, tôi biết tôi đang ghi gì ra mà, một vài ký tự viết tắt thôi, ez&rdquo;</em>, dám cá là bạn sẽ quên ngay 5&rsquo; sau đó. Hãy log nhiều thông tin nhất có thể, toàn bộ ngữ cảnh trong trường hợp đó.<br /></li>
+<li>VD bạn cần log lại một request HTTP có response 500 Internal server error, thì thông tin ở đây ít nhất phải có:<br />
+
+<ul>
+<li>Thời gian<br /></li>
+<li>HTTP request info: header, request, body,&hellip;<br /></li>
+<li>HTTP response info<br /></li>
+<li>Các thông tin trên tương đối đủ để bạn có thể reproduce lại, tuy nhiên tốt hơn nên có đầy đủ stack trace về error đó như lỗi ở đoạn nào, dòng nào, lỗi gì, input như thế nào,&hellip;<br />
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="phân-loại-log">Phân loại log</h2>
+
+<ul>
+<li>Log có thể xem là một dạng raw database nên cũng nên được phân loại tùy theo mục đích sử dụng, nhưng ít nhất nên được chia theo level:<br />
+
+<ul>
+<li><strong>INFO</strong>: các thông tin mà bạn muốn collect thêm trong quá trình hoạt động của application. VD: log http request (link, status, duration,&hellip;) để biết traffic thế nào<br /></li>
+<li><strong>DEBUG</strong>: các thông tin dùng để debug, hiển nhiên, có thể bật/tắt log này dựa vào mode của application. Bạn sẽ nghĩ cái nào debug log viết xong thì xóa chứ để làm gì nhỉ? Đúng là vậy, nhưng vẫn sẽ có một vài trường hợp cần thiết như quá trình đặt log debug tốn quá nhiều thời gian nếu làm rồi xóa đi rồi lại làm lại, hoặc một vài trường hợp hy hữu cần debug trên production (lol, vẫn có nhé), nhưng dĩ nhiên là không phải sửa code thẳng trên server mà chỉ bật/tắt debug mode thôi.<br /></li>
+<li><strong>WARNING</strong>: hơi khó phân biệt với error. Ở đây cá nhân mình thường log những thứ nguy hiểm, lỗi ít hoặc không gây nguy hiểm đến ứng dụng nhưng cần được fix sớm trong tương lai. VD bạn đang load sản phẩm ra từ trong Database nhưng lúc đó phát hiện user tạo sản phẩm đó không còn tồn tại trong Database, thay vì báo lỗi, bạn bùa phép trả về một user default nào đó và log warning lại, một dạng auto heal.<br /></li>
+<li><strong>ERROR</strong>: quá rõ ràng, error và toàn bộ thông tin liên quan nhiều nhất có thể để có thể reproduce lại được mà ít tốn thời gian nhất.<br />
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="format-log">Format log</h2>
+
+<ul>
+<li>Một điều quan trọng là log đó phải sử dụng được và dễ sử dụng: readable.<br /></li>
+<li>Log nên được format theo định dạng của các standard library logger để có thể consume được.<br /></li>
+
+<li><p>Có nhiều ứng dụng phục vụ cho việc collect data và analyze để có thể thống kê, search,&hellip; từ log đó như Logstash, Fluentd, Graylog,&hellip; Và file log nên follow theo format input của các ứng dụng này.<br />
+<img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/ynzg6tvzqt_Strip-Log-nonstandard-650-fianlenglish-1.jpg" alt="alt text" /></p>
+
+<h2 id="log-rotate">Log rotate</h2></li>
+
+<li><p>Log rotate là việc cắt nhỏ log ra và lưu trữ trên nhiều file thay vì một file, có thể sẽ lưu log riêng theo từng ngày, tuần hoặc tháng. Bạn sẽ có nhiều file dạng như: <em>mylog-20171201.log, mylog-20171202.log, mylog-20171202.log,&hellip;</em></p></li>
+
+<li><p>Hoặc có thể file log sẽ cắt theo chiến lược khác như dung lượng file (vd tối đa 1GB), hoặc tùy theo mục đích cụ thể riêng của ứng dụng.</p></li>
+
+<li><p>Có thể thực hiện bằng nhiều cách như dùng logrotate trong linux hoặc một số logger library cũng support việc này.</p></li>
+</ul>
+
+<h1 id="sử-dụng-logrus-trong-go">Sử dụng Logrus trong Go</h1>
+
+<p><img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/ul3l86ba3i_Screen%20Shot%202017-12-12%20at%2010.22.55%20PM.png" alt="alt text" /></p>
+
+<ul>
+<li>Trong Golang built-in package đã có hổ trợ việc log <a href="https://golang.org/pkg/log/">https://golang.org/pkg/log/</a> nhưng khá đơn giản và không đáp ứng đủ những nhu cầu như trên.<br /></li>
+<li>Logrus (<a href="https://github.com/sirupsen/logrus">https://github.com/sirupsen/logrus</a>) là một structered logger cho Golang support hầu hết những thứ trên và output ra màu mè khá đẹp<br />
+<img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/55immwl25d_687474703a2f2f692e696d6775722e636f6d2f505937714d77642e706e67.png" alt="alt text" /><br />
+<br /></li>
+</ul>
+
+<p>Sử dụng khá dễ dàng, một ví dụ nhỏ:</p>
+
+<pre><code>package main
+
+import (
+  log &quot;github.com/sirupsen/logrus&quot;
+)
+
+func main() {
+  log.WithFields(log.Fields{
+    &quot;animal&quot;: &quot;walrus&quot;,
+  }).Info(&quot;A walrus appears&quot;)
+}
+</code></pre>
+
+<h2 id="formater">Formater</h2>
+
+<p>Logrus support format với 2 định dạng là:<br />
+- <code>logrus.TextFormatter</code>: Log ra dạng plain text, nếu stdout là tty sẽ có bổ sung thêm color.<br />
+- <code>logrus.JSONFormatter</code>: Log ra theo dạng json</p>
+
+<pre><code>	log.SetFormatter(&amp;log.TextFormatter{})
+	log.SetFormatter(&amp;log.JSONFormatter{})
+</code></pre>
+
+<h2 id="structed-log">Structed log</h2>
+
+<p>Để đảm bảo log luôn được formated và parseable nên logrus bắt buộc log thông qua function <code>WithFields</code></p>
+
+<pre><code>package main
+
+import (
+	&quot;os&quot;
+
+	&quot;github.com/sirupsen/logrus&quot;
+)
+
+func main() {
+	logrus.SetFormatter(&amp;logrus.TextFormatter{})
+	//log.SetFormatter(&amp;log.JSONFormatter{})
+	var log = logrus.New()
+	log.Out = os.Stdout
+
+	// Log to file
+	// file, err := os.OpenFile(&quot;logrus.log&quot;, os.O_CREATE|os.O_WRONLY, 0666)
+	// if err == nil {
+	// 	log.Out = file
+	// } else {
+	// 	log.Info(&quot;Failed to log to file, using default stderr&quot;)
+	// }
+
+	log.WithFields(logrus.Fields{
+		&quot;event&quot;: &quot;event&quot;,
+		&quot;topic&quot;: &quot;topic&quot;,
+		&quot;key&quot;:   &quot;key&quot;,
+	}).Fatal(&quot;Failed to send event&quot;)
+}
+</code></pre>
+
+<p>Bằng cách này, dù muốn hay không log khi được lưu lại đều có cùng định dạng, ví dụ với đoạn code trên sẽ cho output là:<br />
+- Text format (tty):</p>
+
+<pre><code>FATA[0000] Failed to send event                          event=event key=key topic=topic
+</code></pre>
+
+<ul>
+<li>Text format (file):<br />
+<br /></li>
+</ul>
+
+<pre><code>time=&quot;2017-12-12T20:08:20+07:00&quot; level=fatal msg=&quot;Failed to send event&quot; event=event key=key topic=topic
+</code></pre>
+
+<ul>
+<li>Json format:<br />
+<br /></li>
+</ul>
+
+<pre><code>{&quot;event&quot;:&quot;event&quot;,&quot;key&quot;:&quot;key&quot;,&quot;level&quot;:&quot;fatal&quot;,&quot;msg&quot;:&quot;Failed to send event&quot;,&quot;time&quot;:&quot;2017-12-12T20:03:29+07:00&quot;,&quot;topic&quot;:&quot;topic&quot;}
+</code></pre>
+
+<p>Mặc định logrus sẽ bổ sung các field <code>time</code>, <code>level</code>, <code>msg</code> vào trong output log, khá tiện lợi.</p>
+
+<h2 id="level-logging">Level logging</h2>
+
+<p>Logrus support 6 loại level: Debug, Info, Warn, Error, Fatal, Panic. Cách sử dụng như bên dưới:</p>
+
+<pre><code>log.Debug(&quot;Useful debugging information.&quot;)
+log.Info(&quot;Something noteworthy happened!&quot;)
+log.Warn(&quot;You should probably take a look at this.&quot;)
+log.Error(&quot;Something failed but I'm not quitting.&quot;)
+// Calls os.Exit(1) after logging
+log.Fatal(&quot;Bye.&quot;)
+// Calls panic() after logging
+log.Panic(&quot;I'm bailing.&quot;)
+</code></pre>
+
+<h2 id="log-rotation">Log rotation</h2>
+
+<p>Đáng tiếc Logrus không support cái này, tuy nhiên bạn có thể dùng một thằng khác như <a href="https://github.com/natefinch/lumberjack">lumberjack</a> mặc dù được khuyến khích là nên dùng <code>logrotate</code> chứ không nên xử lý ở tầng application, cơ mà mình thích thì mình dùng thôi, hơ hơ.</p>
+
+<h2 id="hook">Hook</h2>
+
+<p>Có thể add hook tùy theo logging level, ví dụ gửi error đến một tracking service nào đó như BugSnag, ElasticSearch, Fluentd, Logstash,&hellip; có rất nhiều library đi kèm, có thể xem thêm ở đây <a href="https://github.com/sirupsen/logrus#hooks">https://github.com/sirupsen/logrus#hooks</a></p>
+
+<h2 id="thread-safe">Thread safe</h2>
+
+<ul>
+<li>Logrus default sử dụng mutex để đảm bảo cho việc concurrent write (có thể tắt nếu cần).<br /></li>
+<li>Logger out sử dụng <code>0_APPEND</code> flag để write và mỗi lượt write nhỏ hởn 4K cho phép ghi multi-thread/multi-process (Refer to <a href="http://www.notthewizard.com/2014/06/17/are-files-appends-really-atomic/">http://www.notthewizard.com/2014/06/17/are-files-appends-really-atomic/</a>)<br /></li>
+</ul>
+
+</div>
+
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/log/">log</a>, 
+            
+                <a href="/tags/go/">go</a>, 
+            
+                <a href="/tags/golang/">golang</a>, 
+            
+                <a href="/tags/logrus/">logrus</a>, 
+            
+                <a href="/tags/lumberjack/">lumberjack</a>, 
+            
+                <a href="/tags/tech/">tech</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Log%20trong%20Go%20v%c3%a0%20c%c3%a1c%20v%e1%ba%a5n%20%c4%91%e1%bb%81%20v%e1%bb%81%20log&url=https%3a%2f%2ftrietphm.github.io%2fpost%2flog-trong-go-va-cac-van-de-ve-log%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftrietphm.github.io%2fpost%2flog-trong-go-va-cac-van-de-ve-log%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2ftrietphm.github.io%2fpost%2flog-trong-go-va-cac-van-de-ve-log%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'trietpham';
+    var disqus_identifier = 'https:\/\/trietphm.github.io\/post\/log-trong-go-va-cac-van-de-ve-log\/';
+    var disqus_title = 'Log trong Go và các vấn đề về log';
+    var disqus_url = 'https:\/\/trietphm.github.io\/post\/log-trong-go-va-cac-van-de-ve-log\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Tea, Coffee &amp; Code" href="https://trietphm.github.io/">Tea, Coffee &amp; Code</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2017 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://trietphm.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+        <script src="https://trietphm.github.io/js/jquery.fitvids.js"></script>
+        <script src="https://trietphm.github.io/js/scripts.js"></script>
+    </body>
+</html>
+
