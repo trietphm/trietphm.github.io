@@ -6,4 +6,4 @@ title = "Something"
 ## About
 - Triet Pham
 
-Yup, that's it
+Yup, it's me!

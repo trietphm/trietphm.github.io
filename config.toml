@@ -36,9 +36,15 @@ disqusShortname = "trietpham"
 GithubUsername = "trietphm"
 
 # default: undefined
-TwitterUsername = "trietphm"
+TwitterUsername = "phmtriet"
 
+intro = true
+headline = "Hi, I'm Triet"
+description = "A gopher who's using VIM"
 github = "https://github.com/trietphm"
+twitter = "https://twitter.com/phmtriet"
+email = "trietphm@gmail.com"
+linkedin = "https://linkedin.com/in/phmtriet"
 shareTwitter = true
 shareFacebook = true
 shareGooglePlus = true
