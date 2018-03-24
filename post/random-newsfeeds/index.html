@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Random newsfeed &middot; Triet Pham</title>
+        <meta name="description" content="Tạo một newsfeed random">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.21" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="https://trietphm.github.io/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-93009521-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Tea, Coffee &amp; Code" href="https://trietphm.github.io/">Tea, Coffee &amp; Code</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://trietphm.github.io/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/phmtriet">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/trietphm">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/phmtriet">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:trietphm@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Friends" href="/page/friends/">Friends</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Random newsfeed</h1>
+    
+        <p class="post-description" itemprop="description">Tạo một newsfeed random</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2018-03-16" itemprop="datePublished">Fri, Mar 16, 2018</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="http://github.com/trietphm" itemprop="url" rel="author">Triet Pham</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h1 id="các-thuật-toán-sắp-xếp-newsfeed">Các thuật toán sắp xếp newsfeed</h1>
+
+<ul>
+<li>Một trong những tính năng thường gặp của những trang tin tức/mạng xã hội là newsfeed.<br /></li>
+<li>Thông thường các trang này được thiết kế để hiển thị <strong>tin tức mới nhất</strong> (sort theo timestamp) hoặc những <strong>tin được ưa chuộng, đáng giá cao</strong> (sort theo hệ thống ranking được đánh giá dựa score/view/ như hackernews, reddit) hoặc đơn giản là <strong>theo ý thích của admin</strong>, mình thích thì mình đưa lên top thôi (kipalog).<br /></li>
+<li>Tuy nhiên, hầu hết các dạng này đều phải sort dựa trên một giá trị nhất định và quan trọng nhất cần có một lượng bài viết liên tục đủ để tránh làm cho newsfeed không bị nhàm chán, nhìn chỉ có vài bài đăng đi đăng lại.<br /></li>
+<li>Ngoài ra, không như các trang tin tức hằng ngày, chỉ cần qua một đêm là đã thành tin outdated, một số trang web chia sẽ tin tức, kiến thức lại không như vậy (ví dụ chia sẽ kiến thức thiên văn, văn học, lịch sử, kỹ năng,&hellip; Hoặc chia sẽ các địa điểm, thông tin du lịch, mẹo vặt,&hellip;), đồng thời lượng bài viết cũng không nhiều bằng. Và các thuật toán newsfeed ở bên trên chỉ có thể giúp người dùng tiếp cận được một lượng thông tin rất nhỏ.<br /></li>
+<li>Và đôi khi do lượng bài cập nhật không liên tục (vd khoảng 1-2 ngày mới có 1 bài), khi user vào cứ thấy có vài bài vừa được đăng gần đây và kết luận <em>site cùi quá, chả có gì hay</em>, mặc dù còn một lượng bài viết rất lớn đã được đăng trước nhưng user không được tiếp cận.<br /></li>
+<li>Để giải quyết tình trạng trên, bài viết dưới sẽ mô tả về việc random dữ liệu, đồng thời thiết kế newsfeed có vẻ có <em>hơi hướm</em> newsfeed base user (nội dung xây dựng dựa trên hành vi người dùng).<br /></li>
+<li>Việc random có thể sẽ mang lại ưu và nhược điểm như sau:<br />
+
+<ul>
+<li>Ưu: tạo cảm giác dữ liệu phong phú, site active liên tục, mỗi lần user refresh/truy cập sẽ có được thông tin khác nhau, và mỗi lần load đều là trải nghiệm dữ liệu mới.<br /></li>
+<li>Nhược: đôi khi user thấy gì đó hay ho, quay lại xem thì lại không tìm thấy cái cũ, random mà. Nhưng đôi khi đây cũng có thể coi là feature tùy theo business của product.<br />
+<br /></li>
+</ul></li>
+</ul>
+
+<h1 id="random-newsfeed">Random newsfeed</h1>
+
+<h2 id="yêu-cầu">Yêu cầu</h2>
+
+<p>Để dễ hình như ta sẽ thiết kế một API newsfeeds trả về danh sách địa điểm ăn uống một cách ngẫu nhiên. Giả sử mình đang có trong tay tập dữ liệu của 10000 địa điểm với nội dung khác nhau và đang nằm trong DB SQL (Mysql/Postgresql). Newsfeed sẽ giống như timeline của Facebook, tức là cứ scroll xuống thì client sẽ request lên để lấy nội dung mới về. Và cần phải đảm bảo:</p>
+
+<ul>
+<li>Mỗi lần reload newsfeed phải có nội dung random khác nhau giữa các lần reload.<br /></li>
+
+<li><p>Dữ liệu trả về ở mỗi lần load more (scroll xuống) phải đảm bảo không trùng với dữ liệu đã trả về trước đó.</p></li>
+
+<li><p>Giả sử dữ liệu của mình có dạng đơn giản như sau:</p></li>
+</ul>
+
+<pre><code>eateries
+
++-----+------+---------+------------+
+| id  | name | address | created_at |
++-----+------+---------+------------+
+| int | text | text    | timestamp  |
++-----+------+---------+------------+
+</code></pre>
+
+<ul>
+<li>Và format API trả về sẽ có dạng như thế này:<br />
+<br /></li>
+</ul>
+
+<pre><code>{
+	&quot;data&quot;: [
+		{&lt;eatery_1&gt;},
+		{&lt;eatery_2&gt;},
+		{&lt;eatery_3&gt;},
+		...
+	],
+	&quot;pagination&quot;: {
+		&quot;nextUrl&quot;:&quot;/newsfeeds?param1=x&amp;param2=y&amp;param3=z&quot;
+	}
+}
+</code></pre>
+
+<p>Với format trên, client mỗi lần cần lấy thêm dữ liệu (load more) chỉ cần lấy <code>nextUrl</code> ra và request thẳng lên server mà không cần thêm thao tác gì khác, mọi thứ đều được quyết định ở server.</p>
+
+<h2 id="xây-dựng">Xây dựng</h2>
+
+<h3 id="simple-approach-lọc-phần-tử-trùng-mỗi-lần-load">Simple approach: Lọc phần tử trùng mỗi lần load</h3>
+
+<ul>
+<li>Cách tiếp cận đơn giản nhất: mỗi lần load sẽ query random, đồng thời loại bỏ các địa điểm đã load trước đó, câu query sẽ có dạng như sau:<br />
+<br /></li>
+</ul>
+
+<pre><code>	SELECT * FROM eateries WHERE id NOT IN (?) ORDER BY RANDOM()
+</code></pre>
+
+<ul>
+<li>Dữ liệu trong param <code>?</code> nhận vào là danh sách <code>id</code> của những địa điểm đã load trước đó.<br /></li>
+<li>Câu hỏi đặt ra là làm sao biết user hiện tại đã load những địa điểm nào rồi để bỏ qua? Cách đơn giản nhất là lưu thẳng danh sách địa điểm vào trong <code>nextUrl</code> và khi client request lên thì lọc ra. Ví dụ:<br />
+
+<ul>
+<li>Lần load đầu tiên đã lấy ra 3 điểm có id là <code>[1, 2, 3]</code>.<br /></li>
+<li>Trong response trả về cho user sẽ là<br />
+<br /></li>
+</ul></li>
+</ul>
+
+<pre><code>	&quot;pagination&quot;: {
+		&quot;nextUrl&quot;:&quot;/newsfeeds?ignoreEatery=1,2,3&quot;
+	}
+</code></pre>
+
+<ul>
+<li>Lần tới khi client request với <code>nextUrl</code> trên, ta sẽ có danh sách <code>id</code> cần loại ra, câu SQL của lần load kế tiếp sẽ là:<br />
+<code>
+	SELECT * FROM eateries WHERE id NOT IN (1,2,3) ORDER BY RANDOM() LIMIT 10
+</code><br /></li>
+<li><strong>Vấn đề</strong>:<br />
+
+<ul>
+<li>URL có giới hạn về số lượng ký tự, đâu đó tầm <a href="https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers">2000</a> characters tùy theo browsers, nên chắc chắn không thể lưu được 10000 địa điểm.<br /></li>
+<li>Giả sử bằng cách nào đó có thể truy xuất được danh sách id cần loại ra ở trên, ví dụ ta sẽ cache tạm ở đâu đó trong memcache/redis, lúc nào cần thì đọc từ cache ra, sau đó query đến SQL database, khi response data về thì bổ sung thêm id mới vào cache. Có vẻ ổn nhưng thực tế sẽ phát sinh các vấn đề như sau:<br /></li>
+<li>Server round trip: IDs phải luân chuyển từ cache -&gt; application -&gt; SQL Database -&gt; Update to cache<br /></li>
+<li>Query sử dụng điều kiện <code>NOT IN</code> sẽ không đảm bảo để sử dụng index (ví như ở trên <code>id</code> là primary key = đã indexed) nhưng db vẫn sẽ sequences scan, nguyên nhân vì planners thường sẽ dựa vào khá nhiều thông tin để quyết định xem có nên dùng index không, index nào, optimize thế nào để có performance tốt nhất và có thể sẽ đưa ra quyết định không chính xác, xem thêm <a href="https://richardfoote.wordpress.com/2008/08/13/indexes-and-not-equal-not-now-john/">Indexes and NOT Equal</a>.<br /></li>
+<li>Dưới đây là thông tin sau khi explain ra với data sample khoảng 80k records (Postgresql), thông tin chi tiết có thể xem ở đây <a href="https://explain.depesz.com/s/W7yl">https://explain.depesz.com/s/W7yl</a><br />
+<br /></li>
+</ul></li>
+</ul>
+
+<pre><code>   	EXPLAIN analyze
+	SELECT * FROM orders WHERE id NOT IN (&lt;List Ids here about 1000 items&gt;)
+	ORDER BY random()
+	LIMIT 10
+</code></pre>
+
+<pre><code>   Limit  (cost=109157.01..109157.04 rows=10 width=896) (actual time=804.610..804.614 rows=10 loops=1)
+  -&gt;  Sort  (cost=109157.01..109348.06 rows=76419 width=896) (actual time=804.608..804.611 rows=10 loops=1)
+        Sort Key: (random())
+        Sort Method: top-N heapsort  Memory: 29kB
+        -&gt;  Seq Scan on eateries  (cost=0.00..107505.63 rows=76419 width=896) (actual time=0.024..743.249 rows=77288 loops=1)
+              Filter: (id &lt;&gt; ALL ('{&lt;List ids dài quáaaaaaaaaaaaaaaaaaaaaaaa}'::integer[]))
+              Rows Removed by Filter: 783
+Planning time: 1.187 ms
+Execution time: 804.675 ms
+</code></pre>
+
+<ul>
+<li>Per node type stats<br />
+<br /></li>
+</ul>
+
+<pre><code>| node type | count | sum of times | % of query |
+|-----------|-------|--------------|------------|
+| Limit     | 1     | 0.003 ms     | 0.0 %      |
+| Seq Scan  | 1     | 743.249 ms   | 92.4 %     |
+| Sort      | 1     | 61.362 ms    | 7.6 %      |
+</code></pre>
+
+<ul>
+<li>Nhìn vào query plan ở trên ta thấy <code>NOT IN</code> đã được chuyển thành <code>id &lt;&gt; ALL('{}'::integer[])</code>, và quan trọng nhất là index trên primary key <code>id</code> đã không được dùng mà planner đã dùng sequence scan aka full scan table, chiếm 743ms, quá chậm.<br /></li>
+<li>Ngoài ra còn một vấn đề khác là hàm <code>RANDOM()</code> cũng làm ảnh hưởng đến tốc độ, 61.3ms, và thực tế con số này rất vô chừng có thể tăng hoặc giảm tùy theo database stats, nhưng có thể chắc chắn sẽ chậm với lượng data lớn.<br /></li>
+<li>Vậy có cách nào khác để tăng tốc cho hàm <code>RANDOM()</code> không? Có thể sử dụng một vài cách khác để pick ra được random data nhưng theo đánh giá cá nhân của mình sẽ đều có trade off, tức tốc độ query sẽ tỉ lệ nghịch với mức độ <code>random</code>, và thật sự mà nói cũng không thể cải thiện được nhiều. Xem thêm <a href="https://stackoverflow.com/questions/8674718/best-way-to-select-random-rows-postgresql">Best way to select random rows PostgreSQL<br />
+</a>, <a href="https://www.postgresql.org/message-id/flat/CAL_0b1u0UavZbUQo__a2jr0Vq31n2YK0wbUkjxx6H%3DNUT1u0zA%40mail.gmail.com#CAL_0b1u0UavZbUQo__a2jr0Vq31n2YK0wbUkjxx6H=NUT1u0zA@mail.gmail.com">Performance of ORDER BY RANDOM to select random rows?</a> và <a href="https://stackoverflow.com/questions/9816114/quality-of-postgresqls-random-function">Quality of PostgreSQL&rsquo;s random() function?<br />
+</a>. Mình sử dụng postgresql là chính nên chỉ research về postgresql, nhưng cơ bản random là vấn đề của computer science nói chung nên mình nghĩ ở database khác cũng sẽ khó có cách tiếp cận tốt hơn, xem thêm về cách Cloudflare random bằng cách dùng đèn lava <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details/">LavaRand in Production: The Nitty-Gritty Technical Details</a><br />
+<br />
+<br /></li>
+</ul>
+
+</div>
+
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/redis/">redis</a>, 
+            
+                <a href="/tags/random/">random</a>, 
+            
+                <a href="/tags/newsfeed/">newsfeed</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Random%20newsfeed&url=https%3a%2f%2ftrietphm.github.io%2fpost%2frandom-newsfeeds%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftrietphm.github.io%2fpost%2frandom-newsfeeds%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2ftrietphm.github.io%2fpost%2frandom-newsfeeds%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'trietpham';
+    var disqus_identifier = 'https:\/\/trietphm.github.io\/post\/random-newsfeeds\/';
+    var disqus_title = 'Random newsfeed';
+    var disqus_url = 'https:\/\/trietphm.github.io\/post\/random-newsfeeds\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Tea, Coffee &amp; Code" href="https://trietphm.github.io/">Tea, Coffee &amp; Code</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2018 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://trietphm.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+        <script src="https://trietphm.github.io/js/jquery.fitvids.js"></script>
+        <script src="https://trietphm.github.io/js/scripts.js"></script>
+    </body>
+</html>
+

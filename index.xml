@@ -6,10 +6,20 @@
     <description>Recent content on Tea, Coffee &amp; Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 12 Dec 2017 07:23:58 +0700</lastBuildDate>
+    <lastBuildDate>Fri, 16 Mar 2018 07:40:38 +0700</lastBuildDate>
     
 	<atom:link href="https://trietphm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Random newsfeed</title>
+      <link>https://trietphm.github.io/post/random-newsfeeds/</link>
+      <pubDate>Fri, 16 Mar 2018 07:40:38 +0700</pubDate>
+      
+      <guid>https://trietphm.github.io/post/random-newsfeeds/</guid>
+      <description>Các thuật toán sắp xếp newsfeed  Một trong những tính năng thường gặp của những trang tin tức/mạng xã hội là newsfeed.
+ Thông thường các trang này được thiết kế để hiển thị tin tức mới nhất (sort theo timestamp) hoặc những tin được ưa chuộng, đáng giá cao (sort theo hệ thống ranking được đánh giá dựa score/view/ như hackernews, reddit) hoặc đơn giản là theo ý thích của admin, mình thích thì mình đưa lên top thôi (kipalog).</description>
+    </item>
     
     <item>
       <title>Log trong Go và các vấn đề về log</title>
