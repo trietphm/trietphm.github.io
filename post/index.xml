@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Tea, Coffee &amp; Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 16 Mar 2018 07:40:38 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 03 Mar 2019 11:02:55 +0700</lastBuildDate>
     
 	<atom:link href="https://trietphm.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ứng dụng trên điện thoại Android</title>
+      <link>https://trietphm.github.io/post/android-app/</link>
+      <pubDate>Sun, 03 Mar 2019 11:02:55 +0700</pubDate>
+      
+      <guid>https://trietphm.github.io/post/android-app/</guid>
+      <description>Nhân dịp mới mua domain https://triet.dev + mới đổi sang dùng &amp;ldquo;quốc thoại&amp;rdquo; Xiaomi gần đây nên viết bài này.
+ Câu hỏi mình thường gặp nhất từ bạn bè (IT) là &amp;ldquo;không sợ bị Xiaomi tracking/gửi dữ liệu về TQ này kia sao?&amp;rdquo;. Dĩ nhiên là có, mình hơi dị ứng một chút với việc bị tracking và một số thể loại chạy app chạy background để thực hiện một vài thứ được cho là để &amp;ldquo;gia tăng trải nghiệm&amp;rdquo;.</description>
+    </item>
     
     <item>
       <title>Random newsfeed</title>
