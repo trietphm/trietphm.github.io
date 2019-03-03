@@ -51,7 +51,7 @@ https://blokada.org/
 
 hoặc vào **F-droid** và search Blokada để cài đặt
 https://f-droid.org/en/packages/org.blokada.alarm/
-![alt text](/static/img/android-app/blokada.jpg)
+![alt text](/static/img/android-app/blokada.png)
 
 - Cách Blokada hoạt động: nói ngắn gọn là Blockada sẽ tạo một VPN và mọi thứ đi qua VPN sẽ bị filter (quảng cáo) dựa trên filter list. Và app được optimize khá tốt, không hề tốn pin dù chạy 24/24.
 - "Thế lỡ bị chính thằng Blokada nó track thì sao?" Blokada không track và có open source trên Github https://github.com/blokadaorg/blokada, bạn có thể vào check và ném đá nếu phát hiện ra.
@@ -109,7 +109,7 @@ Không "xịn" và nhiều chức năng như app Facebook, hiển nhiên, nhưng
 Có thể tải SlimSocial trên Google Play hoặc F-Droid. Open source: https://github.com/rignaneseleo/SlimSocial-for-Facebook
 Google Play: https://play.google.com/store/apps/details?id=it.rignanese.leo.slimfacebook&hl=en
 F-Droid: https://f-droid.org/en/packages/it.rignanese.leo.slimfacebook/
-![alt text](/static/img/android-app/slimesocial.jpg)
+![alt text](/static/img/android-app/slimsocial.jpg)
 
 # 6. Nova Launcher
 
