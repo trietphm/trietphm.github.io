@@ -19,14 +19,16 @@ title = "Ứng dụng trên điện thoại Android"
   1. F-Droid
   2. Blokada
   3. Greenify
-  4. Skytube
-  5. SlimSocial
+  4. SlimSocial
+  5. 1Password
   6. Nova Launcher
-  7. Firefox + Addons
-  8. Genious Scan
-  9. Firefox
-  10. Manga Reader
-  11. AppFree
+  7. GadgetBridge
+  8. Authy
+  9. Firefox + Addon
+  10. Google Podcasts
+  11. Genious Scan
+  12. Skytube
+  13. Manga Reader
 
 # 1. F-droid
 
@@ -51,7 +53,7 @@ https://blokada.org/
 
 hoặc vào **F-droid** và search Blokada để cài đặt
 https://f-droid.org/en/packages/org.blokada.alarm/
-![alt text](/static/img/android-app/blokada.png)
+![](/static/img/android-app/blokada.png)
 
 - Cách Blokada hoạt động: nói ngắn gọn là Blockada sẽ tạo một VPN và mọi thứ đi qua VPN sẽ bị filter (quảng cáo) dựa trên filter list. Và app được optimize khá tốt, không hề tốn pin dù chạy 24/24.
 - "Thế lỡ bị chính thằng Blokada nó track thì sao?" Blokada không track và có open source trên Github https://github.com/blokadaorg/blokada, bạn có thể vào check và ném đá nếu phát hiện ra.
@@ -79,19 +81,10 @@ Có bản Pro (donate version - tốn tiền) có nhiều chức năng hơn và 
 Quick guide:
 - Mở app lên, chọn **(+)** và chọn các app cần hibernate
 - Mình thường set "Sleep and Hibernate" của Greenify làm _Assist & voice input_ trong **Default apps**, để chỉ cần ấn giữ nút Home (trên màn hình) để tắt màn hình (lock máy) và hibernate cùng lúc.
-![alt text](/static/img/android-app/default-apps.png)
-![alt text](/static/img/android-app/default-apps-2.png)
+![](/static/img/android-app/default-apps.png)
+![](/static/img/android-app/default-apps-2.png)
 
-# 4. SkyTube
-
-Dùng để xem và... nghe YouTube. Vấn đề lớn nhất của app YouTube là bạn không thể tắt màn hình để nghe nhạc được (nhạc tắt theo luôn), trừ phi bạn có đăng ký YouTube Premium (đáng tiếc là cũng không available ở Việt Nam)
-Bạn có thể xem video trên SkyTube và tắt màn hình thoải mái.
-Do đạp nồi cơm của YouTube nên bạn chỉ có thể tải SkyTube trên F-Droid
-
-https://f-droid.org/en/packages/free.rm.skytube.oss/
-![alt text](/static/img/android-app/skytube.jpg)
-
-# 5. SlimSocial
+# 4. SlimSocial
 
 Ứng dụng thay thế cho Facebook/Facebook Lite. Vì:
 - Chặn quảng cáo
@@ -109,7 +102,21 @@ Không "xịn" và nhiều chức năng như app Facebook, hiển nhiên, nhưng
 Có thể tải SlimSocial trên Google Play hoặc F-Droid. Open source: https://github.com/rignaneseleo/SlimSocial-for-Facebook
 Google Play: https://play.google.com/store/apps/details?id=it.rignanese.leo.slimfacebook&hl=en
 F-Droid: https://f-droid.org/en/packages/it.rignanese.leo.slimfacebook/
-![alt text](/static/img/android-app/slimsocial.jpg)
+![](/static/img/android-app/slimsocial.jpg)
+
+# 5. 1Password (Có phí)
+
+Gần như là must-have app vì hầu như toàn bộ password của mình là random generated và được lưu trong 1Password. Mỗi lần cần đăng nhập mình sẽ dùng 1Password để auto-fill.
+Ngoài ra, còn một vấn đề về security nữa là nếu bạn dùng một app keyboard bên thứ 3 (VD Laban key, GoTiengViet, Google Keyboard,...) thì các app này có thể đọc và _vô tình_ lưu password của bạn.
+
+Vậy copy Password từ 1Password ra rồi paste vào là ổn? Thật sự thì chưa, vì bất cứ app nào cũng được quyền đọc Clipboard và biết được password của bạn.
+Tốt nhất nên dùng chức năng auto-fill của 1Password hoặc chuyển sang **1Password Keyboard** mỗi lần nhập password.
+Bạn có thể xem thêm về security hole này ở đây:
+https://github.com/grepx/android-clipboard-security
+
+![](https://1password.com/img/downloads/screenshot-android-mobile@2x.f1dc98bb5f825a473cd6f24c2a653dfe.png)
+
+Google Play: https://play.google.com/store/apps/details?id=com.agilebits.onepassword&hl=en
 
 # 6. Nova Launcher
 
@@ -117,25 +124,52 @@ Thử rất nhiều Launcher nhưng đây là cái nhanh, ổn định, customiz
 Tải trên Google Play nha.
 https://play.google.com/store/apps/details?id=com.teslacoilsw.launcher&hl=en
 
-# 7. Authy
+# 7. Gadgetbridge
 
-Giống như Google Authenticator nhưng có thể backup được, lỡ mất điện thoại còn có thể recovery lại.
+Mình có một cái vòng đeo tay Miband nhưng lại không muốn đưa dữ liệu cho Xiaomi, nhưng muốn xem dữ liệu activity/sleeping tracking thì phải sync với app Xiaomi Fit :(
+Và Gadgetbridge là giải pháp, một open-source Android app để thay thế cho app Xiaomi Fit. Ngoài ra, Gadgetbridge còn hổ trợ một số thiết bị đeo tay khác như Amazfit, Pebble,...
+
+Mặc dù UI/UX hơi bị chuối nhưng đối với mình cũng chấp nhận được.
+
+![](https://i.imgur.com/OZ43x0T.png)
+
+F-Droid: https://f-droid.org/en/packages/nodomain.freeyourgadget.gadgetbridge/
+
+# 8. Authy
+
+Giống như **Google Authenticator** nhưng có thể backup được, lỡ mất điện thoại còn có thể recovery lại.
 https://play.google.com/store/apps/details?id=com.authy.authy&hl=en
 
-# 8. Genious Scan
+![](https://lh3.googleusercontent.com/rZrPOfWeeot2-KZY5sIkjn1b9B3trGhp0y_oHJprXjUTNMI5y5qFaLSSHA9TPv3uvuyf=w2880-h1522-rw)
+
+# 9. Firefox
+Mình rất công nhận Chrome load nhanh hơn Firefox rất nhiều, nhưng vẫn dùng để ủng hộ Firefox. Ngoài ra còn vì Firefox Android có thể cài Add-on được.
+
+- **Tap Translate** (để quick translate, chỉ cần select từ muốn tra sẽ có cái button hiện ra để dịch từ đó)
+- **User-Agent Switcher**: để chuyển web-agent sang thành... Chrome. Nhiều website của Google (Google search, Gmail,...) load trên Firefox cực kỳ xấu (Google cố tình làm vậy), cả Facebook cũng giảm độ phân giải ảnh xuống, nên phải chỉnh agent thành chrome để giả mạo.
+
+# 10. Google Podcasts
+Nếu bạn thường nghe Podcasts thì đây là một app không thể bỏ qua.
+Hàng chính chủ Google, đơn giản, gọn nhẹ, dễ dùng.
+
+![](https://lh3.googleusercontent.com/wkD5vF9dVBn3Xvd_Pq13ZdBLQ_JFSwnXkeiTJxqmrx6QLZZObQQRxVSFFRkZ4aekz3o=)
+
+Google Play: https://play.google.com/store/apps/details?id=com.google.android.apps.podcasts&hl=en
+
+# 11. Genious Scan
 
 Từ lúc CamScanner tính phí mình chuyển qua cái này để scan/chụp tài liệu bằng camera điện thoại, nhanh gọn lẹ.
 https://play.google.com/store/apps/details?id=com.thegrizzlylabs.geniusscan.free&hl=en
 
-# 9. Firefox
-Mình rất công nhận Chrome load nhanh hơn Firefox rất nhiều, nhưng vẫn dùng để ủng hộ Firefox. Ngoài ra còn vì Firefox Android có thể cài Add-on được.
-- Tap Translate (để quick translate, chỉ cần select từ muốn tra sẽ có cái button hiện ra để dịch từ đó)
-- User-Agent Switcher: để chuyển web-agent sang thành... Chrome. Nhiều website của Google (Google search, Gmail,...) load trên Firefox cực kỳ xấu (Google cố tình làm vậy), cả Facebook cũng giảm độ phân giải ảnh xuống, nên phải chỉnh agent thành chrome để giả mạo.
+# 12. SkyTube
 
-# 10. Manga Reader
+Dùng để xem và... nghe YouTube. Vấn đề lớn nhất của app YouTube là bạn không thể tắt màn hình để nghe nhạc được (nhạc tắt theo luôn), trừ phi bạn có đăng ký YouTube Premium (đáng tiếc là cũng không available ở Việt Nam)
+Bạn có thể xem video trên SkyTube và tắt màn hình thoải mái.
+Do đạp nồi cơm của YouTube nên bạn chỉ có thể tải SkyTube trên F-Droid
+
+https://f-droid.org/en/packages/free.rm.skytube.oss/
+![](/static/img/android-app/skytube.jpg)
+
+# 13. Manga Reader
 The best in town! Là app đọc truyện tranh với rất nhiều nguồn khác nhau, từ tây đến ta đến tàu, ngoại trừ UI hơi chuối một chút thì những thứ còn lại cực kỳ ổn:
 https://play.google.com/store/apps/details?id=com.comikin.reader2&hl=en
-
-# 11. AppFree
-App tổng hợp các app đang free (từ dạng paid-app), đa phần các app giảm giá thành miễn phí thường tạp nhanh nhưng đôi khi cũng có những thứ khá ngon lành, thượng vàng hạ cám.
-https://play.google.com/store/apps/details?id=com.appsfree.android
