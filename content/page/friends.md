@@ -8,7 +8,7 @@ title = "Friend sites"
 +++
 
 
-- [IntoIterator::repeat(☕️) - https://giangnh.me](https://giangnh.me)
+- [IntoIterator::repeat(☕️) - https://giang.dev](https://giang.dev)
 - [Minh Quy Blog - https://mquy.github.io](https://mquy.github.io)
 - [Blog I'm Linh - https://imlinh.com](https://imlinh.com)
 - [Tea, Coffee & Code - https://trietphm.github.io](https://trietphm.github.io)
