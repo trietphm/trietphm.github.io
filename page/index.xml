@@ -24,7 +24,6 @@
  Saitama&amp;rsquo;s Punch - http://hieuk09.github.io
  Runi Blog - http://runikitkat.com
  Codeaholicguy - https://codeaholicguy.com
- Hieu&amp;rsquo;s Blog - https://hieuhtr.github.io
  HQC&amp;rsquo;s Blog - https://hqc.io/essays
  HuyDX&amp;rsquo;s Blog - https://huydx.com
  Long Hoang&amp;rsquo;s Blog - https://sfzxc.github.io
@@ -49,6 +48,15 @@
  Nghĩ ngược lại và làm khác đi
  Ông già và biển cả
  Bí thuật thôi miên</description>
+    </item>
+    
+    <item>
+      <title>SQL Query for PostreSQL Workshop</title>
+      <link>https://trietphm.github.io/page/workshop-postgres/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://trietphm.github.io/page/workshop-postgres/</guid>
+      <description>Explain Analyze Init data CREATE SEQUENCE seq1; CREATE SEQUENCE seq2; CREATE TABLE rdata ( id serial PRIMARY KEY NOT NULL, name VARCHAR(255), balance FLOAT, unique_val1 INTEGER, unique_val2 INTEGER, registered BOOLEAN, created_at DATE );  INSERT INTO rdata(name, balance, unique_val1, unique_val2, registered, created_at) SELECT (&#39;{John,Harry,Bob,Alice,Wilson,Nick,Dave,dAve,DaVe}&#39;::text[])[CEIL(random()*9)] AS name, CEIL(random() * 10000) AS balance, nextval(&#39;seq1&#39;)::int AS unique_val1, nextval(&#39;seq2&#39;)::int AS unique_val2, CEIL(random()*100) &amp;gt; 1 AS registered, (now() + (CEIL(random() * 365) || &#39; day&#39;) :: INTERVAL)::date AS created_at FROM generate_series(1,10000);  WITH unique_val1s as ( SELECT row_number() over (order by random()) rn, unique_val1 as new_unique_val1 FROM rdata ), ids AS ( SELECT row_number() over (order by random()) rn, id as ref_id FROM rdata ) UPDATE rdata SET unique_val1 = new_unique_val1 FROM unique_val1s JOIN ids ON unique_val1s.</description>
     </item>
     
     <item>
