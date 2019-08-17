@@ -7,6 +7,7 @@ title = "SQL Query for PostreSQL Workshop"
 ### Init data
 {{< gist trietphm 53a85268cbef5a663ee434f50d81743c >}}
 
+### Queries
 {{< gist trietphm cd88edfb3b6ec134dd08b4a1736021e8 >}}
 
 ## B. Index
