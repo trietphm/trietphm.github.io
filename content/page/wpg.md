@@ -19,3 +19,4 @@ title = "SQL Query for PostreSQL Workshop"
 {{< gist trietphm 7b8a58914e5c34c47eddd90a04ada9d6 >}}
 
 ## Uncommon Data Types
+{{< gist trietphm 2a424545c9eb8a61a8d19962b2463f97 >}}
