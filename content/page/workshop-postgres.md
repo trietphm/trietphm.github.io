@@ -59,3 +59,4 @@ CREATE INDEX ON rdata(unique_val1);
 CREATE INDEX ON rdata(unique_val2);
 VACUUM analyze rdata;
 ```
+{{< gist trietphm 53a85268cbef5a663ee434f50d81743c >}}
