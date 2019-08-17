@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>SQL Query for PostreSQL Workshop &middot; Triet Pham</title>
-        <meta name="description" content="Explain Analyze Init data CREATE SEQUENCE seq1; CREATE SEQUENCE seq2; CREATE TABLE rdata ( id serial PRIMARY KEY NOT NULL, name VARCHAR(255), balance FLOAT, unique_val1 INTEGER, unique_val2 INTEGER, registered BOOLEAN, created_at DATE );  INSERT INTO rdata(name, balance, unique_val1, unique_val2, registered, created_at) SELECT (&#39;{John,Harry,Bob,Alice,Wilson,Nick,Dave,dAve,DaVe}&#39;::text[])[CEIL(random()*9)] AS name, CEIL(random() * 10000) AS balance, nextval(&#39;seq1&#39;)::int AS unique_val1, nextval(&#39;seq2&#39;)::int AS unique_val2, CEIL(random()*100) &gt; 1 AS registered, (now() &#43; (CEIL(random() * 365) || &#39; day&#39;) :: INTERVAL)::date AS created_at FROM generate_series(1,10000);  WITH unique_val1s as ( SELECT row_number() over (order by random()) rn, unique_val1 as new_unique_val1 FROM rdata ), ids AS ( SELECT row_number() over (order by random()) rn, id as ref_id FROM rdata ) UPDATE rdata SET unique_val1 = new_unique_val1 FROM unique_val1s JOIN ids ON unique_val1s.">
+        <meta name="description" content=" Explain Analyze Init data  ">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="generator" content="Hugo 0.21" />
@@ -101,56 +101,6 @@ ga('send', 'pageview');
 <h2 id="explain-analyze">Explain Analyze</h2>
 
 <h3 id="init-data">Init data</h3>
-
-<pre><code>CREATE SEQUENCE seq1;
-CREATE SEQUENCE seq2;
-
-CREATE TABLE rdata (
-	id serial PRIMARY KEY NOT NULL,
-	name VARCHAR(255),
-	balance FLOAT,
-	unique_val1 INTEGER,
-	unique_val2 INTEGER,
-	registered BOOLEAN,
-	created_at DATE
-);
-</code></pre>
-
-<pre><code>INSERT INTO rdata(name, balance, unique_val1, unique_val2, registered, created_at)
-SELECT
-('{John,Harry,Bob,Alice,Wilson,Nick,Dave,dAve,DaVe}'::text[])[CEIL(random()*9)] AS name,
-CEIL(random() * 10000) AS balance,
-nextval('seq1')::int AS unique_val1,
-nextval('seq2')::int AS unique_val2,
-CEIL(random()*100) &gt; 1 AS registered,
-(now() + (CEIL(random() * 365) || ' day') :: INTERVAL)::date AS created_at
-FROM generate_series(1,10000);
-</code></pre>
-
-<pre><code>WITH
-unique_val1s as (
-    SELECT row_number() over (order by random()) rn,
-           unique_val1 as new_unique_val1
-    FROM rdata
-),
-ids AS (
-    SELECT row_number() over (order by random()) rn,
-           id as ref_id
-    FROM rdata
-)
-UPDATE rdata
-SET unique_val1 = new_unique_val1
-FROM unique_val1s
-JOIN ids
-  ON unique_val1s.rn = ids.rn
-WHERE id = ref_id;
-</code></pre>
-
-<pre><code>CREATE INDEX ON rdata(balance);
-CREATE INDEX ON rdata(unique_val1);
-CREATE INDEX ON rdata(unique_val2);
-VACUUM analyze rdata;
-</code></pre>
 
 <script src="//gist.github.com/trietphm/53a85268cbef5a663ee434f50d81743c.js"></script>
 
