@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>newsfeed on triet.dev</title>
+    <link>https://triet.dev/tags/newsfeed/</link>
+    <description>Recent content in newsfeed on triet.dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copy, _right?_ :thinking_face:</copyright>
+    <lastBuildDate>Fri, 16 Mar 2018 07:40:38 +0700</lastBuildDate><atom:link href="https://triet.dev/tags/newsfeed/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Random newsfeed</title>
+      <link>https://triet.dev/posts/random-newsfeeds/</link>
+      <pubDate>Fri, 16 Mar 2018 07:40:38 +0700</pubDate>
+      
+      <guid>https://triet.dev/posts/random-newsfeeds/</guid>
+      <description>Các thuật toán sắp xếp newsfeed #   Một trong những tính năng thường gặp của những trang tin tức/mạng xã hội là newsfeed.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

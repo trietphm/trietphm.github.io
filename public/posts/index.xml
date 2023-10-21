@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on triet.dev</title>
+    <link>https://triet.dev/posts/</link>
+    <description>Recent content in Posts on triet.dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copy, _right?_ :thinking_face:</copyright>
+    <lastBuildDate>Sun, 03 Mar 2019 11:02:55 +0700</lastBuildDate><atom:link href="https://triet.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ứng dụng trên điện thoại Android [2019]</title>
+      <link>https://triet.dev/posts/android-app/</link>
+      <pubDate>Sun, 03 Mar 2019 11:02:55 +0700</pubDate>
+      
+      <guid>https://triet.dev/posts/android-app/</guid>
+      <description>Các ứng dụng mình hay cài đặt và sử dụng trên điện thoại Android</description>
+      
+    </item>
+    
+    <item>
+      <title>Random newsfeed</title>
+      <link>https://triet.dev/posts/random-newsfeeds/</link>
+      <pubDate>Fri, 16 Mar 2018 07:40:38 +0700</pubDate>
+      
+      <guid>https://triet.dev/posts/random-newsfeeds/</guid>
+      <description>Các thuật toán sắp xếp newsfeed #   Một trong những tính năng thường gặp của những trang tin tức/mạng xã hội là newsfeed.</description>
+      
+    </item>
+    
+    <item>
+      <title>Log trong Go và các vấn đề về log</title>
+      <link>https://triet.dev/posts/log-trong-go-va-cac-van-de-ve-log/</link>
+      <pubDate>Tue, 12 Dec 2017 07:23:58 +0700</pubDate>
+      
+      <guid>https://triet.dev/posts/log-trong-go-va-cac-van-de-ve-log/</guid>
+      <description>Vì sao cần phải log và cần phải log một cách chỉnh chu? #   Log là gì?</description>
+      
+    </item>
+    
+    <item>
+      <title>Chuyện giao tiếp</title>
+      <link>https://triet.dev/posts/chuyen-giao-tiep/</link>
+      <pubDate>Sun, 27 Aug 2017 15:45:17 +0700</pubDate>
+      
+      <guid>https://triet.dev/posts/chuyen-giao-tiep/</guid>
+      <description>Giao tiếp #   Lời nói không mất tiền mua, lựa lời mà nói cho vừa lòng nhau</description>
+      
+    </item>
+    
+    <item>
+      <title>Phân tích slow query PostgreSQL với pgBadger</title>
+      <link>https://triet.dev/posts/phan-tich-slow-query-postgresql-voi-pgbadger/</link>
+      <pubDate>Sat, 10 Jun 2017 16:20:08 +0700</pubDate>
+      
+      <guid>https://triet.dev/posts/phan-tich-slow-query-postgresql-voi-pgbadger/</guid>
+      <description>Slow query là gì? #  Khi các câu query chậm hơn một thời gian nhất định tùy theo bạn định nghĩa, ví dụ chậm hơn 50ms, thì các câu query đó được xem là slow query.</description>
+      
+    </item>
+    
+    <item>
+      <title>Sublime Text to VIM</title>
+      <link>https://triet.dev/posts/sublime-text-to-vim/</link>
+      <pubDate>Sun, 19 Feb 2017 00:20:08 +0700</pubDate>
+      
+      <guid>https://triet.dev/posts/sublime-text-to-vim/</guid>
+      <description>Bắt đầu chuyển sang dùng Vim làm editor chính một cách nghiêm túc sau nhiều lần thử, bỏ cuộc và quay trở về Sublime Text.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

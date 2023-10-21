@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+    
+  
+    
+  
+    
+      <url>
+            <loc>https://triet.dev/posts/</loc>
+            <lastmod>2019-03-03T11:02:55+07:00</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+  
+    
+      <url>
+            <loc>https://triet.dev/</loc>
+            <lastmod>2019-03-03T11:02:55+07:00</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+      <url>
+            <loc>https://triet.dev/posts/android-app/</loc>
+            <lastmod>2019-03-03T11:02:55+07:00</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+  
+    
+  
+    
+      <url>
+            <loc>https://triet.dev/posts/random-newsfeeds/</loc>
+            <lastmod>2018-03-16T07:40:38+07:00</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <url>
+            <loc>https://triet.dev/posts/log-trong-go-va-cac-van-de-ve-log/</loc>
+            <lastmod>2017-12-12T07:23:58+07:00</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <url>
+            <loc>https://triet.dev/posts/chuyen-giao-tiep/</loc>
+            <lastmod>2017-08-27T15:45:17+07:00</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+  
+    
+      <url>
+            <loc>https://triet.dev/posts/phan-tich-slow-query-postgresql-voi-pgbadger/</loc>
+            <lastmod>2017-06-10T16:20:08+07:00</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+      <url>
+            <loc>https://triet.dev/posts/sublime-text-to-vim/</loc>
+            <lastmod>2017-02-19T00:20:08+07:00</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+  
+    
+  
+    
+  
+</urlset>
