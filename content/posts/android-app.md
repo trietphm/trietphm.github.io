@@ -1,20 +1,15 @@
-+++
-author = "Triet Pham"
-date = "2019-03-03T11:02:55+07:00"
-description = ""
-tags = []
-title = "Ứng dụng trên điện thoại Android"
-
-+++
+---
+title: "Ứng dụng trên điện thoại Android [2019]"
+author: "Triet Pham"
+date: "2019-03-03T11:02:55+07:00"
+summary: "Các ứng dụng mình hay cài đặt và sử dụng trên điện thoại Android"
+tags: ["app","android"]
+---
 
 - Nhân dịp mới mua domain https://triet.dev + mới đổi sang dùng "quốc thoại" Xiaomi gần đây nên viết bài này.
-
 - Câu hỏi mình thường gặp nhất từ bạn bè (IT) là "không sợ bị Xiaomi tracking/gửi dữ liệu về TQ này kia sao?". Dĩ nhiên là có, mình hơi dị ứng một chút với việc bị tracking và một số thể loại chạy app chạy background để thực hiện một vài thứ được cho là để "gia tăng trải nghiệm".
-
 - Thế nên các app mình dùng hơi "khác người" một chút và đôi khi hơi phiền phức, nhưng bù lại mình thấy yên tâm hơn phần nào về privacy.
-
 - Ngoài ra, viết bài này cũng vì một số bạn hỏi xem "có app gì hay ho không, giới thiệu với". Mình liệt kê một vài app _có lẽ_ ít người biết nhưng rất hữu dụng.
-
 - **TL;DR**
   1. F-Droid
   2. Blokada
@@ -53,7 +48,7 @@ https://blokada.org/
 
 hoặc vào **F-droid** và search Blokada để cài đặt
 https://f-droid.org/en/packages/org.blokada.alarm/
-![](/static/img/android-app/blokada.png)
+![](/img/android-app/blokada.png)
 
 - Cách Blokada hoạt động: nói ngắn gọn là Blockada sẽ tạo một VPN và mọi thứ đi qua VPN sẽ bị filter (quảng cáo) dựa trên filter list. Và app được optimize khá tốt, không hề tốn pin dù chạy 24/24.
 - "Thế lỡ bị chính thằng Blokada nó track thì sao?" Blokada không track và có open source trên Github https://github.com/blokadaorg/blokada, bạn có thể vào check và ném đá nếu phát hiện ra.
@@ -72,7 +67,7 @@ https://gist.githubusercontent.com/trietphm/6b73a101c64c50c70ac8808bbc75730b/raw
 Chặn các ứng dụng chạy nền (sync dữ liệu, push notification, tracking,...) bằng cách hibernate (ngủ đông) app đó, không còn bị tốn Pin (rất nhiều) vào mấy thứ này, rất nhiều app dù bạn có tắt, force stop các kiểu nó vẫn chạy và ăn pin như thường.
 Các app sau khi bị hibernated sẽ chỉ "thức dậy" khi bạn chủ động mở nó lên.
 Có thể tải Greenify trên Google Play
-![alt text](/static/img/android-app/greenify.png)
+![alt text](/img/android-app/greenify.png)
 
 https://play.google.com/store/apps/details?id=com.oasisfeng.greenify&hl=en
 
@@ -81,8 +76,8 @@ Có bản Pro (donate version - tốn tiền) có nhiều chức năng hơn và 
 Quick guide:
 - Mở app lên, chọn **(+)** và chọn các app cần hibernate
 - Mình thường set "Sleep and Hibernate" của Greenify làm _Assist & voice input_ trong **Default apps**, để chỉ cần ấn giữ nút Home (trên màn hình) để tắt màn hình (lock máy) và hibernate cùng lúc.
-![](/static/img/android-app/default-apps.png)
-![](/static/img/android-app/default-apps-2.png)
+![](/img/android-app/default-apps.png)
+![](/img/android-app/default-apps-2.png)
 
 # 4. SlimSocial
 
@@ -99,10 +94,11 @@ Bản chất app này cũng chỉ wrap cái site touch.facebook.com lại và th
 **Bất tiện:**
 Không "xịn" và nhiều chức năng như app Facebook, hiển nhiên, nhưng đối với mình là quá đủ, chủ yếu để xem/like/comment là đủ, những thứ khác không cần thiết.
 
-Có thể tải SlimSocial trên Google Play hoặc F-Droid. Open source: https://github.com/rignaneseleo/SlimSocial-for-Facebook
-Google Play: https://play.google.com/store/apps/details?id=it.rignanese.leo.slimfacebook&hl=en
-F-Droid: https://f-droid.org/en/packages/it.rignanese.leo.slimfacebook/
-![](/static/img/android-app/slimsocial.jpg)
+Có thể tải SlimSocial trên Google Play hoặc F-Droid.
+- Open source: https://github.com/rignaneseleo/SlimSocial-for-Facebook
+- Google Play: https://play.google.com/store/apps/details?id=it.rignanese.leo.slimfacebook&hl=en
+- F-Droid: https://f-droid.org/en/packages/it.rignanese.leo.slimfacebook/
+![](/img/android-app/slimsocial.jpg)
 
 # 5. 1Password (Có phí)
 
@@ -114,7 +110,7 @@ Tốt nhất nên dùng chức năng auto-fill của 1Password hoặc chuyển s
 Bạn có thể xem thêm về security hole này ở đây:
 https://github.com/grepx/android-clipboard-security
 
-![](https://1password.com/img/downloads/screenshot-android-mobile@2x.f1dc98bb5f825a473cd6f24c2a653dfe.png)
+![](/img/android-app/1password.png)
 
 Google Play: https://play.google.com/store/apps/details?id=com.agilebits.onepassword&hl=en
 
@@ -152,8 +148,6 @@ Mình rất công nhận Chrome load nhanh hơn Firefox rất nhiều, nhưng v�
 Nếu bạn thường nghe Podcasts thì đây là một app không thể bỏ qua.
 Hàng chính chủ Google, đơn giản, gọn nhẹ, dễ dùng.
 
-![](https://lh3.googleusercontent.com/wkD5vF9dVBn3Xvd_Pq13ZdBLQ_JFSwnXkeiTJxqmrx6QLZZObQQRxVSFFRkZ4aekz3o=)
-
 Google Play: https://play.google.com/store/apps/details?id=com.google.android.apps.podcasts&hl=en
 
 # 11. Genious Scan
@@ -168,7 +162,7 @@ Bạn có thể xem video trên SkyTube và tắt màn hình thoải mái.
 Do đạp nồi cơm của YouTube nên bạn chỉ có thể tải SkyTube trên F-Droid
 
 https://f-droid.org/en/packages/free.rm.skytube.oss/
-![](/static/img/android-app/skytube.jpg)
+![](/img/android-app/skytube.jpg)
 
 # 13. Manga Reader
 The best in town! Là app đọc truyện tranh với rất nhiều nguồn khác nhau, từ tây đến ta đến tàu, ngoại trừ UI hơi chuối một chút thì những thứ còn lại cực kỳ ổn:

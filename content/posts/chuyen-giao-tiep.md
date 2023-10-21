@@ -14,7 +14,7 @@ title = "Chuyện giao tiếp"
 Giao tiếp là chuyện rất bình thường nhưng lại có thể vô tình trở thành ngọn nguồn của rất nhiều vấn đề.
 Trong khuôn khổ bài viết sẽ nói đến giao tiếp sẽ ảnh hưởng thế nào đến việc phát triển phần mềm, và có thể có ít nhiều liên quan đến các việc khác (hoặc không).
 
-![alt text](/static/img/chuyen-giao-tiep/img6.jpg)
+![alt text](/img/chuyen-giao-tiep/img6.jpg)
 
 > TL;DR
 > Hãy giao tiếp như một team
@@ -51,7 +51,7 @@ Mọi người giao tiếp với nhau qua **Skype**
 ### 1. My teammates are ninjas
 #### Vấn đề:
 
-![alt text](/static/img/chuyen-giao-tiep/img7.jpg)
+![alt text](/img/chuyen-giao-tiep/img7.jpg)
 
 Tèo có thắc mắc về design nên nhắn tin qua Skype cho Bạch Tuyết
 
@@ -89,7 +89,7 @@ Và Tèo mất toi 8h lãng nhách chỉ vì ngồi đợi reply của team.
 ### 2. Sử dụng kênh chat không hợp lý
 #### Vấn đề:
 
-![alt text](/static/img/chuyen-giao-tiep/img2.jpg)
+![alt text](/img/chuyen-giao-tiep/img2.jpg)
 
 > - Tèo **cần thông tin** về API tìm kiếm user (**không có trong documents**) và nhớ mang máng Tí đã gửi đâu đó **trong đoạn chat group trên Skype**, và bắt đầu scroll lên tìm kiếm đoạn chat đó, phải **mất 30'** Tèo mới tìm ra.
 > - Yêu cầu app có thay đổi và Bờm thông báo lên group chat, mọi người trao đổi một đoạn dài dài.
@@ -98,7 +98,7 @@ Và Tèo mất toi 8h lãng nhách chỉ vì ngồi đợi reply của team.
 >   => Vài hôm sau phát hiện ra code không đúng yêu cầu, OT ngồi sửa lại.
 > - Bờm khiển trách và yêu cầu 2 người đọc lại chat log. Tí & Tèo bỏ 30' ngồi đọc đoạn chat, trao đổi phản biện và đã hiểu được yêu cầu, mặc dù mỗi người hiểu mỗi ý khác nhau?!
 
-![alt text](/static/img/chuyen-giao-tiep/img1.png)
+![alt text](/img/chuyen-giao-tiep/img1.png)
 
 #### Giải pháp:
 
@@ -121,7 +121,7 @@ Và Tèo mất toi 8h lãng nhách chỉ vì ngồi đợi reply của team.
 
 ### 4. I'm not mind reader!
 #### Vấn đề:
-![alt text](/static/img/chuyen-giao-tiep/img3.jpg)
+![alt text](/img/chuyen-giao-tiep/img3.jpg)
 
 >  **Bờm:** @Tí ơi, bug <ném cho cái screen shoot>
 >  **Tí:** Đâu anh, em có thấy gì đâu
@@ -138,7 +138,7 @@ Và Tèo mất toi 8h lãng nhách chỉ vì ngồi đợi reply của team.
 ### 5. We are a team not nemesis
 #### Vấn đề:
 
-![alt text](/static/img/chuyen-giao-tiep/img5.jpg)
+![alt text](/img/chuyen-giao-tiep/img5.jpg)
 
 > Tí phàn nàn Tuyết làm UI/UX tệ quá, Tuyết ôm hận trong lòng và thỉnh thoảng đổi design trước ngày deadline của Tí với lý do "đổi UI/UX cho vừa lòng Tí"
 > Tí trễ deadline nên bị stress, giận cá chém thớt, Tí quay qua hằn hộc với Tèo, đòi phải thay đổi API cho đúng với design.
@@ -152,7 +152,7 @@ Và Tèo mất toi 8h lãng nhách chỉ vì ngồi đợi reply của team.
 
 ### 6. Tam sao thất bản
 #### Vấn đề:
-![alt text](/static/img/chuyen-giao-tiep/img4.jpg)
+![alt text](/img/chuyen-giao-tiep/img4.jpg)
 #### Giải pháp:
  - Làm cho mọi thứ thật rõ ràng, document cụ thể và chi tiết.
  - Nếu phát sinh vấn đề cần làm rõ, không tạo ra điểm mù và chắn chắc mọi người có liên quan đều nắm được
