@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tea, Coffee &amp; Code</title>
@@ -6,11 +6,7 @@
     <description>Recent content on Tea, Coffee &amp; Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 Mar 2019 11:02:55 +0700</lastBuildDate>
-    
-	<atom:link href="https://trietphm.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 03 Mar 2019 11:02:55 +0700</lastBuildDate><atom:link href="https://trietphm.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ứng dụng trên điện thoại Android</title>
       <link>https://trietphm.github.io/post/android-app/</link>
@@ -18,7 +14,7 @@
       
       <guid>https://trietphm.github.io/post/android-app/</guid>
       <description>Nhân dịp mới mua domain https://triet.dev + mới đổi sang dùng &amp;ldquo;quốc thoại&amp;rdquo; Xiaomi gần đây nên viết bài này.
- Câu hỏi mình thường gặp nhất từ bạn bè (IT) là &amp;ldquo;không sợ bị Xiaomi tracking/gửi dữ liệu về TQ này kia sao?&amp;rdquo;. Dĩ nhiên là có, mình hơi dị ứng một chút với việc bị tracking và một số thể loại chạy app chạy background để thực hiện một vài thứ được cho là để &amp;ldquo;gia tăng trải nghiệm&amp;rdquo;.</description>
+  Câu hỏi mình thường gặp nhất từ bạn bè (IT) là &amp;ldquo;không sợ bị Xiaomi tracking/gửi dữ liệu về TQ này kia sao?&amp;rdquo;. Dĩ nhiên là có, mình hơi dị ứng một chút với việc bị tracking và một số thể loại chạy app chạy background để thực hiện một vài thứ được cho là để &amp;ldquo;gia tăng trải nghiệm&amp;rdquo;.</description>
     </item>
     
     <item>
@@ -27,8 +23,7 @@
       <pubDate>Fri, 16 Mar 2018 07:40:38 +0700</pubDate>
       
       <guid>https://trietphm.github.io/post/random-newsfeeds/</guid>
-      <description>Các thuật toán sắp xếp newsfeed  Một trong những tính năng thường gặp của những trang tin tức/mạng xã hội là newsfeed.
- Thông thường các trang này được thiết kế để hiển thị tin tức mới nhất (sort theo timestamp) hoặc những tin được ưa chuộng, đáng giá cao (sort theo hệ thống ranking được đánh giá dựa score/view/ như hackernews, reddit) hoặc đơn giản là theo ý thích của admin, mình thích thì mình đưa lên top thôi (kipalog).</description>
+      <description>Các thuật toán sắp xếp newsfeed  Một trong những tính năng thường gặp của những trang tin tức/mạng xã hội là newsfeed. Thông thường các trang này được thiết kế để hiển thị tin tức mới nhất (sort theo timestamp) hoặc những tin được ưa chuộng, đáng giá cao (sort theo hệ thống ranking được đánh giá dựa score/view/ như hackernews, reddit) hoặc đơn giản là theo ý thích của admin, mình thích thì mình đưa lên top thôi (kipalog).</description>
     </item>
     
     <item>
@@ -37,8 +32,7 @@
       <pubDate>Tue, 12 Dec 2017 07:23:58 +0700</pubDate>
       
       <guid>https://trietphm.github.io/post/log-trong-go-va-cac-van-de-ve-log/</guid>
-      <description>Vì sao cần phải log và cần phải log một cách chỉnh chu? Log là gì?  Hiểu một cách đơn giản thì log là những thứ dùng để lưu vết, những thông tin được thông báo, lưu lại trong quá trình hoạt động của một ứng dụng.
- Thế ghi log như thế nào? Có thể output ra màn hình, lưu vào file, stdout đâu đó để có thể xem lại được.</description>
+      <description>Vì sao cần phải log và cần phải log một cách chỉnh chu? Log là gì?  Hiểu một cách đơn giản thì log là những thứ dùng để lưu vết, những thông tin được thông báo, lưu lại trong quá trình hoạt động của một ứng dụng. Thế ghi log như thế nào? Có thể output ra màn hình, lưu vào file, stdout đâu đó để có thể xem lại được.</description>
     </item>
     
     <item>
@@ -47,7 +41,7 @@
       <pubDate>Tue, 29 Aug 2017 05:30:56 +0700</pubDate>
       
       <guid>https://trietphm.github.io/post/data/</guid>
-      <description>Data system  Ngày nay do sự phát triển rất nhanh về phần cứng nên hầu hết các ứng dụng không còn phát triển theo hướng tối ưu hóa về tốc độ xử lý của CPU (compute-intensive), công nghệ hiện tại đã đủ và dư để đáp ứng hầu hết nhu cầu, thay vào đó sự bùng nổ thông tin đã mở ra kỷ nguyên về khai thác dữ liệu.</description>
+      <description>Data system  Ngày nay do sự phát triển rất nhanh về phần cứng nên hầu hết các ứng dụng không còn phát triển theo hướng tối ưu hóa về tốc độ xử lý của CPU (compute-intensive), công nghệ hiện tại đã đủ và dư để đáp ứng hầu hết nhu cầu, thay vào đó sự bùng nổ thông tin đã mở ra kỷ nguyên về khai thác dữ liệu. Các ứng dụng hầu hết đều xoay quanh vấn đề khai thác một cách triệt để data (data-intensive), với các nhu cầu phổ biến như: Lưu trữ và tìm kiếm dữ liệu (database) Ghi nhớ tạm các dữ liệu tốn nhiều chi phí tính toán để tăng tốc độ đọc (caches) Hổ trợ tìm kiếm tối đa theo nhiều cách (search indexs) Gửi message đến các processes khác nhau, và có thể xử lý bất đồng bộ (stream processing) Chạy và xử lý một lượng lớn dữ liệu theo định kỳ (batch processing)  Và nhìn chung hệ thống cần đáp ứng được các yêu cầu sau</description>
     </item>
     
     <item>
@@ -57,8 +51,7 @@
       
       <guid>https://trietphm.github.io/post/chuyen-giao-tiep/</guid>
       <description>Giao tiếp  Lời nói không mất tiền mua, lựa lời mà nói cho vừa lòng nhau
- Giao tiếp là chuyện rất bình thường nhưng lại có thể vô tình trở thành ngọn nguồn của rất nhiều vấn đề.
-Trong khuôn khổ bài viết sẽ nói đến giao tiếp sẽ ảnh hưởng thế nào đến việc phát triển phần mềm, và có thể có ít nhiều liên quan đến các việc khác (hoặc không).</description>
+ Giao tiếp là chuyện rất bình thường nhưng lại có thể vô tình trở thành ngọn nguồn của rất nhiều vấn đề. Trong khuôn khổ bài viết sẽ nói đến giao tiếp sẽ ảnh hưởng thế nào đến việc phát triển phần mềm, và có thể có ít nhiều liên quan đến các việc khác (hoặc không).</description>
     </item>
     
     <item>
@@ -67,8 +60,7 @@ Trong khuôn khổ bài viết sẽ nói đến giao tiếp sẽ ảnh hưởng 
       <pubDate>Sat, 10 Jun 2017 16:20:08 +0700</pubDate>
       
       <guid>https://trietphm.github.io/post/phan-tich-slow-query-postgresql-voi-pgbadger/</guid>
-      <description>Slow query là gì? Khi các câu query chậm hơn một thời gian nhất định tùy theo bạn định nghĩa, ví dụ chậm hơn 50ms, thì các câu query đó được xem là slow query.
-Và tùy theo ứng dụng mà sẽ có định nghĩa khác nhau, một vài ví dụ:
+      <description>Slow query là gì? Khi các câu query chậm hơn một thời gian nhất định tùy theo bạn định nghĩa, ví dụ chậm hơn 50ms, thì các câu query đó được xem là slow query. Và tùy theo ứng dụng mà sẽ có định nghĩa khác nhau, một vài ví dụ:
  Bạn viết một API authentication cho cái app nho nhỏ và bạn hy vọng nó chạy càng nhanh càng tốt, tối đa là 30ms/request =&amp;gt; Query phải &amp;lt; 30ms.</description>
     </item>
     
@@ -78,18 +70,7 @@ Và tùy theo ứng dụng mà sẽ có định nghĩa khác nhau, một vài v�
       <pubDate>Tue, 16 May 2017 22:01:57 +0700</pubDate>
       
       <guid>https://trietphm.github.io/page/friends/</guid>
-      <description> IntoIterator::repeat(☕️) - https://giang.dev
- Minh Quy Blog - https://mquy.github.io
- Blog I&amp;rsquo;m Linh - https://imlinh.com
- Tea, Coffee &amp;amp; Code - https://trietphm.github.io
- Saitama&amp;rsquo;s Punch - http://hieuk09.github.io
- Runi Blog - http://runikitkat.com
- Codeaholicguy - https://codeaholicguy.com
- HQC&amp;rsquo;s Blog - https://hqc.io/essays
- HuyDX&amp;rsquo;s Blog - https://huydx.com
- Long Hoang&amp;rsquo;s Blog - https://sfzxc.github.io
- nguyenquangminh0711’s Blog - https://nguyenquangminh0711.github.io
-  </description>
+      <description> IntoIterator::repeat(☕️) - https://giang.dev Minh Quy Blog - https://mquy.github.io Blog I&amp;rsquo;m Linh - https://imlinh.com Tea, Coffee &amp;amp; Code - https://trietphm.github.io Saitama&amp;rsquo;s Punch - http://hieuk09.github.io Runi Blog - http://runikitkat.com Codeaholicguy - https://codeaholicguy.com HQC&amp;rsquo;s Blog - https://hqc.io/essays HuyDX&amp;rsquo;s Blog - https://huydx.com Long Hoang&amp;rsquo;s Blog - https://sfzxc.github.io nguyenquangminh0711’s Blog - https://nguyenquangminh0711.github.io  </description>
     </item>
     
     <item>
@@ -98,17 +79,7 @@ Và tùy theo ứng dụng mà sẽ có định nghĩa khác nhau, một vài v�
       <pubDate>Fri, 03 Mar 2017 21:42:35 +0700</pubDate>
       
       <guid>https://trietphm.github.io/page/reading-list/</guid>
-      <description>Currently Reading  Không Gian Gia Vị Sài Gòn
- The code book
- Suối nguồn
- Postgresql high performance
- Clean Code
-  2017  Thế Giới Quả Là Rộng Lớn Và Có Rất Nhiều Việc Phải Làm
- Tony buổi sáng - trên đường băng
- Rồng đỏ
- Nghĩ ngược lại và làm khác đi
- Ông già và biển cả
- Bí thuật thôi miên</description>
+      <description>Currently Reading  Không Gian Gia Vị Sài Gòn The code book Suối nguồn Postgresql high performance Clean Code   2017 Thế Giới Quả Là Rộng Lớn Và Có Rất Nhiều Việc Phải Làm Tony buổi sáng - trên đường băng Rồng đỏ Nghĩ ngược lại và làm khác đi Ông già và biển cả Bí thuật thôi miên  </description>
     </item>
     
     <item>
@@ -117,17 +88,7 @@ Và tùy theo ứng dụng mà sẽ có định nghĩa khác nhau, một vài v�
       <pubDate>Sun, 19 Feb 2017 00:20:08 +0700</pubDate>
       
       <guid>https://trietphm.github.io/post/sublime-text-to-vim/</guid>
-      <description>Bắt đầu chuyển sang dùng Vim làm editor chính một cách nghiêm túc sau nhiều lần thử, bỏ cuộc và quay trở về Sublime Text.
-Còn về nguyên nhân bỏ cuộc là vì không quen với VIM được, do có nhiều thứ quá khác với Sublime Text, chính xác là trên Sublime Text có mà VIM lại không có, nên lần này mình sẽ setup toàn bộ những thứ bên Sublime Text qua VIM hết.</description>
-    </item>
-    
-    <item>
-      <title>SQL Query for PostreSQL Workshop</title>
-      <link>https://trietphm.github.io/page/wpg/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://trietphm.github.io/page/wpg/</guid>
-      <description> A. Explain Analyze Init data  Queries  B. Index  C. Explicit Lock  D. Window Function  Uncommon Data Types  </description>
+      <description>Bắt đầu chuyển sang dùng Vim làm editor chính một cách nghiêm túc sau nhiều lần thử, bỏ cuộc và quay trở về Sublime Text. Còn về nguyên nhân bỏ cuộc là vì không quen với VIM được, do có nhiều thứ quá khác với Sublime Text, chính xác là trên Sublime Text có mà VIM lại không có, nên lần này mình sẽ setup toàn bộ những thứ bên Sublime Text qua VIM hết.</description>
     </item>
     
     <item>
@@ -136,8 +97,16 @@ Còn về nguyên nhân bỏ cuộc là vì không quen với VIM được, do c
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://trietphm.github.io/page/about/</guid>
-      <description>About  Triet Pham
-  Yup, it&amp;rsquo;s me!</description>
+      <description>About  Triet Pham  Yup, it&amp;rsquo;s me!</description>
+    </item>
+    
+    <item>
+      <title>SQL Query for PostreSQL Workshop</title>
+      <link>https://trietphm.github.io/page/wpg/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://trietphm.github.io/page/wpg/</guid>
+      <description>A. Explain Analyze Init data  Queries  B. Index  C. Explicit Lock  D. Window Function  Uncommon Data Types  </description>
     </item>
     
   </channel>

@@ -40,7 +40,7 @@ Các bạn có thể vào đây để download file APK về cài đặt
 https://f-droid.org/en/
 
 Hầu hết các thứ mình cần đều sẽ search ở đây trước, nếu không có mới bắt đầu tìm ở Google Play
-![alt text](/static/img/android-app/fdroid.png)
+![alt text](/img/android-app/fdroid.png)
 
 # 2. Blokada
 

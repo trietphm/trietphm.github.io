@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Talk on Tea, Coffee &amp; Code</title>
+    <title>talk on Tea, Coffee &amp; Code</title>
     <link>https://trietphm.github.io/tags/talk/</link>
-    <description>Recent content in Talk on Tea, Coffee &amp; Code</description>
+    <description>Recent content in talk on Tea, Coffee &amp; Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Aug 2017 15:45:17 +0700</lastBuildDate>
-    
-	<atom:link href="https://trietphm.github.io/tags/talk/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 27 Aug 2017 15:45:17 +0700</lastBuildDate><atom:link href="https://trietphm.github.io/tags/talk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Chuyện giao tiếp</title>
       <link>https://trietphm.github.io/post/chuyen-giao-tiep/</link>
@@ -18,8 +14,7 @@
       
       <guid>https://trietphm.github.io/post/chuyen-giao-tiep/</guid>
       <description>Giao tiếp  Lời nói không mất tiền mua, lựa lời mà nói cho vừa lòng nhau
- Giao tiếp là chuyện rất bình thường nhưng lại có thể vô tình trở thành ngọn nguồn của rất nhiều vấn đề.
-Trong khuôn khổ bài viết sẽ nói đến giao tiếp sẽ ảnh hưởng thế nào đến việc phát triển phần mềm, và có thể có ít nhiều liên quan đến các việc khác (hoặc không).</description>
+ Giao tiếp là chuyện rất bình thường nhưng lại có thể vô tình trở thành ngọn nguồn của rất nhiều vấn đề. Trong khuôn khổ bài viết sẽ nói đến giao tiếp sẽ ảnh hưởng thế nào đến việc phát triển phần mềm, và có thể có ít nhiều liên quan đến các việc khác (hoặc không).</description>
     </item>
     
   </channel>

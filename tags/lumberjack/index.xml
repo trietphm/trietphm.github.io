@@ -1,24 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lumberjack on Tea, Coffee &amp; Code</title>
+    <title>lumberjack on Tea, Coffee &amp; Code</title>
     <link>https://trietphm.github.io/tags/lumberjack/</link>
-    <description>Recent content in Lumberjack on Tea, Coffee &amp; Code</description>
+    <description>Recent content in lumberjack on Tea, Coffee &amp; Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 12 Dec 2017 07:23:58 +0700</lastBuildDate>
-    
-	<atom:link href="https://trietphm.github.io/tags/lumberjack/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 12 Dec 2017 07:23:58 +0700</lastBuildDate><atom:link href="https://trietphm.github.io/tags/lumberjack/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Log trong Go và các vấn đề về log</title>
       <link>https://trietphm.github.io/post/log-trong-go-va-cac-van-de-ve-log/</link>
       <pubDate>Tue, 12 Dec 2017 07:23:58 +0700</pubDate>
       
       <guid>https://trietphm.github.io/post/log-trong-go-va-cac-van-de-ve-log/</guid>
-      <description>Vì sao cần phải log và cần phải log một cách chỉnh chu? Log là gì?  Hiểu một cách đơn giản thì log là những thứ dùng để lưu vết, những thông tin được thông báo, lưu lại trong quá trình hoạt động của một ứng dụng.
- Thế ghi log như thế nào? Có thể output ra màn hình, lưu vào file, stdout đâu đó để có thể xem lại được.</description>
+      <description>Vì sao cần phải log và cần phải log một cách chỉnh chu? Log là gì?  Hiểu một cách đơn giản thì log là những thứ dùng để lưu vết, những thông tin được thông báo, lưu lại trong quá trình hoạt động của một ứng dụng. Thế ghi log như thế nào? Có thể output ra màn hình, lưu vào file, stdout đâu đó để có thể xem lại được.</description>
     </item>
     
   </channel>

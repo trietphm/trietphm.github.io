@@ -1,3 +1,11 @@
 [submodule "themes/paperback"]
 	path = themes/paperback
 	url = https://github.com/damiencaselli/paperback
+[submodule "themes/ghostwriter"]
+	path = themes/ghostwriter
+	url = https://github.com/roryg/ghostwriter
+	branch = master
+[submodule "themes/blowfish"]
+	path = themes/blowfish
+	url = https://github.com/nunocoracao/blowfish.git
+	branch = main
