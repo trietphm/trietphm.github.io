@@ -89,7 +89,7 @@ Với format trên, client mỗi lần cần lấy thêm dữ liệu (load more)
    - Dưới đây là thông tin sau khi explain ra với data sample khoảng 80k records (Postgresql), thông tin chi tiết có thể xem ở đây https://explain.depesz.com/s/W7yl
 
    ```
-   	EXPLAIN analyze
+ 	EXPLAIN analyze
 	SELECT * FROM orders WHERE id NOT IN (<List Ids here about 1000 items>)
 	ORDER BY random()
 	LIMIT 10
@@ -97,24 +97,24 @@ Với format trên, client mỗi lần cần lấy thêm dữ liệu (load more)
 
    ```
    Limit  (cost=109157.01..109157.04 rows=10 width=896) (actual time=804.610..804.614 rows=10 loops=1)
-  ->  Sort  (cost=109157.01..109348.06 rows=76419 width=896) (actual time=804.608..804.611 rows=10 loops=1)
-        Sort Key: (random())
-        Sort Method: top-N heapsort  Memory: 29kB
-        ->  Seq Scan on eateries  (cost=0.00..107505.63 rows=76419 width=896) (actual time=0.024..743.249 rows=77288 loops=1)
-              Filter: (id <> ALL ('{<List ids dài quáaaaaaaaaaaaaaaaaaaaaaaa}'::integer[]))
-              Rows Removed by Filter: 783
-Planning time: 1.187 ms
-Execution time: 804.675 ms
+     ->  Sort  (cost=109157.01..109348.06 rows=76419 width=896) (actual time=804.608..804.611 rows=10 loops=1)
+           Sort Key: (random())
+           Sort Method: top-N heapsort  Memory: 29kB
+           ->  Seq Scan on eateries  (cost=0.00..107505.63 rows=76419 width=896) (actual time=0.024..743.249 rows=77288 loops=1)
+                 Filter: (id <> ALL ('{<List ids dài quáaaaaaaaaaaaaaaaaaaaaaaa}'::integer[]))
+                 Rows Removed by Filter: 783
+   Planning time: 1.187 ms
+   Execution time: 804.675 ms
    ```
 
   - Per node type stats
 
    ```
-| node type | count | sum of times | % of query |
-|-----------|-------|--------------|------------|
-| Limit     | 1     | 0.003 ms     | 0.0 %      |
-| Seq Scan  | 1     | 743.249 ms   | 92.4 %     |
-| Sort      | 1     | 61.362 ms    | 7.6 %      |
+   | node type | count | sum of times | % of query |
+   |-----------|-------|--------------|------------|
+   | Limit     | 1     | 0.003 ms     | 0.0 %      |
+   | Seq Scan  | 1     | 743.249 ms   | 92.4 %     |
+   | Sort      | 1     | 61.362 ms    | 7.6 %      |
    ```
 
   - Nhìn vào query plan ở trên ta thấy `NOT IN` đã được chuyển thành `id <> ALL('{}'::integer[])`, và quan trọng nhất là index trên primary key `id` đã không được dùng mà planner đã dùng sequence scan aka full scan table, chiếm 743ms, quá chậm.

@@ -2,13 +2,13 @@
 draft = false
 date = "2017-06-10T16:20:08+07:00"
 title = "Phân tích slow query PostgreSQL với pgBadger"
-description = "Phân tích slow query PostgreSQL với pgBadger"
+summary = "Việc các câu SQL queries bị chậm khi sử dụng trong PostgreSQL khá phổ biến, bài viết này sẽ hướng dẫn phân tích slow queries PostgreSQL bằng pgBadger để có thể troubleshoot issues dễ dàng hơn"
 +++
 
 ![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/5dvag1s1vh_logo_pgbadger.png)
 # Slow query là gì?
 
-Khi các câu query chậm hơn một thời gian nhất định tùy theo bạn định nghĩa, ví dụ chậm hơn 50ms, thì các câu query đó được xem là slow query. 
+Khi các câu query chậm hơn một thời gian nhất định tùy theo bạn định nghĩa, ví dụ chậm hơn 50ms, thì các câu query đó được xem là slow query.
 Và tùy theo ứng dụng mà sẽ có định nghĩa khác nhau, một vài ví dụ:
 
 - Bạn viết một API authentication cho cái app nho nhỏ và bạn hy vọng nó chạy càng nhanh càng tốt, tối đa là 30ms/request => Query phải < 30ms.

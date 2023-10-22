@@ -1,8 +1,8 @@
 +++
 author = "Triet Pham"
 date = "2017-08-27T15:45:17+07:00"
-description = "Chuyện giao tiếp"
-tags = ["talk"]
+summary = "Một vài tình huống và vấn đề thường gặp trong công việc bị ảnh hưởng chỉ vì việc giao tiếp trong team không được tốt"
+tags = ["communication"]
 title = "Chuyện giao tiếp"
 
 +++
@@ -49,45 +49,45 @@ Mọi người giao tiếp với nhau qua **Skype**
 
 # Các vấn đề phát sinh
 ### 1. My teammates are ninjas
-#### Vấn đề:
+**Vấn đề:**
 
 ![alt text](/img/chuyen-giao-tiep/img7.jpg)
 
 Tèo có thắc mắc về design nên nhắn tin qua Skype cho Bạch Tuyết
 
-> **[09:00 AM] Tèo**: Chị Tuyết ơi, cho em xin link file thiết kế màn hình Login
-> _<2h30 sau>_
-> **[11:30 AM]** Bạch Tuyết: Đây em https://tinyurl.com/DesignLogin
-> **[11:31 AM]** Tèo: link bị 404 chị ơi :(
-> *<2h30 nữa>*
-> **[02:00 PM]** Bạch Tuyết: chị gửi lộn, link này nha https:/tinyurl.com/DesignLoginFinal
-> **[02:01 PM]** Tèo: Cám ơn chị
+- **[09:00 AM] Tèo**: Chị Tuyết ơi, cho em xin link file thiết kế màn hình Login
+- _<2h30 sau>_
+- **[11:30 AM] Bạch Tuyết**: Đây em https://tinyurl.com/DesignLogin
+- **[11:31 AM] Tèo**: link bị 404 chị ơi :(
+- *<2h30 nữa>*
+- **[02:00 PM] Bạch Tuyết**: chị gửi lộn, link này nha https:/tinyurl.com/DesignLoginFinal
+- **[02:01 PM] Tèo**: Cám ơn chị
 
-Và Tèo tốn 5h mòn mỏi đợi chờ. Đã có design, Tèo bắt tay vào làm, thử đăng nhập bằng API thì bị lỗi.
+Và Tèo tốn **5h** mòn mỏi đợi chờ. Đã có design, Tèo bắt tay vào làm, thử đăng nhập bằng API thì bị lỗi.
 
-> **[02:05 PM]** Tèo: Tí ơi, API lỗi rồi, đăng nhập nó toàn báo status 500, `Internal server error`
-> _<1h sau>_
-> **[03:05 PM]** Tí: Phải gửi thêm mã OTP nữa.
-> **[03:06 PM]** Tèo: Ờ, được rồi, sao không thấy ghi trong documents?
-> **[03:07 PM]** Tèo: ơ, đăng nhập lần nữa thì nó báo status 403, `Account is banned`, sao kỳ vậy :(
-> _<2h sau>_ (Tí seen nhưng thấy báo bug nên không thèm trả lời)
-> **[05:00 PM]** Tí: Gửi sai mã OTP, là bị khóa account nhé.
-> **[05:00 PM]** Tèo: Sao không ghi trong documents??
-> **[05:01 PM]** Tí: Quên
+- **[02:05 PM] Tèo**: Tí ơi, API lỗi rồi, đăng nhập nó toàn báo status 500, `Internal server error`
+- _<1h sau>_
+- **[03:05 PM] Tí**: Phải gửi thêm mã OTP nữa.
+- **[03:06 PM] Tèo**: Ờ, được rồi, sao không thấy ghi trong documents?
+- **[03:07 PM] Tèo**: ơ, đăng nhập lần nữa thì nó báo status 403, `Account is banned`, sao kỳ vậy :(
+- _<2h sau>_ (Tí seen nhưng thấy báo bug nên không thèm trả lời)
+- **[05:00 PM] Tí**: Gửi sai mã OTP, là bị khóa account nhé.
+- **[05:00 PM] Tèo**: Sao không ghi trong documents??
+- **[05:01 PM] Tí**: Quên
 
-Và Tèo mất toi 8h lãng nhách chỉ vì ngồi đợi reply của team.
+Và Tèo mất toi **8h** lãng nhách chỉ vì ngồi đợi reply của team.
 
-#### Vấn đề:
+**Vấn đề:**
  + Teammates như ninja, thoắc ẩn thoắc hiện, không bao giờ thấy online, hỏi không trả lời,...
  + Lãng phí thời gian của team => trễ tiến độ => OT.
  + Gây mất lòng tin lẫn nhau, quá mệt mỏi vì đợi chờ.
 
-#### Giải pháp:
+**Giải pháp:**
  - (Bad) Chửi (lầm thầm hoặc thẳng mặt), lần sau nó hỏi thì cho nó đợi lại cho biết mặt, cho chừa tội làm trễ deadline của mình. Làm ngược lại là được.
  - (Good) Góp ý nhẹ nhàng hoặc nên có các biện pháp ràng buộc để mọi người luôn luôn cố gắng trả lời tin nhắn sớm nhất có thể, tốt nhất là trong vòng 5', hạn chế làm trễ nãy công việc của nhau
 
 ### 2. Sử dụng kênh chat không hợp lý
-#### Vấn đề:
+**Vấn đề:**
 
 ![alt text](/img/chuyen-giao-tiep/img2.jpg)
 
@@ -100,7 +100,7 @@ Và Tèo mất toi 8h lãng nhách chỉ vì ngồi đợi reply của team.
 
 ![alt text](/img/chuyen-giao-tiep/img1.png)
 
-#### Giải pháp:
+**Giải pháp:**
 
  - Hạn chế document trên chat log, nếu điều kiện không cho phép thì nên note lại nhanh các thông tin kết luận
  - Nên tổng hợp lại các ý đã thảo luận để tránh tốn thời gian xem lại chat log mà chưa chắc đã nhận được kết quả mong muốn (VD như trường hợp trên nếu Bờm chủ động tổng hợp lại sẽ đỡ tốn thời gian của cả Tí và Tèo - 1h ngồi xem)
@@ -108,35 +108,35 @@ Và Tèo mất toi 8h lãng nhách chỉ vì ngồi đợi reply của team.
  - Slack khá tốt trong trường hợp này với các tính năng như notification theo cá nhân, pin post, link documents, snippet,... Skype có nhiều cải thiện nhưng vẫn khá tệ (vd không thể phân biệt khi nào notification do người khác tag mình hay notification từ message hay các loại notification khác)
 
 ### 3. Luôn luôn lịch sử và hòa nhã
-#### Vấn đề:
+**Vấn đề:**
 
 - Bờm vốn là dân chăn bò nên hơi thẳng tính, mỗi khi có gì không vừa lòng Bờm chửi ngay. "Không hiểu à? Gì ngu như con bò vậy, à không, mấy con bò anh nói một tiếng là tụi nó đi theo liền nhé."
 - Mọi người trong team biết tính Bờm nhưng làm gì có ai bị chửi mà vui, lại còn chửi nặng.
 
-#### Giải pháp:
+**Giải pháp:**
 
  - We are a team, chửi nhau làm chi?
  - Hãy hòa nhã và lịch sự, thẳng thắng là tốt nhưng đừng thẳng quá, hãy luôn kiên nhẫn và mềm dẻo.
  - Sử dụng từ ngữ khôn khéo, nhẹ nhàng và tình cảm, thay vì luôn đẩy trách nhiệm về đối phương (vd "Chổ đó dễ ợt mà em không hiểu à?", "phần đó *em làm* có bug kìa, sửa lại đi, ẩu quá",...) thì nên giảm nhẹ lại ("Có phần nào anh nói chưa rõ không?", "Phần đó hình như có bug, em kiểm tra giúp anh nhé, nó bị abc... lẽ ra phải là xyz..., cám ơn em nhé")
 
 ### 4. I'm not mind reader!
-#### Vấn đề:
+**Vấn đề:**
 ![alt text](/img/chuyen-giao-tiep/img3.jpg)
 
->  **Bờm:** @Tí ơi, bug <ném cho cái screen shoot>
->  **Tí:** Đâu anh, em có thấy gì đâu
->  **Bờm:** Đó, anh click vào cái *button đó* nó không ra gì hết.
->  **Tí:** button nào anh, có 5 cái button trên đó lận.
->  **Bờm:** Button màu đỏ đó
->  **Tí:** Button màu đó nào anh, 3 cái cancel/stop/burn anh nói cái nút nào
->  **Bờm:** Trời ơi, cái nút burn đó, sao chậm tiêu quá vậy, hỏi tới hỏi lui nữa, anh nói ngắn gọn em phải hiểu chứ
->  **Tí:** Dạ... (ai biết ông nghĩ gì mà hiểu)
+-  **Bờm:** @Tí ơi, bug <ném cho cái screen shoot>
+-  **Tí:** Đâu anh, em có thấy gì đâu
+-  **Bờm:** Đó, anh click vào cái *button đó* nó không ra gì hết.
+-  **Tí:** button nào anh, có 5 cái button trên đó lận.
+-  **Bờm:** Button màu đỏ đó
+-  **Tí:** Button màu đỏ nào anh, 3 cái cancel/stop/burn anh nói cái nút nào
+-  **Bờm:** Trời ơi, cái nút burn đó, sao chậm tiêu quá vậy, hỏi tới hỏi lui nữa, anh nói ngắn gọn em phải hiểu chứ
+-  **Tí:** Dạ... (ai biết ông nghĩ gì mà hiểu)
 
-#### Giải pháp:
+**Giải pháp:**
  - Luôn nói ngắn gọn mà rõ ràng, không ai biết được bạn đang nghĩ gì đâu
 
 ### 5. We are a team not nemesis
-#### Vấn đề:
+**Vấn đề:**
 
 ![alt text](/img/chuyen-giao-tiep/img5.jpg)
 
@@ -145,31 +145,34 @@ Và Tèo mất toi 8h lãng nhách chỉ vì ngồi đợi reply của team.
 > Tèo lọ mọ sửa và lâu lâu chơi lại Tí bằng việc lâu lâu update API mà không báo trước cho crash App chơi.
 > Cả team xỉa xói lẫn nhau, soi mói và đâm chọt nhau ngay khi có thể *cho bỏ ghét*
 
-#### Giải pháp:
+**Giải pháp:**
 
  - Luôn nhớ rằng chúng ta là một team, không phải kẻ thù.
  - Thái độ thù địch không giúp ích được gì cả, nếu muốn đi nhanh hãy đi một mình, nếu muốn đi xa hãy đi cùng nhau, đừng níu kéo, dìm dập lẫn nhau.
 
 ### 6. Tam sao thất bản
-#### Vấn đề:
+**Vấn đề:**
 ![alt text](/img/chuyen-giao-tiep/img4.jpg)
-#### Giải pháp:
+**Giải pháp:**
  - Làm cho mọi thứ thật rõ ràng, document cụ thể và chi tiết.
  - Nếu phát sinh vấn đề cần làm rõ, không tạo ra điểm mù và chắn chắc mọi người có liên quan đều nắm được
 
 ### 7. I'm superman, everybody follow me!
-#### Tình huống:
+**Tình huống:**
  App có chức năng cơ bản là đăng nhập với username và password, Tuyết nghĩ nó quá đơn giản và không đủ bảo mật với một app cho nhà giàu, Tuyết quyết định thêm vào một nút *Đăng nhập bằng võng mạc*
-#### Vấn đề:
 
-> API được thiết kế không phù hợp với design, chức năng mới không có yêu cầu rõ ràng, Tí bắt đầu gào thét.
-> Chức năng quá dị, chưa từng làm bao giờ, tốn thời gian để research, prototype làm ban đầu không đúng với yêu cầu, Tèo bắt đầu gào thét.
-> Design làm cho estimation sai bét nhè, break plan, team hỏi flow hoạt động nhưng Bờm không biết, Bờm bắt đầu gào thét.
+**Vấn đề:**
+
+- API được thiết kế không phù hợp với design, chức năng mới không có yêu cầu rõ ràng, Tí bắt đầu gào thét.
+- Chức năng quá dị, chưa từng làm bao giờ, tốn thời gian để research, prototype làm ban đầu không đúng với yêu cầu, Tèo bắt đầu gào thét.
+- Design làm cho estimation sai bét nhè, break plan, team hỏi flow hoạt động nhưng Bờm không biết, Bờm bắt đầu gào thét.
+
+**Giải pháp:**
 
 - **Giải pháp 1 (bad)**: OT thôi!! Cả team cắm mặt ngồi code chức năng mới, vừa code vừa chửi.
 - **Giải pháp 2 (good)**: Hãy giao tiếp như một team. Trao đổi với các thành viên trong team để tìm ra giải pháp thuận lợi nhất cho tất cả các bên (design, API, mobile app thay đổi ít nhất có thể). Cả team quyết định thay đổi thành *xác nhận bằng OTP*.
 
-### 8. ...
+### 8. You name it
 Có cả tỉ vấn đề khác mà giờ lười quá không viết nữa (￣▽￣)
 
 # Kết

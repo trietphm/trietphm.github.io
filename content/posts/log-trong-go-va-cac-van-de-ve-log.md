@@ -65,12 +65,12 @@ title = "Log trong Go và các vấn đề về log"
 ![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/ul3l86ba3i_Screen%20Shot%202017-12-12%20at%2010.22.55%20PM.png)
 
 - Trong Golang built-in package đã có hổ trợ việc log https://golang.org/pkg/log/ nhưng khá đơn giản và không đáp ứng đủ những nhu cầu như trên.
-- Logrus (https://github.com/sirupsen/logrus) là một structered logger cho Golang support hầu hết những thứ trên và output ra màu mè khá đẹp
+- Logrus ({{< icon "github" >}} https://github.com/sirupsen/logrus)là một structered logger cho Golang support hầu hết những thứ trên và output ra màu mè khá đẹp
 ![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/55immwl25d_687474703a2f2f692e696d6775722e636f6d2f505937714d77642e706e67.png)
 
 Sử dụng khá dễ dàng, một ví dụ nhỏ:
 
-```
+```golang
 package main
 
 import (
@@ -90,7 +90,7 @@ Logrus support format với 2 định dạng là:
 - `logrus.TextFormatter`: Log ra dạng plain text, nếu stdout là tty sẽ có bổ sung thêm color.
 - `logrus.JSONFormatter`: Log ra theo dạng json
 
-```
+```golang
 	log.SetFormatter(&log.TextFormatter{})
 	log.SetFormatter(&log.JSONFormatter{})
 ```
@@ -98,7 +98,7 @@ Logrus support format với 2 định dạng là:
 ## Structed log
 Để đảm bảo log luôn được formated và parseable nên logrus bắt buộc log thông qua function `WithFields`
 
-```
+```golang
 package main
 
 import (
@@ -153,7 +153,7 @@ Mặc định logrus sẽ bổ sung các field `time`, `level`, `msg` vào trong
 ## Level logging
 Logrus support 6 loại level: Debug, Info, Warn, Error, Fatal, Panic. Cách sử dụng như bên dưới:
 
-```
+```golang
 log.Debug("Useful debugging information.")
 log.Info("Something noteworthy happened!")
 log.Warn("You should probably take a look at this.")
