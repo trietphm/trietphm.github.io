@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>communication on triet.dev</title>
+    <link>https://triet.dev/tags/communication/</link>
+    <description>Recent content in communication on triet.dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copy, _right?_ :thinking_face:</copyright>
+    <lastBuildDate>Sun, 27 Aug 2017 15:45:17 +0700</lastBuildDate><atom:link href="https://triet.dev/tags/communication/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chuyện giao tiếp</title>
+      <link>https://triet.dev/posts/chuyen-giao-tiep/</link>
+      <pubDate>Sun, 27 Aug 2017 15:45:17 +0700</pubDate>
+      
+      <guid>https://triet.dev/posts/chuyen-giao-tiep/</guid>
+      <description>Một vài tình huống và vấn đề thường gặp trong công việc bị ảnh hưởng chỉ vì việc giao tiếp trong team không được tốt</description>
+      
+    </item>
+    
+  </channel>
+</rss>

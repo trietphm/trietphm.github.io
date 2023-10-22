@@ -97,7 +97,7 @@
     "keywords": ["log","go","golang","logrus","lumberjack","tech"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1415"
+    "wordCount": "1414"
   }]
   </script>
 
@@ -814,8 +814,15 @@
 <ul>
 <li>Trong Golang built-in package đã có hổ trợ việc log <a href="https://golang.org/pkg/log/"   target="_blank">
     https://golang.org/pkg/log/</a> nhưng khá đơn giản và không đáp ứng đủ những nhu cầu như trên.</li>
-<li>Logrus (<a href="https://github.com/sirupsen/logrus"   target="_blank">
-    https://github.com/sirupsen/logrus</a>) là một structered logger cho Golang support hầu hết những thứ trên và output ra màu mè khá đẹp
+<li>Logrus (
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+ <a href="https://github.com/sirupsen/logrus%29l"   target="_blank">
+    https://github.com/sirupsen/logrus)l</a>à một structered logger cho Golang support hầu hết những thứ trên và output ra màu mè khá đẹp
 
 
 
@@ -829,18 +836,18 @@
 </li>
 </ul>
 <p>Sử dụng khá dễ dàng, một ví dụ nhỏ:</p>
-<pre tabindex="0"><code>package main
-
-import (
-  log &#34;github.com/sirupsen/logrus&#34;
-)
-
-func main() {
-  log.WithFields(log.Fields{
-    &#34;animal&#34;: &#34;walrus&#34;,
-  }).Info(&#34;A walrus appears&#34;)
-}
-</code></pre><div id="formater" class="anchor"></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">log</span> <span class="s">&#34;github.com/sirupsen/logrus&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">log</span><span class="p">.</span><span class="nf">WithFields</span><span class="p">(</span><span class="nx">log</span><span class="p">.</span><span class="nx">Fields</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;animal&#34;</span><span class="p">:</span> <span class="s">&#34;walrus&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}).</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;A walrus appears&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div id="formater" class="anchor"></div>
 <h2 class="relative group">Formater 
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
@@ -853,9 +860,9 @@ func main() {
 <li><code>logrus.TextFormatter</code>: Log ra dạng plain text, nếu stdout là tty sẽ có bổ sung thêm color.</li>
 <li><code>logrus.JSONFormatter</code>: Log ra theo dạng json</li>
 </ul>
-<pre tabindex="0"><code>	log.SetFormatter(&amp;log.TextFormatter{})
-	log.SetFormatter(&amp;log.JSONFormatter{})
-</code></pre><div id="structed-log" class="anchor"></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl">	<span class="nx">log</span><span class="p">.</span><span class="nf">SetFormatter</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">log</span><span class="p">.</span><span class="nx">TextFormatter</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">log</span><span class="p">.</span><span class="nf">SetFormatter</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">log</span><span class="p">.</span><span class="nx">JSONFormatter</span><span class="p">{})</span>
+</span></span></code></pre></div><div id="structed-log" class="anchor"></div>
 <h2 class="relative group">Structed log 
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
@@ -864,35 +871,35 @@ func main() {
     
 </h2>
 <p>Để đảm bảo log luôn được formated và parseable nên logrus bắt buộc log thông qua function <code>WithFields</code></p>
-<pre tabindex="0"><code>package main
-
-import (
-	&#34;os&#34;
-
-	&#34;github.com/sirupsen/logrus&#34;
-)
-
-func main() {
-	logrus.SetFormatter(&amp;logrus.TextFormatter{})
-	//log.SetFormatter(&amp;log.JSONFormatter{})
-	var log = logrus.New()
-	log.Out = os.Stdout
-
-	// Log to file
-	// file, err := os.OpenFile(&#34;logrus.log&#34;, os.O_CREATE|os.O_WRONLY, 0666)
-	// if err == nil {
-	// 	log.Out = file
-	// } else {
-	// 	log.Info(&#34;Failed to log to file, using default stderr&#34;)
-	// }
-
-	log.WithFields(logrus.Fields{
-		&#34;event&#34;: &#34;event&#34;,
-		&#34;topic&#34;: &#34;topic&#34;,
-		&#34;key&#34;:   &#34;key&#34;,
-	}).Fatal(&#34;Failed to send event&#34;)
-}
-</code></pre><p>Bằng cách này, dù muốn hay không log khi được lưu lại đều có cùng định dạng, ví dụ với đoạn code trên sẽ cho output là:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;os&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/sirupsen/logrus&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">logrus</span><span class="p">.</span><span class="nf">SetFormatter</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">logrus</span><span class="p">.</span><span class="nx">TextFormatter</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//log.SetFormatter(&amp;log.JSONFormatter{})
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">var</span> <span class="nx">log</span> <span class="p">=</span> <span class="nx">logrus</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">log</span><span class="p">.</span><span class="nx">Out</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Log to file
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// file, err := os.OpenFile(&#34;logrus.log&#34;, os.O_CREATE|os.O_WRONLY, 0666)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// if err == nil {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	log.Out = file
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// } else {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	log.Info(&#34;Failed to log to file, using default stderr&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="nx">log</span><span class="p">.</span><span class="nf">WithFields</span><span class="p">(</span><span class="nx">logrus</span><span class="p">.</span><span class="nx">Fields</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="s">&#34;event&#34;</span><span class="p">:</span> <span class="s">&#34;event&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s">&#34;topic&#34;</span><span class="p">:</span> <span class="s">&#34;topic&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s">&#34;key&#34;</span><span class="p">:</span>   <span class="s">&#34;key&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}).</span><span class="nf">Fatal</span><span class="p">(</span><span class="s">&#34;Failed to send event&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Bằng cách này, dù muốn hay không log khi được lưu lại đều có cùng định dạng, ví dụ với đoạn code trên sẽ cho output là:</p>
 <ul>
 <li>Text format (tty):</li>
 </ul>
@@ -915,15 +922,15 @@ func main() {
     
 </h2>
 <p>Logrus support 6 loại level: Debug, Info, Warn, Error, Fatal, Panic. Cách sử dụng như bên dưới:</p>
-<pre tabindex="0"><code>log.Debug(&#34;Useful debugging information.&#34;)
-log.Info(&#34;Something noteworthy happened!&#34;)
-log.Warn(&#34;You should probably take a look at this.&#34;)
-log.Error(&#34;Something failed but I&#39;m not quitting.&#34;)
-// Calls os.Exit(1) after logging
-log.Fatal(&#34;Bye.&#34;)
-// Calls panic() after logging
-log.Panic(&#34;I&#39;m bailing.&#34;)
-</code></pre><div id="log-rotation" class="anchor"></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="nx">log</span><span class="p">.</span><span class="nf">Debug</span><span class="p">(</span><span class="s">&#34;Useful debugging information.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">log</span><span class="p">.</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;Something noteworthy happened!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">log</span><span class="p">.</span><span class="nf">Warn</span><span class="p">(</span><span class="s">&#34;You should probably take a look at this.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">log</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="s">&#34;Something failed but I&#39;m not quitting.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Calls os.Exit(1) after logging
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="s">&#34;Bye.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Calls panic() after logging
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">log</span><span class="p">.</span><span class="nf">Panic</span><span class="p">(</span><span class="s">&#34;I&#39;m bailing.&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><div id="log-rotation" class="anchor"></div>
 <h2 class="relative group">Log rotation 
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
