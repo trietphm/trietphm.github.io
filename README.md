@@ -9,6 +9,8 @@ Take note about some basic commands here since I almost forget all the commands 
 git submodule add -b main https://github.com/nunocoracao/blowfish.git themes/blowfish
 ```
 
+Hugo version as of now is 0.119.0
+
 Help
 
 ```
