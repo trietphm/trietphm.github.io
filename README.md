@@ -2,7 +2,12 @@
 trietphm.github.io
 
 # Command
-Take note about some basic commands here since I almost forget all commands after a long time
+Take note about some basic commands here since I almost forget all the commands after a long time
+
+- Clone the themes first
+```
+git submodule add -b main https://github.com/nunocoracao/blowfish.git themes/blowfish
+```
 
 Help
 
